@@ -33,8 +33,8 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="typeAliasesPackage" value="com.zy.bean"></property>
-		<property name="mapperLocations" value="classpath:com/zy/dao/mapper/*.xml" ></property>
+		<property name="typeAliasesPackage" value="com.microblog.bean"></property>
+		<property name="mapperLocations" value="classpath:com/microblog/dao/mapper/*.xml" ></property>
 		<property name="configurationProperties">
 			<props>
 				<prop key="logImpl">LOG4J</prop>

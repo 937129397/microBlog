@@ -3,8 +3,8 @@ use microblog;
  
 --用户
 create table users(
-	uid vahchar(20),
-	uname varchar(40),
+	uid int,
+	email varchar(40),
 	password varchar(40),
 	nickname varchar(100),
 	pic varchar(100),
