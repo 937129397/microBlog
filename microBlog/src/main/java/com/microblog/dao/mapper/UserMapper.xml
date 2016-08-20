@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yc.dao.mapper.UserMapper">
+<mapper namespace="com.microblog.dao.mapper.UserMapper">
 
 	<!-- 注册时提供一个功能： 用户名不能重名 -->
 	<select id="getUserByTelephone" resultType="User" parameterType="User">
@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from users where email = #{email}
 	</select>
 	
-	<select id="getUserByLogin" resultType="User" parameterType="User">
+	<select id="getUserByLogin1" resultType="User" parameterType="User">
 		select * from users where email = #{email} and password = #{password}
 	</select>
 	
@@ -35,7 +35,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<otherwise>''</otherwise>
 		</choose>
 		 , #{nickname}) 
-	
 		)
 	</insert>
 	
