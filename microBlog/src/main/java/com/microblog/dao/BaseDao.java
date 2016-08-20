@@ -3,91 +3,54 @@ package com.microblog.dao;
 import java.util.List;
 import java.util.Map;
 
-public interface BaseDao<T> {
-
+public interface BaseDao<T>
+{
 	/**
 	 * 
-	 * @param t
-	 *            要保存的对象
-	 * @param sqlId
-	 *            mapper中的方法
+	 * @param t  :要保存的数据对象
+	 * @param sqlId:   mapper中的方法名
+	 * 
+	 * "com.yc.dao.mapper."+ t.getClass().getSimpleName()  +"Mapper."+ sqlId
+	 * com.yc.dao.mapper.AccountMapper.update
 	 */
 	public void save(T t, String sqlId);
-
-	/**
-	 * 
-	 * @param t
-	 *            要更改的对象
-	 * @param sqlId
-	 *            mapper中的方法
-	 */
-	public void update(T t, String sqlId);
-
-	/**
-	 * 
-	 * @param clazz
-	 * @param sqlId
-	 *            mapper中的方法
-	 * @return 
-	 */
-	public int del(Class<T> clazz, String sqlId,Integer id);
 	
-	public int del(Class<T> clazz, String sqlId,List<Integer> ids);
-
-	/**
-	 * 
-	 * @param clazz
-	 * @param sqlId
-	 *            mapper中的方法
-	 * @return
-	 */
+	public void update(T t, String sqlId);
+	
+	public void del(Class<T> clazz, int id, String sqlId);
+	
+	public void del(   Class<T> clazz, List<Integer> ids, String sqlId);
+	
+	public void del(   Class<T> clazz,  String sqlId);
+	
 	public List<T> findAll(Class<T> clazz, String sqlId);
-
-	/**
-	 * 
-	 * @param t
-	 * @param sqlId
-	 *            mapper中的方法
-	 * @return
-	 */
+	
 	public T find(T t, String sqlId);
-
+	
 	/**
-	 * 条件 分页 查询
-	 * 
+	 * 根据条件分页查询
 	 * @param clazz
-	 * @param sqlId
-	 *            mapper中的方法
-	 * @param params
-	 *            参数
-	 * @param offset
-	 *            页码
-	 * @param sizePage
-	 *            条/页
+	 * @param map:  参数       键为字段名    值参数值
+	 * @param sqlId:  mapper里面的方法名
+	 * @param offset   :    从第几条数据开始查
+	 * @param sizePage:  每页几条
 	 * @return
 	 */
-	public List<T> findList(Class<T> clazz, String sqlId,
-			Map<String, Object> params, int offset, int sizePage);;
-
+	public List<T> findList(Class<T> clazz, Map<String, Object> map, String sqlId, int offset, int sizePage);
+	
 	/**
-	 * 聚合查询
-	 * 
-	 * @param clazz
+	 *  聚合查询
+	 * @param clazz    :  
 	 * @param sqlId
-	 *            mapper中的方法
 	 * @return
 	 */
 	public int getCount(Class<T> clazz, String sqlId);
-
+	
 	/**
-	 * 条件聚合
-	 * 
-	 * @param clazz
+	 *  根据条件聚合查询
+	 * @param clazz    :  
 	 * @param sqlId
-	 *            mapper中的方法
-	 * @param params
 	 * @return
 	 */
-	public int getCount(Class<T> clazz, String sqlId, Map<String, Object> map);
-
+	public int getCount(Class<T> clazz, Map<String, Object> map, String sqlId);
 }
