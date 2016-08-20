@@ -3,12 +3,12 @@ use microblog;
  
 --用户
 create table users(
-	uid vahchar(20),
+	uid int,
 	email varchar(40),
 	password varchar(40),
 	nickname varchar(100),
 	pic varchar(100),
-	telephone int,
+	telephone bigint,
 	level int,
 	exp int,
 	regDate date,
@@ -16,7 +16,10 @@ create table users(
 	sex int,
 	birthday varchar(10)
 );
+drop table users;
+insert into users(uid) values(1);
 
+select * from users;
 
 --关注
 create table concern(
