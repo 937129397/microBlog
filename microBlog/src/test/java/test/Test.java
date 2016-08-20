@@ -25,6 +25,7 @@ public class Test extends TestCase {
 		blog.setSource(1);
 		blog.setPic("图片");
 		ub.saveBlog(blog);
+
 	}
 	
 	public void logintest(){
