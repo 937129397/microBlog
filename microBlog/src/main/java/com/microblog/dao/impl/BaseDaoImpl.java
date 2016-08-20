@@ -16,7 +16,7 @@ import com.microblog.dao.BaseDao;
 @Repository(value="baseDaoImpl")
 public class BaseDaoImpl<T> extends SqlSessionDaoSupport implements BaseDao<T> {
 	
-	private final String MAPPERPATH="com.yc.dao.mapper.";
+	private final String MAPPERPATH="com.microblog.dao.mapper.";
 	
 	public void save(T t, String sqlId) {
 		//                           com.yc.dao.mapper.AccountMapper.update
