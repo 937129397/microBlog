@@ -32,9 +32,14 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
 	}
 
 	@Transactional(readOnly = true, isolation = Isolation.DEFAULT, rollbackForClassName = { "java.lang.RuntimeException" }, propagation = Propagation.NOT_SUPPORTED)
-	public User login(User user) {
-		user.setPassword(Encrypt.md5(user.getPassword()));
-		return (User) baseDao.find(user, "getUserByLogin");
+	public User loginByEmail(User user) {
+		//user.setPassword(Encrypt.md5(user.getPassword()));
+		return (User) baseDao.find(user, "getUserByLogin1");
+	}
+
+	@Override
+	public User loginByTelephone(User user) {
+		return (User) baseDao.find(user, "getUserByLogin1");
 	}
 	
 

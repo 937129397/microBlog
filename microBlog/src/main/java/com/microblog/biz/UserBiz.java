@@ -14,6 +14,8 @@ public interface UserBiz {
 	public boolean validate(User user);
 
 	
-	public User login(User user);
+	public User loginByEmail(User user);
 
+	
+	public User loginByTelephone(User user);
 }

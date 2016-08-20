@@ -6,7 +6,7 @@ import java.util.Date;
 public class User implements Serializable{
 	private static final long serialVersionUID = -2295448759251506664L;
 	private Integer uid;
-	private String uname;
+	private String email;
 	private String password;
 	private String nickname;
 	private String pic;
@@ -24,11 +24,11 @@ public class User implements Serializable{
 	public void setUid(Integer uid) {
 		this.uid = uid;
 	}
-	public String getUname() {
-		return uname;
+	public String getEmail() {
+		return email;
 	}
-	public void setUname(String uname) {
-		this.uname = uname;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPassword() {
 		return password;
