@@ -15,10 +15,10 @@
 	</select>
 	<resultMap type="Blog" id="BlogMap">
 		<association property="user" column="uid"
-			select="com.yc.dao.mapper.UserMapper.findUser" />
-		<association property="street" column="STREET_ID"
-			select="com.yc.dao.mapper.StreetMapper.getStreet" />
-		<association property="houseType" column="TYPE_ID"
-			select="com.yc.dao.mapper.HouseTypeMapper.getTypeById" />
+			select="com.microblog.dao.mapper.UserMapper.getUser" />
 	</resultMap>
+	
+	<select id="getBlogCount" resultType="int">
+		select count(1) from blog
+	</select>
 </mapper>
