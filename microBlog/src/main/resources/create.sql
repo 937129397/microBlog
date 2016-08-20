@@ -3,7 +3,7 @@ use microblog;
  
 --用户
 create table users(
-	uid int,
+	uid vahchar(20),
 	email varchar(40),
 	password varchar(40),
 	nickname varchar(100),
@@ -12,9 +12,9 @@ create table users(
 	level int,
 	exp int,
 	regDate date,
-	realname varchar(40)，
+	realname varchar(40),
 	sex int,
-	birthday varchar(10),
+	birthday varchar(10)
 );
 
 
