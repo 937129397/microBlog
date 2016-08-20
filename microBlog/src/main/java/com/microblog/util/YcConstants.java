@@ -1,4 +1,4 @@
-package com.yc.utils;
+package com.microblog.util;
 
 public class YcConstants {
 	

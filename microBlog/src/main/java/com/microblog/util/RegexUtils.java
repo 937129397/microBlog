@@ -1,4 +1,4 @@
-package com.yc.utils;
+package com.microblog.util;
 
 public class RegexUtils {
 	/*
@@ -10,12 +10,12 @@ public class RegexUtils {
 	public static final String reg3 = "-?[1-9]\\d*|0";
 	public static final String reg4 = "[1-9]\\d*|0";
 	public static final String reg5 = "-[1-9]\\d*|0";
-	public static final String reg6 = "[1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*";//Õý¸¡µãÊý
+	public static final String reg6 = "[1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*";//ï¿½ï¿½ï¿½ï¿½ï¿½
 	public static final String reg7 = "-([1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*)";
 	public static final String reg8 = "-?([1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*|0?\\.0+|0)";
 	public static final String reg9 = "[1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*|0?\\.0+|0";
 	public static final String reg10 = "(-([1-9]\\d*\\.\\d*|0\\.\\d*[1-9]\\d*))|0?\\.0+|0";
-	public static final String reg11 = "0£¿\\.0+|0";
+	public static final String reg11 = "0ï¿½ï¿½\\.0+|0";
 	
 	
 	

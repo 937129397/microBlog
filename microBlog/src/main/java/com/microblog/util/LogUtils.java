@@ -1,4 +1,4 @@
-package com.yc.utils;
+package com.microblog.util;
 
 import org.apache.log4j.Logger;
 

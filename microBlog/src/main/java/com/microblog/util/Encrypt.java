@@ -1,23 +1,23 @@
-package com.yc.utils;
+package com.microblog.util;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * ¼ÓÃÜ¹¤¾ßÀà
- * md5¼ÓÃÜ³öÀ´µÄ³¤¶ÈÊÇ32Î»
- * sha¼ÓÃÜ³öÀ´µÄ³¤¶ÈÊÇ40Î»
+ * ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½ï¿½ï¿½ï¿½
+ * md5ï¿½ï¿½ï¿½Ü³ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½32Î»
+ * shaï¿½ï¿½ï¿½Ü³ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½40Î»
  */
 public class Encrypt {
 	/**
-	 * ²âÊÔ
+	 * ï¿½ï¿½ï¿½ï¿½
 	 */
 	public static void main(String[] args) {
 		System.out.println(Encrypt.md5("a"));
 	}
 
 	/**
-	 * ¼ÓÃÜ
+	 * ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param inputText
 	 * @return
@@ -27,7 +27,7 @@ public class Encrypt {
 	}
 
 	/**
-	 * ¶þ´Î¼ÓÃÜ£¬Ó¦¸ÃÆÆ½â²»ÁËÁË°É£¿
+	 * ï¿½ï¿½ï¿½Î¼ï¿½ï¿½Ü£ï¿½Ó¦ï¿½ï¿½ï¿½Æ½â²»ï¿½ï¿½ï¿½Ë°É£ï¿½
 	 * @param inputText
 	 * @return
 	 */
@@ -36,7 +36,7 @@ public class Encrypt {
 	}
 
 	/**
-	 * md5¼ÓÃÜ
+	 * md5ï¿½ï¿½ï¿½ï¿½
 	 * @param inputText
 	 * @return
 	 */
@@ -45,7 +45,7 @@ public class Encrypt {
 	}
 
 	/**
-	 * sha¼ÓÃÜ
+	 * shaï¿½ï¿½ï¿½ï¿½
 	 * @param inputText
 	 * @return
 	 */
@@ -54,17 +54,17 @@ public class Encrypt {
 	}
 
 	/**
-	 * md5»òÕßsha-1¼ÓÃÜ
+	 * md5ï¿½ï¿½ï¿½ï¿½sha-1ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param inputText
-	 *            Òª¼ÓÃÜµÄÄÚÈÝ
+	 *            Òªï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param algorithmName
-	 *            ¼ÓÃÜËã·¨Ãû³Æ£ºmd5»òÕßsha-1£¬²»Çø·Ö´óÐ¡Ð´
+	 *            ï¿½ï¿½ï¿½ï¿½ï¿½ã·¨ï¿½ï¿½Æ£ï¿½md5ï¿½ï¿½ï¿½ï¿½sha-1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð¡Ð´
 	 * @return
 	 */
 	private static String encrypt(String inputText, String algorithmName) {
 		if (inputText == null || "".equals(inputText.trim())) {
-			throw new IllegalArgumentException("ÇëÊäÈëÒª¼ÓÃÜµÄÄÚÈÝ");
+			throw new IllegalArgumentException("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½ï¿½");
 		}
 		if (algorithmName == null || "".equals(algorithmName.trim())) {
 			algorithmName = "md5";
@@ -85,7 +85,7 @@ public class Encrypt {
 	}
 
 	/**
-	 * ·µ»ØÊ®Áù½øÖÆ×Ö·û´®
+	 * ï¿½ï¿½ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
 	 * @param arr
 	 * @return
 	 */
