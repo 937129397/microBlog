@@ -1,12 +1,13 @@
 package test;
+
 import java.util.Date;
 
 import junit.framework.TestCase;
 
 public class Test extends TestCase {
-	
-	public void test1(){
+
+	protected void runTest() {
 		Date d = new Date();
-		System.out.println(  d.getTime() );
+				d.getTime();
 	}
 }
