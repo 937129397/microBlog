@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.microblog.dao.mapper.UserMapper">
+
+	<!-- 注册时提供一个功能： 用户名不能重名 -->
+	<select id="getUserByTelephone" resultType="User" parameterType="User">
+		select * from users where telephone = #{telephone}
+	</select>
+	
+	<select id="getUserByEmail" resultType="User" parameterType="User">
+		select * from users where email = #{email}
+	</select>
+	
+	<select id="getUserByLogin1" resultType="User" parameterType="User">
+		select * from users where email = #{email} and password = #{password}
+	</select>
+	
+	<select id="getUserByLogin2" resultType="User" parameterType="User">
+		select * from users where telephone = #{telephone} and password = #{password}
+	</select>
+	
+	<select id="getUser" resultType="User">
+		select * from users where uid = #{uid}
+	</select>
+	
+	<insert id="saveUser" parameterType="User">
+		<selectKey keyProperty="id" order="BEFORE" resultType="Integer">
+			select max(id)+1 as uid from users
+		</selectKey>
+		insert into users values(#{uid}, #{email}, #{password},
+		<choose>
+			<when test="username != null">#{telephone}</when>
+			<otherwise>''</otherwise>
+		</choose>
+		 , #{nickname}) 
+		)
+	</insert>
+	
+	
+</mapper>
