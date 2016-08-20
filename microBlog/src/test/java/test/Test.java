@@ -26,6 +26,8 @@ public class Test extends TestCase {
 		blog.setPic("图片");
 		ub.saveBlog(blog);
 		System.out.println("你好啊");
+		System.out.println("你好啊");
+		System.out.println("你好啊");
 	}
 	
 	public void logintest(){
