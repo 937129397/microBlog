@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/aop 	http://www.springframework.org/schema/aop/spring-aop.xsd
         http://www.springframework.org/schema/jee 	http://www.springframework.org/schema/jee/spring-jee.xsd">
 
-	<context:component-scan base-package="com.zy"></context:component-scan>
+	<context:component-scan base-package="com.microblog"></context:component-scan>
 	<tx:annotation-driven transaction-manager="txManager" />
 
 	<bean id="a"
@@ -34,7 +34,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="typeAliasesPackage" value="com.zy.bean"></property>
-		<property name="mapperLocations" value="classpath:com/zy/dao/mapper/*.xml" ></property>
+		<property name="mapperLocations" value="classpath:com/microblog/dao/mapper/*.xml" ></property>
 		<property name="configurationProperties">
 			<props>
 				<prop key="logImpl">LOG4J</prop>
