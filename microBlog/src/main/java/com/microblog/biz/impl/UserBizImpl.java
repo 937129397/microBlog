@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.microblog.biz.UserBiz;
 import com.microblog.bean.User;
-import com.yc.utils.Encrypt;
+import com.microblog.util.Encrypt;
 
 
 @Service
