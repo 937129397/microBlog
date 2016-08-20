@@ -4,18 +4,18 @@ use microblog;
 --用户
 create table users(
 	uid int, 
-	uname varchar(40),  --用户名  登录用
-	password varchar(40),--密码
-	nickname varchar(100),--昵称  可任意改
-	pic varchar(100),--头像  存图片 服务器路径字符串
-	telephone int,--电话
-	level int,--用户等级
-	exp int,--用户经验
-	regDate date,--注册时间
-	realname varchar(40)，--真实姓名
-	sex int,--性别 0男1女
-	birthday varchar(10),--生日
-	email varchar(100)--email
+	uname varchar(40),  -- 用户名  登录用
+	password varchar(40),-- 密码
+	nickname varchar(100),-- 昵称  可任意改
+	pic varchar(100),-- 头像  存图片 服务器路径字符串
+	telephone int,-- 电话
+	level int,-- 用户等级
+	exp int,-- 用户经验
+	regDate date,-- 注册时间
+	realname varchar(40)，-- 真实姓名
+	sex int,-- 性别 0男1女
+	birthday varchar(10),-- 生日
+	email varchar(100)-- email
 );
 
 
