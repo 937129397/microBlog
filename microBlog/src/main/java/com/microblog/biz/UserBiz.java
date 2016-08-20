@@ -1,4 +1,4 @@
-package com.microblog.Biz;
+package com.microblog.biz;
 
 import com.microblog.bean.User;
 

@@ -1,4 +1,4 @@
-package com.microblog.Biz.impl;
+package com.microblog.biz.impl;
 
 import javax.annotation.Resource;
 
@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.microblog.Biz.UserBiz;
+import com.microblog.biz.UserBiz;
 import com.microblog.bean.User;
 import com.yc.utils.Encrypt;
 

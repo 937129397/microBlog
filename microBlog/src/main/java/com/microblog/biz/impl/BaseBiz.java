@@ -1,4 +1,4 @@
-package com.microblog.Biz.impl;
+package com.microblog.biz.impl;
 
 import javax.annotation.Resource;
 
