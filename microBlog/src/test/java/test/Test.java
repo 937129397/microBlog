@@ -25,7 +25,6 @@ public class Test extends TestCase {
 		blog.setSource(1);
 		blog.setPic("图片");
 		ub.saveBlog(blog);
-
 	}
 	
 	public void logintest(){
@@ -39,6 +38,21 @@ public class Test extends TestCase {
 		user.setPassword("a");
 		ub.loginByEmail(user);
 		System.out.println("登陆成功");
+		
+	}
+	
+	public void registtest(){
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"beans_mybatis.xml");
+		UserBiz ub = (UserBiz) ac.getBean("userBizImpl");
+		
+		User user = new User();
+		
+		user.setEmail("571880590@qq.com");
+		user.setPassword("a");
+		user.setTelephone(123141241212L);
+		ub.loginByEmail(user);
+		System.out.println("注册成功");
 		
 	}
 }
