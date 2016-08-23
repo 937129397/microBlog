@@ -8,16 +8,7 @@ public class User_group implements Serializable {
 	
 	private Integer id;
 	private Integer uid;
-	private Integer group_id;
-	public User_group(Integer id, Integer uid, Integer group_id) {
-		super();
-		this.id = id;
-		this.uid = uid;
-		this.group_id = group_id;
-	}
-	public User_group() {
-		super();
-	}
+	private Groups group;
 	public Integer getId() {
 		return id;
 	}
@@ -30,12 +21,23 @@ public class User_group implements Serializable {
 	public void setUid(Integer uid) {
 		this.uid = uid;
 	}
-	public Integer getGroup_id() {
-		return group_id;
+	public Groups getGroup() {
+		return group;
 	}
-	public void setGroup_id(Integer group_id) {
-		this.group_id = group_id;
+	public void setGroup(Groups group) {
+		this.group = group;
 	}
+	public User_group(Integer id, Integer uid, Groups group) {
+		super();
+		this.id = id;
+		this.uid = uid;
+		this.group = group;
+	}
+	public User_group() {
+		super();
+	}
+	
+	
 	
 	
 }
