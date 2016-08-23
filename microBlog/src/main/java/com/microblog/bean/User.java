@@ -10,12 +10,12 @@ public class User implements Serializable{
 	private String password;
 	private String nickname;
 	private String pic;
-	private Integer telephone;
+	private Long telephone;
 	private Integer level;
 	private Integer exp;
 	private Date regDate;
 	private Integer sex;
-	private Date birthday;
+	private String birthday;
 	
 	
 	public Integer getUid() {
@@ -48,10 +48,10 @@ public class User implements Serializable{
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
-	public Integer getTelephone() {
+	public Long getTelephone() {
 		return telephone;
 	}
-	public void setTelephone(Integer telephone) {
+	public void setTelephone(Long telephone) {
 		this.telephone = telephone;
 	}
 	public Integer getLevel() {
@@ -78,10 +78,10 @@ public class User implements Serializable{
 	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	

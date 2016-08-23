@@ -4,6 +4,21 @@
 	"http://mybatis.org/dtds/mybatis-3-mapper.dtd">
 <mapper namespace="com.microblog.dao.mapper.BlogMapper">
 	<insert id="saveBlog" parameterType="Blog">
-		insert into blog(uid,text,pic,fdate,source) values(#{uid},#{text},#{pic},now(),#{source})
+		insert into
+		blog(uid,text,pic,fdate,source)
+		values(#{uid},#{text},#{pic},now(),#{source})
 	</insert>
+
+
+	<select id="getBlog" resultMap="BlogMap">
+		select * from blog
+	</select>
+	<resultMap type="Blog" id="BlogMap">
+		<association property="user" column="uid"
+			select="com.microblog.dao.mapper.UserMapper.getUser" />
+	</resultMap>
+	
+	<select id="getBlogCount" resultType="int">
+		select count(1) from blog
+	</select>
 </mapper>
