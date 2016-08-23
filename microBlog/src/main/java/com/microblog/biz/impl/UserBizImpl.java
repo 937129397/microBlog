@@ -41,5 +41,12 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
 		return (User) baseDao.find(user, "getUserByLogin1");
 	}
 	
+	@Transactional(readOnly = false, isolation = Isolation.DEFAULT, rollbackForClassName = { "java.lang.RuntimeException" }, propagation = Propagation.REQUIRED)
+	public boolean update(User user){
+		baseDao.update(user, "updateUser");;
+		return true;
+		
+	}
+	
 
 }

@@ -53,6 +53,18 @@ public class Test extends TestCase {
 		user.setTelephone(123141241212L);
 		ub.loginByEmail(user);
 		System.out.println("注册成功");
+	}
+	public void updatetest(){
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"beans_mybatis.xml");
+		UserBiz ub = (UserBiz) ac.getBean("userBizImpl");
+		
+		User user = new User();
+		user.setUid(1);
+		user.setNickname("曾二宝");
+		user.setSex(1);
+		ub.update(user);
+		System.out.println("更新成功");
 		
 	}
 }

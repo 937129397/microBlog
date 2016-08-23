@@ -12,12 +12,11 @@ create table users(
 	level int,--用户等级
 	exp int,--用户经验
 	regDate date,--注册时间
-	realname varchar(40),--真实姓名
 	sex int,--性别 0男1女
 	birthday varchar(10),--生日
 );
 
-
+select * from users;
 --关注
 create table concern(
 	id int primary key ,

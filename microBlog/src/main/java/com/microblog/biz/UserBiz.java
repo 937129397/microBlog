@@ -18,4 +18,6 @@ public interface UserBiz {
 
 	
 	public User loginByTelephone(User user);
+	
+	public boolean update(User user);
 }
