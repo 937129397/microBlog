@@ -39,26 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<update id="updateUser" parameterType="User">
-	update Users set nickname=
-	<choose>
-		<when test="nickname !=null">#{nickname}</when>
-		<otherwise>null</otherwise>
-	</choose>
-	,pic=
-	<choose>
-		<when test="pic !=null">#{pic}</when>
-		<otherwise>null</otherwise>
-	</choose>
-	,sex=
-	<choose>
-		<when test="sex !=null">#{sex}</when>
-		<otherwise>null</otherwise>
-	</choose>
-	,birthday=
-	<choose>
-		<when test="birthday !=null">#{birthday}</when>
-		<otherwise>null</otherwise>
-	</choose>
+	update Users set nickname=#{nickname},pic=#{pic},sex=#{sex},birthday=#{birthday}
 	where uid=#{uid}
 	
 	</update>
