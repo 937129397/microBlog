@@ -9,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.microblog.bean.Blog;
 import com.microblog.bean.User;
 import com.microblog.biz.BlogBiz;
+import com.microblog.biz.GroupsBiz;
 import com.microblog.biz.UserBiz;
 
 public class Test extends TestCase {
@@ -67,4 +68,13 @@ public class Test extends TestCase {
 		System.out.println("更新成功");
 		
 	}
+	//测试查找默认分组  -- 成功
+	public void getDefaultGroups(){
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"beans_mybatis.xml");
+		GroupsBiz gb = (GroupsBiz) ac.getBean("groupsBizImpl");
+		gb.findGroups();
+		System.out.println("查询成功");
+	}
+	
 }
