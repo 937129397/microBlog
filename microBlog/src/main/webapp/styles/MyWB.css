@@ -1,0 +1,461 @@
+@charset "utf-8";
+/* CSS Document */
+/* 总容器 container */
+#container{
+	border:0px;
+	padding:0px;	
+	width:765px;
+	height:auto;
+	margin:0px auto;
+}
+
+	/* 上面topDIV */
+#top{
+	width:765px;
+	height:80px;
+	position:relative;
+}
+	/* top部分的LogoDIV */
+	#topLogo{
+		width:200px;
+		height:80px;	
+	}
+		/* topLogo部分的icoDIV */
+		#topLogoIco{
+			width:72px;
+			height:72px;
+			margin-top:4px;
+			float:left;
+		}
+		/* topLogo部分的wordDIV */
+		#topLogoWord{
+			width:128px;
+			height:60px;
+			float:left;
+			margin-top:12px;
+		}
+			/* topLogo下的img */
+			#topLogo img{
+				border:none;
+			}
+	/* top部分的文字导航 */
+	#topWordMenu{
+		width:330px;
+		height:30px;
+		position:absolute;
+		top:33px;
+		left:430px;
+	}
+		/* top部分的ul */
+		#topWordMenu ul{
+			margin:0px;
+			padding:0px;
+			list-style:none;
+		}
+			/* top部分的li */
+			#topWordMenu ul li{
+				display:inline;
+				/*float:left;*/
+				margin:0px 8px;
+			}
+			/* top部分的文字链接 */
+			#topWordMenu a:link{
+				text-decoration:none;
+			}
+			#topWordMenu a:visited{
+				text-decoration:none;
+			}
+			#topWordMenu a:hover{
+				color:#FFF;
+				text-decoration:none;
+			}
+
+	/* 内容总容器 mainDIV */
+	#main{
+		border:0px;
+		padding:0px;
+		margin:0px;
+		width:765px;
+		height:843px;
+		position:relative;
+		background-color:#CCC;
+	}
+		/* 左侧mainBannerDIV */
+		#mainBanner{
+			border:0px;
+			padding:0px;
+			margin:0px;
+			height:842px;
+			width:562px;
+			float:left;
+			position:absolute;
+			left:1px;
+			top:1px;
+			background-color:#FFF;
+		}
+		/*mainBannerTop Banner的首部*/
+		#mainBannerTop{
+			width:562px;
+			height:123px;
+			padding:0px;
+			margin:0px;
+			position:relative;
+			}
+		/*mainBannerTopImg 头像*/	
+		#mainBannerTopImg{
+			width:95px;
+			height:97px;
+			position:absolute;
+			left:25px;
+			top:24px;
+			background-image:url(../images/people1.gif);
+			}
+		/*mainBannerTopWord 文字*/	
+		#mainBannerTopWord{
+			width:200px;
+			height:37px;
+			margin:0px;
+			padding:0px;
+			position:absolute;
+			left:130px;
+			top:52px;
+			line-height:18px;
+			}	
+			/*mainBannerMenu提示框*/
+			#mainBannerMenu{
+				width:562px;
+				height:58px;
+				padding:0px;
+				margin:0px;
+				position:relative;
+				}
+				/*确定字的位置*/
+				#mainBannerMenuTop{
+					width:520px;
+					height:38px;
+					padding:0px;
+					margin:0px;
+					position:absolute;
+					left:20px;
+					top:18px;
+					border:#999 1px;
+					border-style:solid;
+					background-color:#e4f5fd;
+					}
+					/*第一个文字*/
+				  #mainBannerMenuTopWord1{
+	                 width:60px;
+	                 height:17px;
+	                 padding:0px;
+	                 margin:0px;
+	                 position:absolute;
+	                 left:10px;
+	                 top:8px;
+	                 font-size:16px;
+					 }	
+		            /*第二个文字*/
+				   #mainBannerMenuTopWord2{
+	                  width:58px;
+	                  height:18px;
+	                  padding:0px;
+	                  margin:0px;
+	                  position:absolute;
+	                  top:8px;
+	                  left:459px;
+	                  font-size:13px;
+					   }
+				/*自己的微波块*/	   
+				#mainBannerContent{
+					padding:0px;
+					margin:0px;
+					position:relative;
+					width:562px;
+					height:auto;
+					}
+				 /*给微博定位*/
+				 #mainBannerContent1{
+					 width:522px;
+						height:auto;
+						padding:0px;
+						margin:0px;
+						position:absolute;
+						left:20px;
+						top:0px;
+				}
+				 /*给微博定位*/
+				 #mainBannerContent2{
+					 width:522px;
+			         height:auto;
+			         padding:0px;
+			         margin:0px;
+				     position:relative;
+					 }
+font.f1{
+	font-size:14px;
+	color:#005DC3;
+	font-weight:700;
+	text-decoration:none;
+}
+font.f2{
+	font-size:14px;
+	color:#000;
+}
+font.f3{
+	font-size:12px;
+	color:#999999;
+}
+/* 微博个人小图像 mainBannerContent2People1Img DIV */
+#mainBannerContent2PeopleImg{
+width:54px;
+height:54px;
+margin-top:8px;
+margin-left:opx;
+float:left;
+}
+#pic{
+	margin-left:0px;
+	margin-top:0px;
+}
+/* 个人的微博容器 DIV */
+#mainBannerContent2People{
+	 width:522px;
+	 height:auto;
+	 padding:0px;
+	 margin:0px 0px 2px 0px;
+	 border-bottom:dashed 1px #DDDDDD;
+}
+#textright{
+	float:right;
+	width:auto;
+	height:auto;
+}
+/* 第一个人微博 mainBannerContent2PeopleWord DIV  */
+#mainBannerContent2PeopleWord{
+	margin-left:64px;
+	margin-top:8px;
+	padding-top:8px;
+	width:458px;
+	height:auto;
+}
+font.f4{
+	color:#F00;
+	font-size:14px;	
+}	
+/*查看回复的类*/
+a .a2:link{
+	text-decoration:none;
+	color:#999999;
+	}
+     /*微博回复栏 */
+     #mainBannerContent2PeopleWordBack{
+		 width:395px;
+		 height:auto;
+		 margin-left:45px;
+		 border:1px #ccc solid;
+		 padding-left:5px;
+		 }
+
+	    /* 右侧mainRightDiv */
+		#mainRight{
+			padding:0px;
+			margin:0px;
+			border:0px;
+			width:200px;
+			height:417px;
+			position:absolute;
+			top:1px;
+			left:564px;
+			background-color:#A6D3E3;
+		}	
+		#mainRight1{
+			border:0px;
+			padding:0px;
+			margin:0px;
+			width:200px;
+			height:617px;
+			position:relative;
+			}
+			/* 右侧内部第一行容器 mainRightPostionFirstLine DIV */ 
+			#mainRightPostionFirstLine{
+	width:200px;
+	padding:0px;
+	margin:0px;
+	border:0px;
+	height:117px;
+	background-color:#E9F4FA;
+	position:absolute;
+	left:0px;
+	top:0px;
+	border-bottom:1px solid #A6D3E3;	
+			}
+				/* 右侧第一行图标 mainRightFirstLineIcon DIV*/
+				#mainRightPostionFirstLineIcon{
+					width:48px;
+					padding:0px;
+					margin-top:10px;
+					margin-left:15px;
+					border:0px;
+					height:48px;
+					float:left;
+				}
+				/* 右侧第一行标题 mainRightFirstLineWord1 DIV*/
+				#mainRightPostionFirstLineWord1{
+					width:120px;
+					height:40px;
+					margin-left:75px;
+					margin-top:16px;
+					border:0px;
+					padding:0px;	
+				}
+				/* 右侧第一行标题 mainRightFirstLineWord2 DIV*/
+				#mainRightPostionFirstLineWord2{
+					width:180px;
+					height:40px;
+					margin-left:0px;
+					margin-top:16px;
+					border:0px;
+					padding:0px;						
+				}				
+				/*  mainRightFirstLineWord2 ul格式 */
+				#mainRightPostionFirstLineWord2 ul{
+					height:40px;
+					width:180px;
+					list-style:none;
+					margin:0px;
+					padding:0px;
+				}
+				/*  mainRightFirstLineWord2 li格式 */
+				#mainRightPostionFirstLineWord2 ul li{	
+					margin:0px 15px;
+					float:left;
+				}					
+			/* 右侧内部第五行容器 mainRightPostionFifthLine DIV */ 
+			#mainRightPostionFifthLine{
+				width:200px;
+				padding:0px;
+				margin:0px;
+				border:0px;
+				height:44px;
+				background-color:#E9F4FA;
+				position:absolute;
+				left:0px;
+				top:118px;
+				border-bottom:1px solid #A6D3E3;	
+			}
+				#mainRightPositionFifthLineContent{
+					margin-top:10px;
+					margin-left:15px;
+					
+				}
+			/* 右侧内部第六行容器 mainRightPostionSixthLine DIV */ 
+			#mainRightPostionSixthLine{
+	width:200px;
+	padding:0px;
+	margin:0px;
+	border:0px;
+	position:absolute;
+	left:0px;
+	top:163px;
+	height:130px;
+	background-color:#E9F4FA;
+	border-bottom:1px solid #A6D3E3;
+			}
+				#mainRightPositionSixthLineContent{
+					margin-top:10px;
+					margin-left:15px;
+				}
+				#mainRightPostionSixthLine ul{
+					list-style:none;
+					padding:0px;
+					margin:10px 0px 0px 10px;
+				}
+				#mainRightPostionSixthLine ul li{
+					float:left;
+					margin:0px 5px;
+				}
+			/* 右侧内部第七行容器 mainRightPostionSeventhLine DIV */ 
+				
+			#mainRightPostionSeventhLine{
+				width:200px;
+				padding:0px;
+				margin:0px;
+				border:0px;
+				position:absolute;
+				left:0px;
+				top:294px;
+				height:548px;
+				background-color:#E9F4FA;
+			}
+				#mainRightPositionSevenLineContent{
+					padding:0px;
+					border:0px;
+					height:auto;
+					width:170px;
+					margin-top:10px;
+					margin-left:15px;
+				}
+.a1{
+	text-decoration:none;
+}
+/*  Word字体格式1 */
+font.style1{
+	font-weight:700;
+	color:#555555;
+	font-size:16px;
+}
+/*  Word字体格式2 */
+font.style2{
+	color:#005DC3;
+}
+/*  Word字体格式3 */
+font.style4{
+	color:#000;
+	font-size:14px;
+}
+hr.h1{
+	border-top:1px dashed #79BDD1; 
+	height:1px; 
+	border-bottom-style:none;
+}
+
+
+/* footer部分*/
+	#footer{
+		width:765px;
+		height:50px;
+		margin:0px auto;
+		background-color:#C1E6F5;
+	}
+	/* footer链接部分*/
+	#footerLink{
+		width:600px;
+		height:30px;
+		margin:0px auto;
+		position:relative;
+		line-height:30px;
+		color:#444444;
+	}
+		/* footer部分的链接 */
+		#footerLink ul{
+			list-style:none;
+			padding:0px;
+			margin:0px;
+		}
+		#footerLink li{
+			/*float:left;*/
+			display:inline;
+			margin:0px 10px;
+		}
+	/* footer部分的版权信息 */
+	#footerCopy{
+		width:250px;
+		height:20px;
+		color:#444444;
+		line-height:20px;
+		margin:0px auto;
+		text-align:center;
+	}
+.a2{
+	color:#444444;
+	text-decoration:none;
+}

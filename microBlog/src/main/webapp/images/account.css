@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+/* contianer部分 */
+#container{
+	width:765px;
+	height:auto;
+	margin:0px auto;
+}
+/* banner部分 */
+#banner{
+	width:765px;
+	height:680px;
+	padding:0px;
+	margin:0px;
+	background-color:#FFF;
+}
+     /* banner部分的left */
+    #banner .left{
+		width:564px;
+		height:680px;
+		border-right:solid 1px #9FF;
+		float:left;
+	}
+	     /* banner部分的具体内容 */
+	    #banner .n1{
+		    width:210px;
+		    height:20px;
+			line-height:20px;
+			border:1px #0CF solid;
+	    }
+	    #banner .n2{
+		    width:370px;
+		    height:25px;
+			line-height:25px;
+			border:1px #0CF solid;
+	    }
+	    #banner .n3{
+		    width:370px;
+		    height:20px;
+			line-height:20px;
+			border:1px #0CF solid;
+	    }
+	    #banner .n4{
+		    width:210px;
+		    height:180px;
+			border:1px #0CF solid;
+	    }
+	    #banner .btn{
+		    width:55px;
+		    height:30px;
+		    background-color:#0184C9;
+		    border:0px;
+			
+	    }
+	    #banner .tb{
+		    width:100px;
+	    }
+	/* banner部分的right */
+	#banner .right{
+		width:190px;
+		height:680px;
+		padding-left:10px;
+		float:left;
+		background-color:#e9f4fa;
+	}

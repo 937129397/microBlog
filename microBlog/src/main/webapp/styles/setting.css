@@ -1,0 +1,202 @@
+@charset "utf-8";
+/* CSS Document */
+/* contianer部分 */
+#container{
+	width:765px;
+	height:auto;
+	margin:0px auto;
+	margin-bottom:20px;
+}
+/* 上面topDIV */
+#top{
+	width:765px;
+	height:80px;
+	position:relative;
+}
+	/* top部分的LogoDIV */
+	#topLogo{
+		width:200px;
+		height:80px;	
+	}
+		/* topLogo部分的icoDIV */
+		#topLogoIco{
+			width:72px;
+			height:72px;
+			margin-top:4px;
+			float:left;
+		}
+		/* topLogo部分的wordDIV */
+		#topLogoWord{
+			width:128px;
+			height:60px;
+			float:left;
+			margin-top:12px;
+		}
+			/* topLogo下的img */
+			#topLogo img{
+				border:none;
+			}
+	/* top部分的文字导航 */
+	#topWordMenu{
+		width:330px;
+		height:30px;
+		position:absolute;
+		top:33px;
+		left:430px;
+	}
+		/* top部分的ul */
+		#topWordMenu ul{
+			margin:0px;
+			padding:0px;
+			list-style:none;
+		}
+			/* top部分的li */
+			#topWordMenu ul li{
+				display:inline;
+				/*float:left;*/
+				margin:0px 8px;
+			}
+			/* top部分的文字链接 */
+			#topWordMenu a:link{
+				text-decoration:none;
+			}
+			#topWordMenu a:visited{
+				text-decoration:none;
+			}
+			#topWordMenu a:hover{
+				color:#FFF;
+				text-decoration:none;
+			}
+/* header部分 */
+#header{
+	width:765px;
+	height:44px;
+	background-color:#D4EAF8;
+	border-bottom:solid 2px #A1D6E8;
+	margin:0px auto;
+}
+     /* header部分的ul */
+    #header ul{
+	    list-style:none;
+	    padding:0px;
+	    margin:0px;
+    }
+	     /* header部分的li */
+        #header ul li{
+		    float:left;
+		    padding-left:50px;
+		    line-height:45px;
+	    }
+		/* header部分的连接 */
+	    a.header:link{
+		    color:#005DC3;
+		    text-decoration:none;
+	    }
+	    a.header:visited{
+		    color:#005DC3;
+		    text-decoration:none;
+	    }
+	    a.header:hover{
+		    color:#06F;
+			text-decoration:underline;
+	    }
+			
+			#iframe1{
+				width:765px;
+				height:auto;
+			}
+/* footer部分*/
+#footer{
+	width:765px;
+	height:50px;
+	border:1px solid #ccc;
+}
+	/* footer链接部分*/
+	#footerLink{
+		width:600px;
+		height:30px;
+		margin:0px auto;
+		position:relative;
+		line-height:30px;
+	}
+		/* footer部分的链接 */
+		#footerLink ul{
+			list-style:none;
+			padding:0px;
+			margin:0px;
+		}
+		    #footerLink li{
+			/*float:left;*/
+			display:inline;
+			margin:0px 10px;
+		    }
+	/* footer部分的版权信息 */
+	#footerCopy{
+		width:250px;
+		height:20px;
+		color:#5c4444;
+		line-height:20px;
+		margin:0px auto;
+		text-align:center;
+	}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+/* footer部分*/
+#footer{
+    width:765px;
+	height:50px;
+	border:1px solid #ccc;
+}
+	/* footer链接部分*/
+	#footerLink{
+		width:600px;
+		height:30px;
+		margin:0px auto;
+		position:relative;
+		line-height:30px;
+	}
+		/* footer部分的链接 */
+		#footerLink ul{
+			list-style:none;
+			padding:0px;
+			margin:0px;
+		}
+		    #footerLink li{
+			/*float:left;*/
+			display:inline;
+			margin:0px 10px;
+		    }
+	/* footer部分的版权信息 */
+	#footerCopy{
+		width:250px;
+		height:20px;
+		color:#5c4444;
+		line-height:20px;
+		margin:0px auto;
+		text-align:center;
+	}
+
