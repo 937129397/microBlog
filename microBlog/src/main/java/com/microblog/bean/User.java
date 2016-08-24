@@ -84,8 +84,13 @@ public class User implements Serializable{
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", email=" + email + ", password="
+				+ password + ", nickname=" + nickname + ", pic=" + pic
+				+ ", telephone=" + telephone + ", level=" + level + ", exp="
+				+ exp + ", regDate=" + regDate + ", sex=" + sex + ", birthday="
+				+ birthday + "]";
+	}
 	
-	
-	
-
 }

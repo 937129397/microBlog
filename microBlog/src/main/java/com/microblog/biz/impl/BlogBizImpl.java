@@ -34,9 +34,9 @@ public class BlogBizImpl implements BlogBiz {
 				hs.setTotal(total);
 				// 计算偏移量
 				int off = (hs.getCurrPage() - 1) * hs.getSizePage();
-				List<Blog> hh = this.baseDao.findList(Blog.class, null, "getHouse",
+				List<Blog> hh = this.baseDao.findList(Blog.class, null, "getBlog",
 						off, hs.getSizePage());
-				hs.setBlogs(hh);;
+				hs.setBlogs(hh);
 				return hs;
 	}
 	

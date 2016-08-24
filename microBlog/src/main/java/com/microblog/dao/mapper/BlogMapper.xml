@@ -6,7 +6,7 @@
 	<insert id="saveBlog" parameterType="Blog">
 		insert into
 		blog(uid,text,pic,fdate,source)
-		values(#{uid},#{text},#{pic},now(),#{source})
+		values(#{user.uid},#{text},#{pic},now(),#{source})
 	</insert>
 
 

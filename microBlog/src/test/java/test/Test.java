@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.microblog.bean.Blog;
+import com.microblog.bean.BlogModel;
 import com.microblog.bean.Groups;
 import com.microblog.bean.User;
 import com.microblog.biz.BlogBiz;
@@ -24,7 +25,6 @@ public class Test extends TestCase {
 				"beans_mybatis.xml");
 		BlogBiz ub=(BlogBiz) ac.getBean("blogBizImpl");
 		Blog blog=new Blog();
-		blog.setUid("1");
 		blog.setText("你好");
 		blog.setSource(1);
 		blog.setPic("图片");
@@ -42,7 +42,15 @@ public class Test extends TestCase {
 		user.setPassword("a");
 		ub.loginByEmail(user);
 		System.out.println("登陆成功");
-		
+	}
+	
+	public void testApp08() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"beans_mybatis.xml");
+		BlogBiz ub=(BlogBiz) ac.getBean("blogBizImpl");
+		BlogModel b=new BlogModel();
+		System.out.println(ub.findAllBlog(b));
+
 	}
 	
 	public void registtest(){

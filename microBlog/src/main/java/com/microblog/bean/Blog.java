@@ -4,35 +4,28 @@ import java.util.Date;
 
 public class Blog {
 	private long id;
-	private String uid;
 	private String text;
 	private String pic;
 	private Date fdate;
 	private long source;
-	
+	private User user=new User();
 	public Blog() {
 	}
-	public Blog(long id, String uid, String text, String pic, 
-			Date fdate, long source) {
+	public Blog(long id, String text, String pic, Date fdate, long source,
+			User user) {
+		super();
 		this.id = id;
-		this.uid = uid;
 		this.text = text;
 		this.pic = pic;
 		this.fdate = fdate;
 		this.source = source;
+		this.user = user;
 	}
-
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public String getUid() {
-		return uid;
-	}
-	public void setUid(String uid) {
-		this.uid = uid;
 	}
 	public String getText() {
 		return text;
@@ -58,11 +51,17 @@ public class Blog {
 	public void setSource(long source) {
 		this.source = source;
 	}
-
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	@Override
 	public String toString() {
-		return "Blog [id=" + id + ", uid=" + uid + ", text=" + text + ", pic="
-				+ pic  + ", fdate=" + fdate
-				+ ", source=" + source + "]";
+		return "Blog [id=" + id + ", text=" + text + ", pic=" + pic
+				+ ", fdate=" + fdate + ", source=" + source + ", user=" + user
+				+ "]";
 	}
+	
 }
