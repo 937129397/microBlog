@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.microblog.dao.mapper.GroupsMapper">
 
 	<select id="getBaseGroups" resultType="Groups">
-		select * from groups limit 0,4
+		select * from groups limit 1,5
 	</select>
 	<insert id="addGroups" parameterType="Groups" >
 		<selectKey keyProperty="id" order="BEFORE" resultType="Integer">

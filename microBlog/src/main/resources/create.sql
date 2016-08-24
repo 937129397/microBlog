@@ -54,7 +54,7 @@ insert into groups(id,name) values(2,'亲人');
 insert into groups(id,name) values(3,'搞笑');
 insert into groups(id,name) values(4,'名人明星');
 
-select name from groups limit 0,4
+select name from groups limit 1,4
 
 --用户分组表
 create table user_group(

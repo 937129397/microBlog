@@ -1,12 +1,15 @@
 package test;
 
 
+import java.util.List;
+
 import junit.framework.TestCase;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.microblog.bean.Blog;
+import com.microblog.bean.Groups;
 import com.microblog.bean.User;
 import com.microblog.biz.BlogBiz;
 import com.microblog.biz.GroupsBiz;
@@ -73,7 +76,11 @@ public class Test extends TestCase {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
 				"beans_mybatis.xml");
 		GroupsBiz gb = (GroupsBiz) ac.getBean("groupsBizImpl");
-		gb.findGroups();
+		List<Groups> l =gb.findGroups();
+		
+		for (Groups g : l) {
+			System.out.println(g.getName());
+		}
 		System.out.println("查询成功");
 	}
 	
