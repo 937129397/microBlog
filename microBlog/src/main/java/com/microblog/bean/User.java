@@ -4,18 +4,26 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class User implements Serializable{
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", email=" + email + ", password="
+				+ password + ", nickname=" + nickname + ", pic=" + pic
+				+ ", telephone=" + telephone + ", level=" + level + ", exp="
+				+ exp + ", regDate=" + regDate + ", sex=" + sex + ", birthday="
+				+ birthday + "]";
+	}
 	private static final long serialVersionUID = -2295448759251506664L;
 	private Integer uid;
 	private String email;
 	private String password;
 	private String nickname;
 	private String pic;
-	private Integer telephone;
+	private Long telephone;
 	private Integer level;
 	private Integer exp;
 	private Date regDate;
 	private Integer sex;
-	private Date birthday;
+	private String birthday;
 	
 	
 	public Integer getUid() {
@@ -48,10 +56,12 @@ public class User implements Serializable{
 	public void setPic(String pic) {
 		this.pic = pic;
 	}
-	public Integer getTelephone() {
+	
+	
+	public Long getTelephone() {
 		return telephone;
 	}
-	public void setTelephone(Integer telephone) {
+	public void setTelephone(Long telephone) {
 		this.telephone = telephone;
 	}
 	public Integer getLevel() {
@@ -78,14 +88,11 @@ public class User implements Serializable{
 	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	
-	
-	
-
 }
