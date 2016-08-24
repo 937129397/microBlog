@@ -4,18 +4,17 @@ use microblog;
 --用户
 create table users(
 	uid int, 
-	uname varchar(40),  --用户名  登录用
+	email varchar(40),  --用户名  登录用
 	password varchar(40),--密码
 	nickname varchar(100),--昵称  可任意改
 	pic varchar(100),--头像  存图片 服务器路径字符串
-	telephone int,--电话
+	telephone bigint,--电话
 	level int,--用户等级
 	exp int,--用户经验
 	regDate date,--注册时间
 	realname varchar(40),--真实姓名
 	sex int,--性别 0男1女
 	birthday varchar(10),--生日
-	email varchar(100)--email
 );
 
 
@@ -33,7 +32,7 @@ create table blog(
 	uid int,--发文者 id
 	text varchar(300),--博文内容
 	pic varchar(1000),--附加图片
-	video
+	video varchar(1000),
 	fdate date,--发文时间
 	source bigint--是否为转发 如果为转发 则存来源微博id
 )
@@ -49,6 +48,14 @@ create table groups(
 	id int primary key,
 	name varchar(30) --分组名
 )
+insert into groups(id,name) values(0,'朋友');
+insert into groups(id,name) values(1,'同事');
+insert into groups(id,name) values(2,'亲人');
+insert into groups(id,name) values(3,'搞笑');
+insert into groups(id,name) values(4,'名人明星');
+
+select name from groups limit 1,4
+
 --用户分组表
 create table user_group(
 	id  int primary key,	
