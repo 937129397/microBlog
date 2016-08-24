@@ -23,7 +23,16 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
 
 	@Transactional(readOnly = true, isolation = Isolation.DEFAULT, rollbackForClassName = { "java.lang.RuntimeException" }, propagation = Propagation.NOT_SUPPORTED)
 	public boolean validate(User user) {
-		user = (User) baseDao.find(user, "getUserByName");
+		user = (User) baseDao.find(user, "getUserByTelephone");
+		if (user != null) {
+			return true;
+		}
+		return false;
+	}
+	
+	@Transactional(readOnly = true, isolation = Isolation.DEFAULT, rollbackForClassName = { "java.lang.RuntimeException" }, propagation = Propagation.NOT_SUPPORTED)
+	public boolean validate1(User user) {
+		user = (User) baseDao.find(user, "getUserByEmail");
 		if (user != null) {
 			return true;
 		}

@@ -13,6 +13,7 @@ public interface UserBiz {
 	 */
 	public boolean validate(User user);
 
+	public boolean validate1(User user);
 	
 	public User loginByEmail(User user);
 

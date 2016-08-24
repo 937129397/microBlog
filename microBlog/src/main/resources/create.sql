@@ -17,7 +17,7 @@ create table users(
 	birthday varchar(10),--生日
 );
 
-
+select * from users
 --关注
 create table concern(
 	id int primary key ,
