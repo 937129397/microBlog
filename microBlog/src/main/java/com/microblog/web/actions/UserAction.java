@@ -1,6 +1,7 @@
 package com.microblog.web.actions;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 
 import com.microblog.bean.User;
 import com.microblog.biz.UserBiz;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 @Controller
@@ -50,6 +52,44 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		if(    jsonModel.getCode()==null){
 			userBiz.register(user);
 			jsonModel.setCode(1);
+		}
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+		
+	}
+	
+	@Action(value = "/user_loginByEmail")
+	public void login() throws Exception {
+		if(   jsonModel.getCode()==null ){
+			User user = userBiz.loginByEmail(this.user);
+			if (null != user) {
+				Map<String, Object> session = ActionContext.getContext().getSession();
+				session.put("loginuser", user);
+				jsonModel.setCode(1);
+				user.setPassword(null);
+				jsonModel.setObj( user);
+			}else{
+				jsonModel.setCode(0);
+				jsonModel.setMsg("error username or password");
+			}
+		}
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+		
+	}
+	
+	@Action(value = "/user_loginByTelephone")
+	public void login2() throws Exception {
+		if(   jsonModel.getCode()==null ){
+			User user = userBiz.loginByTelephone(this.user);
+			if (null != user) {
+				Map<String, Object> session = ActionContext.getContext().getSession();
+				session.put("loginuser", user);
+				jsonModel.setCode(1);
+				user.setPassword(null);
+				jsonModel.setObj( user);
+			}else{
+				jsonModel.setCode(0);
+				jsonModel.setMsg("error username or password");
+			}
 		}
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 		
