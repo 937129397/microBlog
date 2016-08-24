@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.microblog.dao.mapper.GroupsMapper">
+
+	<select id="getBaseGroups" resultType="Groups">
+		select * from groups limit 1,5
+	</select>
+	<insert id="addGroups" parameterType="Groups" >
+		<selectKey keyProperty="id" order="BEFORE" resultType="Integer">
+			select max(id)+1 from groups
+		</selectKey>
+		insert into groups values(#{id},#{name})
+	</insert>
+
+</mapper>

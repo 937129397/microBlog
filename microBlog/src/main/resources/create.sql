@@ -32,7 +32,7 @@ create table blog(
 	uid int,--发文者 id
 	text varchar(300),--博文内容
 	pic varchar(1000),--附加图片
-	video
+	video varchar(1000),
 	fdate date,--发文时间
 	source bigint--是否为转发 如果为转发 则存来源微博id
 )
@@ -48,6 +48,14 @@ create table groups(
 	id int primary key,
 	name varchar(30) --分组名
 )
+insert into groups(id,name) values(0,'朋友');
+insert into groups(id,name) values(1,'同事');
+insert into groups(id,name) values(2,'亲人');
+insert into groups(id,name) values(3,'搞笑');
+insert into groups(id,name) values(4,'名人明星');
+
+select name from groups limit 1,4
+
 --用户分组表
 create table user_group(
 	id  int primary key,	

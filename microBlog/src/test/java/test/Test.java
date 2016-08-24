@@ -1,14 +1,18 @@
 package test;
 
 
+import java.util.List;
+
 import junit.framework.TestCase;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.microblog.bean.Blog;
+import com.microblog.bean.Groups;
 import com.microblog.bean.User;
 import com.microblog.biz.BlogBiz;
+import com.microblog.biz.GroupsBiz;
 import com.microblog.biz.UserBiz;
 
 public class Test extends TestCase {
@@ -53,6 +57,31 @@ public class Test extends TestCase {
 		user.setTelephone(123141241212L);
 		ub.loginByEmail(user);
 		System.out.println("注册成功");
+	}
+	public void updatetest(){
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"beans_mybatis.xml");
+		UserBiz ub = (UserBiz) ac.getBean("userBizImpl");
+		
+		User user = new User();
+		user.setUid(1);
+		user.setNickname("曾二宝");
+		user.setSex(1);
+		ub.update(user);
+		System.out.println("更新成功");
 		
 	}
+	//测试查找默认分组  -- 成功
+	public void getDefaultGroups(){
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"beans_mybatis.xml");
+		GroupsBiz gb = (GroupsBiz) ac.getBean("groupsBizImpl");
+		List<Groups> l =gb.findGroups();
+		
+		for (Groups g : l) {
+			System.out.println(g.getName());
+		}
+		System.out.println("查询成功");
+	}
+	
 }
