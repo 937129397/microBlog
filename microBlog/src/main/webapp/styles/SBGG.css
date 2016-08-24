@@ -1,0 +1,580 @@
+@charset "utf-8";
+/* CSS Document */
+/* 总容器continer DIV */
+#continer{
+	width:765px;
+	height:auto;
+	margin:0px auto;
+}
+	/* 头部容器top DIV */
+	#top{
+	width:765px;
+	height:80px;
+	position:relative;
+}
+	/* top部分的LogoDIV */
+	#topLogo{
+		width:200px;
+		height:80px;	
+	}
+		/* topLogo部分的icoDIV */
+		#topLogoIco{
+			width:72px;
+			height:72px;
+			margin-top:4px;
+			float:left;
+		}
+		/* topLogo部分的wordDIV */
+		#topLogoWord{
+			width:128px;
+			height:60px;
+			float:left;
+			margin-top:12px;
+		}
+			/* topLogo下的img */
+			#topLogo img{
+				border:none;
+			}
+	/* top部分的文字导航 */
+	#topWordMenu{
+		width:330px;
+		height:30px;
+		position:absolute;
+		top:33px;
+		left:430px;
+	}
+		/* top部分的ul */
+		#topWordMenu ul{
+			margin:0px;
+			padding:0px;
+			list-style:none;
+		}
+			/* top部分的li */
+			#topWordMenu ul li{
+				display:inline;
+				/*float:left;*/
+				margin:0px 8px;
+			}
+			/* top部分的文字链接 */
+			#topWordMenu a:link{
+				text-decoration:none;
+			}
+			#topWordMenu a:visited{
+				text-decoration:none;
+			}
+			#topWordMenu a:hover{
+				color:#FFF;
+				text-decoration:none;
+			}
+	/* 下部容器main DIv */
+	#main{
+		width:765px;
+		height:auto;
+		margin:0px auto;
+		border:1px solid #A5C2CC;
+		position:relative;
+		
+	}
+		/* 下部头注册DIV */
+		#mainTop{
+			overflow:hidden;
+			height:80px;
+			width:765px;
+			background-position:top;
+			background-image:url(../images/ZCBJ.gif);
+		}
+		/* 下部头注册内容DIV */
+		#mainTopContent{
+			width:765px;
+			margin:0px auto;
+			height:90px;
+			position:relative;
+		}
+			/* 头部字体DIV */
+			#topWord{
+				position:absolute;
+				left: 13px;
+				top: 28px;
+			}
+			/* 头部文本框 DIV */
+			#topTextDIV{
+				height:27px;
+				width:210px;
+				position:absolute;
+				left: 379px;
+				top: 25px;
+			}
+			/* 头部文本框 */
+			#topText{
+				width:210px;
+				height:27px;
+				font-size:18px;
+			}
+			/* 注册按钮DIV */
+			#ZCButton{
+				border:0px;
+				width:146px;
+				position:absolute;
+				top:26px;
+				left:596px;
+			}
+			/* 注册DIV */
+			#ZC{
+				height:auto;
+				width:755px;
+				margin-left:10px;
+			}
+			/* 电子邮箱DIV */
+			#mail1{
+	position:absolute;
+	left: 30px;
+	top: 80px;
+	height: 22px;
+	width: 49px;
+			}
+			/* 电子邮箱输入框DIV */
+			#mail2{
+	position:absolute;
+	left: 110px;
+	top: 80px;
+	width:auto;
+			}
+			/* 电子邮箱提示框DIV */
+			#mail3{
+	position:absolute;
+	left: 310px;
+	top: 80px;
+	width: 400px;
+	height:20px;
+	background-color:#F2F2F2;
+	border:1px solid #CCCCCC;
+}
+			/* 创建密码DIV */
+			#password11{
+	position:absolute;
+	left: 30px;
+	top: 120px;
+			}
+			/* 创建密码输入框DIV */
+			#password12{
+	position:absolute;
+	left: 110px;
+	top: 120px;
+	width:auto;
+			}
+			/* 创建密码提示框DIV */
+			#password13{
+	position:absolute;
+	left: 310px;
+	top: 120px;
+	width:400px;
+	background-color:#F2F2F2;
+	border:1px solid #CCCCCC;
+	height:20px;
+	visibility:hidden;
+			}
+			/* 密码确认DIV */
+			#password21{
+	position:absolute;
+	left: 30px;
+	top: 160px;
+			}
+			/* 创建密码输入框DIV */
+			#password22{
+	position:absolute;
+	left: 110px;
+	top: 160px;
+	width:auto;
+			}
+			/* 创建密码提示框DIV */
+			#password23{
+	position:absolute;
+	left: 310px;
+	top: 160px;
+	height:20px;
+	width:400px;
+	background-color:#F2F2F2;
+	border:1px solid #CCCCCC;
+	visibility:hidden;
+			}
+			/* 验证码DIV */
+			#yangzhen1{
+	position:absolute;
+	left: 30px;
+	top: 200px;
+	width: 49px;
+			}
+			/* 验证码输入框DIV */
+			#yangzheng2{
+	position:absolute;
+	left: 110px;
+	top: 200px;
+	width:auto;
+			}
+			/* 验证码提示框DIV */
+			#yangzhen3{
+	position:absolute;
+	height:20px;
+	left: 310px;
+	top: 200px;
+	width:400px;
+	background-color:#F2F2F2;
+	border:1px solid #CCCCCC;
+	visibility:hidden;
+			}
+			/* 邮箱输入框 */
+			#mailInput{
+				width:180px;				
+			}
+			/* 密码输入框 */
+			#passwordInput{
+				width:180px;
+			}
+			/* 密码确认输入框 */
+			#passwordTwice{
+				width:180px;
+			}
+			/* 验证码输入框 */
+			#yangzhen{
+				width:90px;
+			}
+			/* 验证图片DIV */
+			#picyanzheng{
+	position:absolute;
+	width:60px;
+	height:20px;
+	left: 230px;
+	top: 200px;
+	background-color:#FAFAFA;
+	border:1px solid #FED683;
+	font-size:18px;
+	color:#393939;
+	text-align:center;
+			}
+			/* 换一换样式 */
+			#btn1{
+				width:20px;
+				background-color: transparent;
+				border:0px;
+			}
+			/* 换验证码DIV */
+			#change{
+	position:absolute;
+	width:150px;
+	height:14px;
+	left: 110px;
+	top: 230px;
+	color:#999999;
+			}
+			#success{
+	position:absolute;
+	left: 113px;
+	top: 256px;
+			}
+			#hangUp{
+	position:absolute;
+	left: 700px;
+	top: 260px;
+			}
+			#flash1{
+	position:absolute;
+	left: 270px;
+	top: 90px;
+	width: 471px;
+	height: 206px;
+			}
+			
+		/* 下部左侧容器 DIV */
+		#mainBanner{
+			width:563px;
+			height:auto;
+			background-color:#FFF;
+			border-left:1px solid #CCCCCC;
+			margin-top:10px;
+		}
+		/* 下部左侧内容容器 DIV */
+		#mainBannerContent{
+			width:523px;
+			height:auto;
+			position:relative;
+			margin-left:20px;
+		}	
+			/* 左侧链接DIV */
+			#mainBanngerContertLink{
+				width:523px;
+				height:47px;
+				background-image:url(../images/lianjieBg.gif);
+				background-repeat:no-repeat;
+				margin-bottom:13px;
+				border:0px;
+				
+			}
+				/* 三个小的链接DIV */
+				#littleLink1{
+					position:absolute;
+					left: 165px;
+					top: 39px;
+				}
+				#littleLink2{
+					position:absolute;
+					left: 266px;
+					top: 39px;
+				}
+				#littleLink3{
+					position:absolute;
+					left: 392px;
+					top: 39px;
+				}
+			/* 今日人物DIV */	
+			#mainBannerToday{
+				width:523px;
+				height:160px;
+				background-image:url(../images/background.gif);
+				background-repeat:repeat-x;
+				border: 1px solid #DDDDDD;
+				position:relative;
+				overflow:hidden;
+				
+			}
+			/* 今日新闻DIV */
+			#today{
+				position:absolute;
+				width:523px;
+				left:0px;
+				
+			}
+			/* 用户DIV格式 */
+			#customer{
+				border-bottom:1px dashed #DDDDDD;
+				width:523px;
+				height:auto;
+				margin-top:15px;				
+			}
+			#GZIcon{
+				background-image:url(../images/guanzhuIcon.gif);
+				text-align:center;
+				height:54px;
+				width:58px;
+				margin-left:9px;
+				margin-top:0px;
+				line-height:30px;
+				float:left;
+			}
+			#TX{
+				height:54px;
+				width:58px;
+				margin-left:8px;
+				float:left;
+			}
+			/* 左侧客户文字DIV */
+			#customerWord{
+				margin-left:143px;
+			}
+			/* 今日人物文字DIV */
+			#todayWord{
+				margin-left:20px;
+				float:left;
+				
+			}
+			/* 今日人物关注DIV */
+			#guanzhu{
+				height:26px;
+				width:81px;
+				float:right;
+				margin-top:20px;
+				border:1px solid #CCCCCC;
+				background-color:#E6F3D4;
+				margin-right:10px;
+			}
+		/* 下部右侧容器 DIV */
+		#mainRight{
+			padding:0px;
+			margin:0px;
+			border:0px;
+			width:200px;
+			height:1617px;
+			position:absolute;
+			top:90px;
+			left:565px;
+			background-color:#e9f4fa;
+		}	
+		  /*右半部确定位置*/
+	       #mainRight1{
+			   width:200px;
+			   height:auto;
+			   padding:0px;
+			   margin:0px;
+			   position:relative;
+			   }
+			   /*排名*/
+			   #mainRight1Banner{
+				   width:170px;
+				   height:auto;
+				   padding:0px;
+				   margin:0px;
+				   position:absolute;
+				   left:17px;
+				   top:27px;
+				   }
+				   /*排名小块*/
+				   #mainRight1BannerMenu{
+					   width:170px;
+					   height:502px;
+					   padding:0px;
+					   margin:0px;
+					   margin-top:20px;
+					   position:relative;
+					   }
+					   /*关于排行的标题*/
+					   #mainRight1BannerMenuTop{
+						   height:22px;
+						   width:170px;
+						   margin:0px;
+						   padding:0px;
+						   border-bottom:1px #999 solid;
+						   }
+						   /*个人*/
+						   #mainRight1BannerMenuPeople{
+							   padding:0px;
+							   margin:0px;
+							   width:170px;
+							   height:48px;
+							   position:relative;
+							   border-bottom:1px #CCC dashed;
+							   }
+							   /*个人头像*/
+							   #mainRight1BannerMenuPeopleImg{
+								   padding:0px;
+								   margin:0px;
+								   width:32px;
+								   height:32px;
+								   position:absolute;
+								   top:7px;
+								   left:0px;
+								   background-repeat:no-repeat;
+								   }
+								  #mainRight1BannerMenuPeopleImg img{
+									  border:none;
+								  }
+								  /*名字与关注*/
+								  #mainRight1BannerMenuPeopleWord1{
+										width:106px;
+										height:32px;
+										position:absolute;
+										padding:0px;
+										margin:0px;
+										top:7px;
+										left:40px;
+									  } 
+									  /*数量*/
+								   #mainRight1BannerMenuPeopleWord2{
+									  width:21px;
+									  height:16px;
+									  position:absolute;
+									  padding:0px;
+									  margin:0px;
+									  top:7px;
+									  left:148px;
+									  } 
+									  /*排行*/
+									  #mainRight1BannerMenuRank{
+										  padding:0px;
+										   margin:0px;
+										   width:170px;
+										   height:32px;
+										   position:relative;
+										   border-bottom:1px #CCC dashed;
+										   line-height:30px;
+										   }
+	/* 脚部容器DIV */
+	#footer{
+	}
+	
+/* 字体样式 */
+/* 头部字体样式 */
+.topWord{
+	font-size:18px;
+	color:#FFF;
+}
+/* 左侧靠上三个小的链接文字样式 */
+.littleLink{
+	font-size:16px;
+	color:#005DC3;
+}
+.btn1{
+	border:1px solid #DDDDDD;
+	background-image:none;
+	background-color:#E9F4FA;
+	margin:0px;
+}
+/* banner上新增粉最多的用户字体样式 */
+.bannerword1{
+	font-size:18px;
+}
+.bannerhr{
+	width:94%;
+	border-bottom:2px solid #DDDDDD;
+	border-top:none;
+}
+.GZIconWord1{
+	font-size:16px;
+	color:#F00;
+}
+.GZIconWord2{
+	font-size:14px;
+	color:#005DC3;
+}
+.customerWord1{
+	font-size:16px;
+	font-weight:bold;
+	color:#005DC3;	
+}
+.customerWord2{
+	color:#999999;
+	font-size:12px;
+}
+.customerWord3{
+	font-size:12px;
+	color:#005DC3;
+}
+	
+/* footer部分*/
+	#footer{
+		width:765px;
+		height:50px;
+		margin:0px auto;
+		background-color:#C1E6F5;
+	}
+	/* footer链接部分*/
+	#footerLink{
+		width:600px;
+		height:30px;
+		margin:0px auto;
+		position:relative;
+		line-height:30px;
+		color:#444444;
+	}
+		/* footer部分的链接 */
+		#footerLink ul{
+			list-style:none;
+			padding:0px;
+			margin:0px;
+		}
+		#footerLink li{
+			/*float:left;*/
+			display:inline;
+			margin:0px 10px;
+		}
+	/* footer部分的版权信息 */
+	#footerCopy{
+		width:250px;
+		height:20px;
+		color:#444444;
+		line-height:20px;
+		margin:0px auto;
+		text-align:center;
+	}
+.a2{
+	color:#444444;
+	text-decoration:none;
+}

@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+/* container部分 */
+#container{
+	width:765px;
+	height:auto;
+	margin:0px auto;
+}
+/* banner部分 */
+#banner{
+	width:765px;
+	height:610px;
+	padding:0px;
+	margin:0px;
+	background-color:#FFF;
+}
+     /* bannerLeft部分 */
+    #banner .left{
+		width:564px;
+		height:610px;
+		border-right:solid 1px #9FF;
+		float:left;
+	}
+	    /* bannerLeftTop部分 */
+	    #banner .top{
+		    width:272px;
+		    height:40px;
+		    margin:25px 0px 0px 20px;/*上右下左*/
+	    }
+	    #banner .main1{
+		    width:544px;
+		    height:25px;
+		    padding-left:20px;
+		    margin:10px 0px;  
+	    }
+	    #banner .n1{
+		    width:210px;
+		    height:35px;
+			line-height:35px;
+			font-size:24px;
+			border:1px #0CF solid;
+	    }
+		/* 按钮 */
+	    #banner .btn{
+		    width:120px;
+		    height:42px;
+		    background-color:#0184C9;
+		    border:none;
+	    }
+	    #banner .main2{
+		    width:467px;
+		    height:145px;
+		    margin:10px 0px 0px 20px;/*上右下左*/
+	    }
+		/* bannerLeftBottom部分 */
+	    #banner .bottom{
+		    width:544px;
+		    height:190px;
+		    margin-left:20px;
+		    padding-top:20px;
+	   }
+	/* bannerRight部分 */
+   #banner .right{
+	   width:190px;
+	   height:610px;
+	   padding-left:10px;
+	   float:left;
+	   background-color:#e9f4fa;
+   }
