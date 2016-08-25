@@ -4,19 +4,20 @@ use microblog;
 --用户
 create table users(
 	uid int, 
-	email varchar(40),  --用户名  登录用
-	password varchar(40),--密码
-	nickname varchar(100),--昵称  可任意改
-	pic varchar(100),--头像  存图片 服务器路径字符串
-	telephone bigint,--电话
-	level int,--用户等级
-	exp int,--用户经验
-	regDate date,--注册时间
-	realname varchar(40),--真实姓名
-	sex int,--性别 0男1女
-	birthday varchar(10),--生日
+	email varchar(40),  
+	password varchar(40),
+	nickname varchar(100),
+	pic varchar(100),
+	telephone varchar(12),
+	level int,
+	exp int,
+	regDate date,
+	realname varchar(40),
+	sex int,
+	birthday varchar(10)
 );
 
+drop table users;
 select * from users
 --关注
 create table concern(
@@ -59,6 +60,8 @@ select name from groups limit 1,4
 --用户分组表
 create table user_group(
 	id  int primary key,	
-	uid int ,--用户
-	group_id int--分组id
+	uid int ,
+	group_id int
 )
+
+insert into user_group(id,uid,group_id) values(0,0,0);

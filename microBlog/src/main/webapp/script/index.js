@@ -127,46 +127,6 @@ function stateXianShi(){
 	stateShowObj[tmp].style.visibility = "visible";
 }
 
-/* 提交表单是检测输入的数据是否正确 */
-function checkForm(){
-	var userId = document.getElementById("userId");
-	var userPass = document.getElementById("passWord");
-	if(userId.value == "请输入正确邮箱|手机号码")//如果本身是提示语,则继续出错的提示
-		return false;
-	userId.value = trim(userId.value);//去除id框前后空格
-	useridtmp = userId.value;//将输入id传给变量
-	/* 如果字符串里面有@字符,则相应进入邮箱检测环节,否则进入手机号检测*/
-	if(useridtmp.indexOf("@")>-1){//如果里面有@符号
-		/* 如果符合邮箱的规则,并且密码也符合长度的要求 */
-		if(useridtmp.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/)!=null && trim(userPass.value).length >=6){
-			return true;
-		}else{
-			return false;
-		}
-	}else{//进入手机号处理流程
-		/* 如果密码长度符合要求 并且也是11位的纯手机号,则返回正确 */
-		if(useridtmp.match(/[^\d]/g)==null && useridtmp.length==11 && userPass.value.length >=6){
-			return true;
-		}else{//否则进入出错提示
-			if(useridtmp.match(/[^\d]/g)!=null || useridtmp.length<11){
-				userId.value = "请输入正确邮箱|手机号码"
-				userId.style.backgroundColor = "#B9E3AB"
-			}
-			return false;
-		}
-	}
-}
-function userIdfocus(){//输入框获得焦点
-	var userId = document.getElementById("userId");
-	userId.style.backgroundColor = "#FFF"
-	userId.value = useridtmp;
-	userId.select();
-}
-
-function userPassfocus(){//密码框获得焦点
-	document.getElementById("userPass").select();
-}
-
 window.onload = function(){
 	startStateChange();	
 	startChangeImg();
@@ -184,8 +144,22 @@ window.onload = function(){
 		stateShowObj[i].onmouseover = stateMouseOver
 		stateShowObj[i].onmouseout = stateMouseOut
 	}
-	document.getElementById("userId").onmouseover = userIdfocus;
-	document.getElementById("userId").onfocus = userIdfocus;
-	document.getElementById("userId").onblur = checkForm;
-	document.getElementById("userPass").onmousemove = userPassfocus
 }
+
+$(function(){
+	var value="";
+	$.ajax({
+		url:"user_getUserName",
+		type:"POST",
+		dataType:"JSON",
+		success:function(data){
+			if(data.code==1){
+				value=data.obj.nickname;
+			}else{
+				alert(data.msg);
+			}
+			$("#userLogin").html(value);
+		}
+		
+	});
+});

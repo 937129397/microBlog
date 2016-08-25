@@ -2,13 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="灵步网微博，灵步网，围脖" />
-<meta name="description" content="灵步网微博——点滴生活，精彩每一天，大家赶快加入吧" />
+<meta name="keywords" content="熊猫微博，熊猫网，围脖" />
+<meta name="description" content="熊猫微博——点滴生活，精彩每一天，大家赶快加入吧" />
 <title>灵步网微博</title>
 <link href="styles/global.css" type="text/css" rel="stylesheet"  />
 <link href="styles/index.css" type="text/css" rel="stylesheet" />
 <link rel="icon" href="favicon.ico" mce_href="favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="favicon.ico" mce_href="favicon.ico" type="image/x-icon" />
+<script type="text/javascript" src="script/jquery-1.9.1.js"></script>
 <script src="script/index.js" language="javascript"></script>
 <script src="script/trim.js" language="javascript"></script>
 </head>
@@ -34,46 +35,14 @@
         <!-- top部分的文字导航 -->
         <div id="topWordMenu">
         	<ul>
-            	<li>已有灵步账号，<a href="login.html">请登录</a></li>
-                <li><a href="SBGG.html">随便逛逛</a></li>
-                <li><a href="#">手机</a></li>
-                <li><a href="#">帮助</a></li>
+            	<li>欢迎您,<a href="MyWB.html" id="userLogin"></a></li>
             </ul>
         </div>
         <!-- top部分的文字导航结束 -->
     </div>
     <!-- top部分结束 -->
-    <!-- banner部分 -->
-    <div id="banner">
-    	<!-- banner部分的登入部分 -->
-        <div id="bannerLogin">
-        	<!-- banner部分表单 -->
-            <form id="bannerLoginForm" action="CustomerIndex.html" method="post" onsubmit="return checkForm()">
-              <!-- 注册提示 -->
-              <div id="bannerLoginFormWord">即刻登录，分享心情</div>
-              <div id="bannerLoginFormID">
-              	  <div id="userIdWord">邮箱|手机号码登入</div>
-                  <div id="userIdInput">
-                    <input name="userId" type="text" class="textForm" id="userId" value="" />
-                  </div>
-              </div>
-              <div id="bannerLoginFormPass">
-              	<div id="userPassWord">密码</div>
-                <div id="userPassInput">
-                  	<input name="userPass" type="password" class="textForm" id="userPass" value="" />
-                </div>
-              	<div id="submitDIV">
-              	  <input name="submit" type="submit" id="submit" value="登   录" />
-              	  <div id="autoLogin"><input name="autoLg" type="checkbox" id="autoLoginSel" value="" />自动登录</div>
-              	</div>
-              </div>          
-            </form>
-            <!-- 忘记密码 -->
-            <div id="forgetPass"><a href="#">忘记密码？</a></div>
-        </div>
-        <!-- banner部分的登入部分结束 -->
-  </div>
-    <!--banner部分结束-->
+     <div id="banner">
+     </div>
     <!-- main部分 -->
 <div id="main">
     	<!-- main部分左栏 -->
