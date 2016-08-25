@@ -44,14 +44,6 @@ public class Test extends TestCase {
 		System.out.println("登陆成功");
 	}
 	
-	public void testApp08() {
-		ApplicationContext ac = new ClassPathXmlApplicationContext(
-				"beans_mybatis.xml");
-		BlogBiz ub=(BlogBiz) ac.getBean("blogBizImpl");
-		BlogModel b=new BlogModel();
-		System.out.println(ub.findAllBlog(b));
-
-	}
 	
 	public void registtest(){
 		ApplicationContext ac = new ClassPathXmlApplicationContext(

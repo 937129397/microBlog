@@ -5,11 +5,17 @@
 
 <struts>
 	<!-- 是否允许动态调用 action方法名 -->
-    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-    <!-- 启用开发模式 -->
-    <constant name="struts.devMode" value="true" />
-    <constant name="struts.i18n.encoding" value="utf-8"></constant>
-    <!-- 表示action类  由spring创建 -->
-    <constant name="struts.objectFactory" value="spring"></constant>
-	
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
+	<constant name="struts.serve.static.browserCache" value="false" />
+	 
+	 <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+    <constant name="struts.configuration.xml.reload" value="true" />
+    
+	<!-- 启用开发模式,可以打更详细的错误信息 -->
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.encoding" value="utf-8"></constant>
+	<!-- 表示action类 由spring创建 -->
+	<constant name="struts.objectFactory" value="spring"></constant>
+
 </struts>
