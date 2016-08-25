@@ -1,6 +1,9 @@
-package com.microblog.bean;
+package com.microblog.web.model;
 
+import java.io.File;
 import java.util.List;
+
+import com.microblog.bean.Blog;
 
 public class BlogModel {
 	private Integer total=1;  //总记录页数
@@ -9,6 +12,38 @@ public class BlogModel {
 	private List<Blog> blogs; //记录的集合
 	
 	private Blog blog=new Blog();
+	/**
+	 * 上传的文件，临时存储
+	 */
+	private List<File> file;
+	
+	private List<String> fileFileName;
+	
+	private List<String> fileContentType;
+
+	public List<File> getFile() {
+		return file;
+	}
+
+	public void setFile(List<File> file) {
+		this.file = file;
+	}
+
+	public List<String> getFileFileName() {
+		return fileFileName;
+	}
+
+	public void setFileFileName(List<String> fileFileName) {
+		this.fileFileName = fileFileName;
+	}
+
+	public List<String> getFileContentType() {
+		return fileContentType;
+	}
+
+	public void setFileContentType(List<String> fileContentType) {
+		this.fileContentType = fileContentType;
+	}
 
 	public Integer getTotal() {
 		return total;
