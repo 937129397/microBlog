@@ -19,6 +19,8 @@ create table users(
 
 drop table users;
 select * from users
+
+insert users(uid) values(0);
 --关注
 create table concern(
 	id int primary key ,
