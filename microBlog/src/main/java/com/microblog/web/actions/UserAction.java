@@ -94,5 +94,16 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 		
 	}
+	
+	@Action(value = "/user_getUserName")
+	public void getnickname() throws IOException {
+		Map<String, Object> session = ActionContext.getContext().getSession();
+		if( session.get("loginuser") !=null  ){
+			User user = (User) session.get("loginuser");
+			jsonModel.setCode(1);
+			jsonModel.setObj(user);
+		}
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+	}
 
 }
