@@ -2,9 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>登录 灵步网微薄-点滴生活，精彩每一天</title>
+<title>登录 熊猫儿微薄-点滴生活，精彩每一天</title>
 <link href="styles/global.css" type="text/css" rel="stylesheet" />
 <link href="styles/login.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="script/jquery-1.9.1.js"></script>
 <script src="script/login.js" language="javascript"></script>
 <script src="script/trim.js" language="javascript"></script>
 </head>
@@ -31,7 +32,7 @@
         <!-- top部分的文字导航 -->
         <div id="topWordMenu">
         	<ul>
-            	<li>已有灵步账号，<a href="login.html">请登录</a></li>
+            	<li>已有熊猫账号，<a href="login.html">请登录</a></li>
                 <li><a href="SBGG.html">随便逛逛</a></li>
                 <li><a href="#">手机</a></li>
                 <li><a href="#">帮助</a></li>
@@ -56,13 +57,13 @@
        <tr>
          <td class="le"></td>
          <td class="ld">手机/邮箱</td>
-         <td class="if"><input name="userId" type="text" class="la" id="userId" /></td>
+         <td class="if"><input name="userLoad" type="text" class="la" id="userLoad" /></td>
          <td></td>
        </tr>
        <tr>
          <td class="le"></td>
          <td class="ld">密码</td>
-         <td class="if"><input name="passWord" type="password" class="la" id="passWord" /></td>
+         <td class="if"><input name="password" type="password" class="la" id="password" /></td>
          <td></td>
        </tr>
        <tr>
@@ -76,7 +77,7 @@
          <td class="le"></td>
          <td class="ld"></td>
          <td><a href="#">
-           <input name="button" type="submit" class="lc" id="button" value="登  录" />
+           <input name="button" type="button" class="lc" id="login" value="登  录" />
          </a></td>
          <td></td>
        </tr>

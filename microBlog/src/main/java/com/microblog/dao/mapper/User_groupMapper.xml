@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.microblog.dao.mapper.User_groupMapper">
+
+	<!-- 插入用户默认分组 -->
+	<insert id="addUserGroup">
+		<selectKey keyProperty="id" order="BEFORE" resultType="Integer">
+			select max(id)+1 from users
+		</selectKey>
+		insert into user_group(id,uid,group_id) values(#{id},#{uid},#{group.id})
+	</insert>
+	
+	<resultMap type="Groups" id="GroupsMap">
+		<!--  column: 是从哪个 查询的结果列取值，做这个查询的条件值 -->
+		<collection property="group" ofType="Groups" column="id" select="com.yc.dao.mapper.GroupsMapper.getUserGroupsByUserID"/>
+	</resultMap>
+	
+	<!-- 查询用户自定义分组 -->
+	<select id="getUserGroups" resultMap="GroupsMap">
+		select group_id id from user_group where uid=#{uid}
+	</select>
+	
+	<!-- 删除用户默认分组 -->
+	<delete id="delUserGroupsByUid">
+		delete from user_group where uid=#{uid} and id=#{id}
+	</delete>
+
+</mapper>

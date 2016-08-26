@@ -52,7 +52,7 @@ public class User implements Serializable{
 		return telephone;
 	}
 	public void setTelephone(Long telephone) {
-		this.telephone = telephone;
+		this.telephone= telephone;
 	}
 	public Integer getLevel() {
 		return level;

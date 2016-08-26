@@ -1,6 +1,5 @@
 // JavaScript Document.
 /* 网页中的对象存储变量  */
-var userID;//用户名输入框对象
 var userName;//用户姓名输入框对象
 var userTel;//用户手机号输入框对象
 var userMail;//邮箱输入框对象
@@ -18,12 +17,11 @@ var passtmp;//密码缓存
 var verifytmp;//验证码缓存
 /* 初始化上面的这些对象变量 */
 function init(){
-	userID = document.getElementById("userID");
-	userName = document.getElementById("userName");
-	userTel = document.getElementById("userTel");
-	userMail = document.getElementById("userMail");
-	userPass = document.getElementById("userPass");
-	userRpass = document.getElementById("userRpass");
+	userName = document.getElementById("nickname");
+	userTel = document.getElementById("telephone");
+	userMail = document.getElementById("email");
+	userPass = document.getElementById("password");
+	userRpass = document.getElementById("repassword");
 	verify = document.getElementById("verify");
 	img1 = document.getElementById("img1");
 	img2 = document.getElementById("img2");
@@ -181,10 +179,23 @@ function checkForm(){
 window.onload = function(){
 	init();//初始化对象
 	createCode();//初始化验证码
-	nowday();//获取当前时间并填充
-	var monthobj = document.getElementById("month");//获取对行啊
-	var yearobj =  document.getElementById("year");//
-	//当年、月修改时，日期作相应改变
-	yearobj.onchange = changeday;//日期下拉菜单函数绑定
-	monthobj.onchange = changeday;//日期下拉菜单函数绑定
 }
+
+$(function(){
+	$("#register").click(function(){
+	$.ajax({
+		  type: 'POST',
+		  data: $("#myform").serialize(),
+		  url: "user_register",
+		  dataType: 'JSON',
+		  success: function( data ){
+			 if( data.code==1){
+				 alert( '注册成功...');
+				 location.href='login.html';
+			 }else{
+				 alert('注册失败,原因:'+ data.msg);
+			 }
+		  }
+		});
+	});
+});

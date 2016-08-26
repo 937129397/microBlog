@@ -26,16 +26,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="saveUser" parameterType="User">
-		<selectKey keyProperty="id" order="BEFORE" resultType="Integer">
-			select max(id)+1 as uid from users
+		<selectKey keyProperty="uid" order="BEFORE" resultType="Integer">
+			select max(uid)+1 from users
 		</selectKey>
-		insert into users values(#{uid}, #{email}, #{password},
-		<choose>
-			<when test="username != null">#{telephone}</when>
-			<otherwise>''</otherwise>
-		</choose>
-		 , #{nickname}) 
-		)
+		insert into users(uid,email,password,telephone,nickname,birthday)
+		values(#{uid}, #{email}, #{password},
+		#{telephone},#{nickname},#{birthday}) 
 	</insert>
 	
 	<update id="updateUser" parameterType="User">
