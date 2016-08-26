@@ -17,8 +17,6 @@ import com.microblog.biz.GroupsBiz;
 import com.microblog.biz.UserBiz;
 
 public class Test extends TestCase {
-
-	
 	
 	public void testApp07() {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
@@ -91,5 +89,18 @@ public class Test extends TestCase {
 		}
 		System.out.println("查询成功");
 	}
-	
+	//测试redis点赞数的自增
+	public void testApp09() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"beans_mybatis.xml");
+		BlogBiz ub=(BlogBiz) ac.getBean("blogBizImpl");
+		System.out.println("当前点赞数"+ub.parse(2L,1));
+	}
+	//测试redis转发数
+		public void testApp10() {
+			ApplicationContext ac = new ClassPathXmlApplicationContext(
+					"beans_mybatis.xml");
+			BlogBiz ub=(BlogBiz) ac.getBean("blogBizImpl");
+			System.out.println("当前转发数"+ub.relay(1L, 3));
+		}
 }
