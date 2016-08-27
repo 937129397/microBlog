@@ -10,6 +10,9 @@ public class BlogModel {
 	
 	private Blog blog=new Blog();
 
+	
+	
+
 	public Integer getTotal() {
 		return total;
 	}
@@ -62,8 +65,11 @@ public class BlogModel {
 	@Override
 	public String toString() {
 		return "BlogModel [total=" + total + ", currPage=" + currPage
-				+ ", sizePage=" + sizePage + ", blogs=" + blogs  + "]";
+				+ ", sizePage=" + sizePage  + ", blogs="
+				+ blogs + "]";
 	}
+
+	
 	
 	
 	

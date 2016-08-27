@@ -12,8 +12,11 @@ public class Blog implements Serializable {
 	private String video;
 	private Date fdate;
 	private long source;
+	private String parse;// 点赞数
+	private String relay;// 转发数
 
-	private User user=new User();
+	private User user = new User();
+
 
 
 
@@ -21,11 +24,12 @@ public class Blog implements Serializable {
 	}
 
 	public Blog(long id, String text, String pic, Date fdate, long source,
-			User user) {}
+			String parse, String relay, User user) {
+			}
 
 
 	public Blog(long id, String uid, String text, String pic, String video,
-			Date fdate, long source) {
+			Date fdate, long source,String parse,String relay) {
 
 		this.id = id;
 		this.text = text;
@@ -33,8 +37,10 @@ public class Blog implements Serializable {
 		this.video = video;
 		this.fdate = fdate;
 		this.source = source;
-		this.user = user;
+		this.parse = parse;
+		this.relay = relay;
 	}
+
 	public long getId() {
 		return id;
 	}
@@ -43,7 +49,6 @@ public class Blog implements Serializable {
 		this.id = id;
 
 	}
-	
 	public String getText() {
 		return text;
 	}
@@ -83,19 +88,39 @@ public class Blog implements Serializable {
 	public void setVideo(String video) {
 		this.video = video;
 	}
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
 	}
-	@Override
-	public String toString() {
 
-		return "Blog [id=" + id + ", text=" + text + ", pic="
-				+ pic + ", video=" + video + ", fdate=" + fdate + ", source="
-				+ source + "]";
-
+	public String getParse() {
+		return parse;
 	}
 
+	public void setParse(String parse) {
+		this.parse = parse;
+	}
+	
+	
+	public String getRelay() {
+		return relay;
+	}
+
+	public void setRelay(String relay) {
+		this.relay = relay;
+	}
+
+	@Override
+	public String toString() {
+		return "Blog [id=" + id + ", text=" + text + ", pic=" + pic
+				+ ", video=" + video + ", fdate=" + fdate + ", source="
+				+ source + ", parse=" + parse + ", relay=" + relay + ", user="
+				+ user + "]";
+	}
+
+	
 }
