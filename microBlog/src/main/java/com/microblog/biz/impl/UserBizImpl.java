@@ -57,5 +57,17 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
 		
 	}
 	
+	
+	@Transactional(readOnly = true, isolation = Isolation.DEFAULT, rollbackForClassName = { "java.lang.RuntimeException" }, propagation = Propagation.NOT_SUPPORTED)
+	public User findUserGroups(Integer uid) {
+		return null;
+	}
+
+	@Transactional(readOnly = false, isolation = Isolation.DEFAULT, rollbackForClassName = { "java.lang.RuntimeException" }, propagation = Propagation.REQUIRED)
+	public boolean addUserGroups(User group) {
+		baseDao.save(group, "addUserGroup");
+		return true;
+	}
+
 
 }

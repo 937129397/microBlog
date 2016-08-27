@@ -66,4 +66,12 @@ create table user_group(
 	group_id int
 )
 
+delete a,b from user_group a,groups b 
+where a.group_id=5 and a.group_id=b.id
+
+select * from user_group
+select * from groups
+
+select * from user_group inner join groups on user_group.group_id=groups.id where uid=1;
+
 insert into user_group(id,uid,group_id) values(0,0,0);

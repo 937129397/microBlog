@@ -17,6 +17,16 @@ public class User implements Serializable{
 	private Integer sex;
 	private String birthday;
 	
+	private Groups group;
+	
+	
+	public Groups getGroup() {
+		return group;
+	}
+	public void setGroup(Groups group) {
+		this.group = group;
+	}
+	
 	
 	public Integer getUid() {
 		return uid;
