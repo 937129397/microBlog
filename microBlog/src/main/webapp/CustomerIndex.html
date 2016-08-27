@@ -5,9 +5,9 @@
 <title>灵步网微博-点滴生活，精彩世界</title>
 <link href="styles/CustomerIndex.css" type="text/css" rel="stylesheet" />
 <link href="styles/global.css" type="text/css" rel="stylesheet" />
+<script language="javascript" src="script/jquery-1.6.2.min.js"></script>
 <script language="javascript" src="script/CustomerIndex.js" ></script>
 <script language="javascript" src="script/trim.js" ></script>
-<script language="javascript" src="script/jquery-1.6.2.min.js"></script>
 </head>
 
 <body style="filter:alpha(opacity=100)" id="totop">
@@ -58,7 +58,7 @@
                     </div>
                     <div style="float:right;">您还可以输入<font id="counter1">140</font>字！
                     </div>
-                    <form action="" method="post" id="">
+                    <form action="" method="post" id="fabu"  enctype="multipart/form-data" >
                       <div id="mainBannerTopIssueForm">
                             <!--id="mainBannerTopIssueFrame-->
                             <div id="mainBannerTopIssueFrame">
@@ -70,12 +70,14 @@
                         </div>
                           <!--确认发布-->
                         <div id="mainBannerTopIssueSure">
-                          <div id="mainBannerTopIssueSure2"> <a href="file" class="a1">
+                          <div id="mainBannerTopIssueSure2"> <a href="" class="a1" onclick="showAddFileDiv(picInput);return false;">
                             <div id="mainBannerTopIssueInsert1"></div>
                             <div id="mainBannerTopIssueInsert2">插入图片 </div>
                             </a>
+                            <a href="" class="a1"  onclick="showAddFileDiv(videoInput);return false;">
                             <div id="mainBannerTopIssueInsert3"></div>
                             <div id="mainBannerTopIssueInsert4">插入视频 </div>
+                            </a>
                             <a href="javascript:biaoQingXianShi()" class="a1">
                               <div id="mainBannerTopIssueInsert5"></div>
                               <div id="mainBannerTopIssueInsert6">插入表情</div>
@@ -84,6 +86,10 @@
                           </div>
                         </div>
                         </div>
+                       <div id="addFile" style="visibility:hidden;" >
+                       	<input type="file" id="picInput" name="file"  style="visibility: hidden;"  multiple="multiple"/>
+                       	<input type="file" id="videoInput" name="file"  style="visibility: hidden;"  multiple="multiple" />
+                       </div>
                     </form> 
           </div>
           <!-- 表情DIV -->
@@ -163,7 +169,8 @@
 
           </div>
         </div> 
-            
+            <br/>
+             <br/>
             <!--id="mainBannerTitle 首页-->
             <div id="mainBannerTitle">
                 <!--id="mainBannerTitleWord"-->
