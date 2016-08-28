@@ -32,6 +32,13 @@ public class RedisCache implements Cache {
 		logger.debug("create an cache instance with id:" + id);
 		this.id = id;
 	}
+	
+	
+
+	public RedisCache() {
+	}
+
+
 
 	public String getId() {
 		return this.id;
@@ -88,6 +95,22 @@ public class RedisCache implements Cache {
 		// Jedis jedis = new Jedis("192.168.137.128");
 		Jedis jedis = RedisPool.getPool().getResource();
 		return jedis;
+	}
+
+	public void set(String key, String value) {
+		this.redisClient.set(key, value);
+	}
+
+	public Object get(String key) {
+		return this.redisClient.get(key);
+	}
+
+	public void increment(String key) {
+		this.redisClient.incr(key);
+	}
+
+	public void decr(String key) {
+		this.redisClient.decr(key);
 	}
 
 }
