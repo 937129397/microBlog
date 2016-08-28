@@ -1,5 +1,8 @@
 package test;
 
+
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,35 +17,21 @@ import junit.framework.TestCase;
 
 public class GroupTest extends TestCase {
 	
-	//分组中间表插入数据
-	public void testApp07() {
-		ApplicationContext ac = new ClassPathXmlApplicationContext(
-				"beans_mybatis.xml");
-		UserBiz userBiz =  (UserBiz) ac.getBean("userBizImpl");
-		User user = new User();
-		user.setUid(1);
-		Groups g = new Groups();
-		g.setId(5);
-		user.setGroup(g);
-		userBiz.addUserGroups(user);
-	}
-	//往分组表里插入数据
-	public void testApp08() {
-		ApplicationContext ac = new ClassPathXmlApplicationContext(
-				"beans_mybatis.xml");
-		GroupsBiz gBiz = (GroupsBiz) ac.getBean("groupsBizImpl");
-		Groups group = new Groups();
-		group.setName("特别关注");
-		gBiz.addGroup(group);
-		
-		UserBiz userBiz =  (UserBiz) ac.getBean("userBizImpl");
-		User user = new User();
-		user.setUid(1);
-		Groups g = new Groups();
-		g.setId(5);
-		user.setGroup(g);
-		userBiz.addUserGroups(user);
-	}
+
 	
+	//查询用户
+	public void testApp09() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"beans_mybatis.xml");
+		UserBiz userBiz =  (UserBiz) ac.getBean("userBizImpl");
+		User user = new User();
+		user.setUid(1);
+		List<Groups> g =userBiz.findUserGroups(user);
+		
+		for (Groups groups : g) {
+			System.out.println(groups.getName());
+		}
+		
+	}
 
 }

@@ -1,5 +1,8 @@
 package com.microblog.biz;
 
+import java.util.List;
+
+import com.microblog.bean.Groups;
 import com.microblog.bean.User;
 
 public interface UserBiz {
@@ -23,9 +26,10 @@ public interface UserBiz {
 	public boolean update(User user);
 	
 	//查找用户的所有分组
-	public User findUserGroups(Integer uid);
+	public  List<Groups> findUserGroups(User user);
 	
 	//插入用户的自定义分组
 	public boolean addUserGroups(User group);
+	
 
 }

@@ -47,16 +47,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into user_group(id,uid,group_id) values(#{group.ug_id},#{uid},#{group.id})
 	</insert>
 	
-	<resultMap type="Groups" id="GroupsMap">
-		<!--  column: 是从哪个 查询的结果列取值，做这个查询的条件值 -->
-		<collection property="group" ofType="Groups" column="id" select="com.yc.dao.mapper.GroupsMapper.getUserGroupsByUserID"/>
-	</resultMap>
-	
-	<!-- 查询用户自定义分组 -->
-	<select id="getUserGroups" resultMap="GroupsMap">
-		select * from user_group inner join groups on user_group.group_id=groups.id where uid=1;
-	</select>
-	
 	<!-- 删除用户默认分组 -->
 	<delete id="delUserGroupsByUid">
 		delete from user_group where uid=#{uid} and id=#{id}

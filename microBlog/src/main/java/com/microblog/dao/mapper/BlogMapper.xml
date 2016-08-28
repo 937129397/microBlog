@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.microblog.dao.mapper.BlogMapper">
+	<!-- 发表新微博 -->
 	<insert id="saveBlog" parameterType="Blog">
 	<selectKey keyProperty="id" >select max(id)+1 from blog </selectKey>
 		insert into
@@ -13,7 +14,7 @@
 
 	</insert>
 
-
+	<!-- 查询所有微博 -->
 	<select id="getBlog" resultMap="BlogMap">
 		select * from blog
 	</select>
@@ -21,7 +22,7 @@
 		<association property="user" column="uid"
 			select="com.microblog.dao.mapper.UserMapper.getUser" />
 	</resultMap>
-
+	<!-- 查询总微博数 -->
 	<select id="getBlogCount" resultType="int">
 		select count(1) from blog
 	</select>

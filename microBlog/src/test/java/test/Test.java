@@ -52,8 +52,9 @@ public class Test extends TestCase {
 		
 		user.setEmail("571880590@qq.com");
 		user.setPassword("a");
-		user.setTelephone(123141241212L);
-		ub.loginByEmail(user);
+		user.setTelephone("123141241212");
+		user.setNickname("xiaoer");
+		ub.register(user);
 		System.out.println("注册成功");
 	}
 	public void updatetest(){
