@@ -37,8 +37,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateUser" parameterType="User">
 	update Users set nickname=#{nickname},pic=#{pic},sex=#{sex},birthday=#{birthday}
 	where uid=#{uid}
-	
 	</update>
+	
+	<!-- 插入用户默认分组 -->
+	<insert id="addUserGroup">
+		<selectKey keyProperty="group.ug_id" order="BEFORE" resultType="Integer">
+			select max(id)+1 from user_group
+		</selectKey>
+		insert into user_group(id,uid,group_id) values(#{group.ug_id},#{uid},#{group.id})
+	</insert>
+	
+	<!-- 删除用户默认分组 -->
+	<delete id="delUserGroupsByUid">
+		delete from user_group where uid=#{uid} and id=#{id}
+	</delete>
 	
 	
 </mapper>

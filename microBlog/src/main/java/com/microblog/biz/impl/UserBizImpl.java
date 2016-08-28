@@ -1,5 +1,9 @@
 package com.microblog.biz.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -8,6 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.microblog.biz.UserBiz;
+import com.microblog.bean.Groups;
 import com.microblog.bean.User;
 
 
@@ -57,5 +62,19 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
 		
 	}
 	
+	
+	@Transactional(readOnly = true)
+	public List<Groups> findUserGroups(User user) {
+		Map<String ,Object> params=new HashMap<String,Object>();
+		params.put("uid",user.getUid());
+		return baseDao.findList(Groups.class, params, "getUserGroupsByUserID", 0, 5) ;
+	}
+
+	@Transactional(readOnly = false, isolation = Isolation.DEFAULT, rollbackForClassName = { "java.lang.RuntimeException" }, propagation = Propagation.REQUIRED)
+	public boolean addUserGroups(User group) {
+		baseDao.save(group, "addUserGroup");
+		return true;
+	}
+
 
 }

@@ -17,6 +17,8 @@ create table users(
 	birthday varchar(10)
 );
 
+insert into users(uid) values(0);
+
 drop table users;
 select * from users
 
@@ -29,7 +31,23 @@ create table concern(
 	note varchar(100),--备注 粉丝对博主的备注
 	group_id int --分组 粉丝对博主的分组
 )
---微博表
+
+insert into concern values(1,1,2,'zz',1);
+insert into concern values(2,1,3,'zz',1);
+insert into concern values(3,1,4,'zz',1);
+
+delete from concern where id=1;
+
+select nickname from users where uid=2
+
+select uid,nickname from users where uid in(select f_uid from concern c 
+inner join users u on c.b_uid=u.uid where c.b_uid=1)
+
+select count(1) from concern where b_uid=1
+
+
+select * from concern;
+--微博表;
 create table blog(
 	id bigint primary key ,
 	uid int,--发文者 id
@@ -66,4 +84,19 @@ create table user_group(
 	group_id int
 )
 
+
+
+delete a,b from user_group a,groups b 
+where a.group_id=5 and a.group_id=b.id
+
+select * from user_group
+select * from groups
+
+select * from user_group where uid=1
+
+select * from user_group inner join groups on user_group.group_id=groups.id where uid=1;
+
 insert into user_group(id,uid,group_id) values(0,0,0);
+
+
+select *,group_id gid from user_group where uid=1
