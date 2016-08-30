@@ -9,15 +9,18 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+
 import com.microblog.bean.Blog;
 import com.microblog.biz.BlogBiz;
 import com.microblog.dao.BaseDao;
-
 import com.microblog.web.model.BlogModel;
 @Service
 @Transactional(readOnly = true)
 public class BlogBizImpl implements BlogBiz {
 	private BaseDao baseDao;
+	
 
 	@Resource(name = "baseDaoImpl")
 	public void setBaseDao(BaseDao baseDao) {
@@ -70,14 +73,15 @@ public class BlogBizImpl implements BlogBiz {
 	public String parse(Long id, int uid) {
 		// 当用户没有点赞，则点赞数+1，redis中用户字段+1；点了赞，则点赞数-1，redis中用户字段-1
 		if (id > 0 && uid > 0) {
-			if (this.baseDao.getKey("user:id" + id + uid) == null
-					|| Integer.parseInt((String) this.baseDao.getKey("user:id"
-							+ id + uid)) == 0) {
+			if (this.baseDao.getKey( id +"user:id" + uid) == null
+					|| Integer.parseInt((String) this.baseDao.getKey( id +"user:id"
+							+ uid)) == 0) {
 				this.baseDao.incr("user:parse" + id);
-				this.baseDao.incr("user:id" + id + uid);
+				
+				this.baseDao.incr( id +"user:id" + uid);
 			} else {
 				this.baseDao.decr("user:parse" + id);
-				this.baseDao.decr("user:id" + id + uid);
+				this.baseDao.decr( id + "user:id" +uid);
 			}
 			String num = (String) this.baseDao.getKey("user:parse" + id);
 			return num;
@@ -87,16 +91,17 @@ public class BlogBizImpl implements BlogBiz {
 
 	}
 	//转发
+	
 	@Override
 	public String relay(Long id, int uid) {
 		// 当用户没有转发，则转发数+1，redis中用户字段+1；已转发，则不允许转发
 				if (id > 0 && uid > 0) {
-					if (this.baseDao.getKey("user:relayid" + id + uid) == null
-							|| Integer.parseInt((String) this.baseDao.getKey("user:relayid"
-									+ id + uid)) == 0) {
+					if (this.baseDao.getKey( id + "user:relayid"+uid) == null
+							|| Integer.parseInt((String) this.baseDao.getKey(id +"user:relayid"
+									+  uid)) == 0) {
 						this.baseDao.incr("user:relay" + id);
-						this.baseDao.incr("user:relayid" + id + uid);
-						String num = (String) this.baseDao.getKey("user:relay" + id);
+						this.baseDao.incr( id +"user:relayid"+ uid);
+						String num = (String) this.baseDao.getKey("user:relay"+ id);
 						return num;
 					} else {
 						return null;
@@ -107,3 +112,4 @@ public class BlogBizImpl implements BlogBiz {
 	}
 
 }
+

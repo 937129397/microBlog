@@ -37,9 +37,9 @@ public class RedisPool {
 				.getString("redis.pool.testOnBorrow")));
 		config.setTestOnReturn(Boolean.valueOf(bundle
 				.getString("redis.pool.testOnReturn")));
+		
 		pool = new JedisPool(config, bundle.getString("redis.ip"),
-				Integer.valueOf(bundle.getString("redis.port")), 2000,
-				bundle.getString("redis.password"));
+				Integer.valueOf(bundle.getString("redis.port")));
 	}
 
 	

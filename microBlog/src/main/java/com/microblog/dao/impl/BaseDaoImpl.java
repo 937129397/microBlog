@@ -2,24 +2,25 @@ package com.microblog.dao.impl;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
+
 import com.microblog.dao.BaseDao;
+import com.microblog.dao.mybatis.cache.RedisCache;
 
 
 @Repository(value="baseDaoImpl")
 public class BaseDaoImpl<T> extends SqlSessionDaoSupport implements BaseDao<T> {
 	
 	private final String MAPPERPATH="com.microblog.dao.mapper.";
-	private RedisTemplate redisTemplate;
+	private RedisCache client = new RedisCache();
+	
 	public void save(T t, String sqlId) {
 		//                           com.yc.dao.mapper.AccountMapper.update
 		super.getSqlSession().insert(  MAPPERPATH+  t.getClass().getSimpleName() + "Mapper." + sqlId, t);
@@ -85,26 +86,29 @@ public class BaseDaoImpl<T> extends SqlSessionDaoSupport implements BaseDao<T> {
 	//redis数据库方法 start
 	@Override
 	public void setKey(String key, String value) {
-		this.redisTemplate.opsForValue().set(key, value);
+		this.client.set(key, value);
 	}
 
 	@Override
 	public Object getKey(String key) {
-		return this.redisTemplate.opsForValue().get(key);
+		if(this.client.get(key)==null){
+			return null;
+		}
+		return this.client.get(key);
 	}
 
 	@Override
 	public void incr(String key) {
-		this.redisTemplate.opsForValue().increment(key, 1);
+		this.client.increment(key);
 	}
 	
 	@Override
 	public void decr(String key) {
-		this.redisTemplate.opsForValue().increment(key, -1);
+		this.client.decr(key);
 		
 	}
 
-	@Override
+	/*@Override
 	public void lPush(String key, String value) {
 		this.redisTemplate.opsForList().leftPush(key, value);
 	}
@@ -131,13 +135,10 @@ public class BaseDaoImpl<T> extends SqlSessionDaoSupport implements BaseDao<T> {
 
 	@Override
 	public Set<String> getKeys(String pattern) {
-		return this.redisTemplate.keys(pattern);
-	}
+		return this.jedis.keys(pattern);
+	}*/
 	
-	@Resource(name="redisTemplate")
-	public void setRedisTemplate(RedisTemplate redisTemplate) {
-		this.redisTemplate = redisTemplate;
-	}
+	
 	//redis数据库方法 end
 
 	
