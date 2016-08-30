@@ -9,4 +9,6 @@ public class YcConstants {
 	public final static String SAVEPATH = "ziyuan";
 	public final static String URLSPLIT =",split*";
 	
+	//用户名session
+	public final static String LOGINUSER="loginuser";
 }

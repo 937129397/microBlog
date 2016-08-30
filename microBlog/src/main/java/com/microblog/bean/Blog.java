@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Blog implements Serializable {
-	private static final long serialVersionUID = 1L;
+	private static final Long serialVersionUID = 1L;
 
-	private long id;
+	private Long id;
 	private String text;
 	private String pic;
 	private String video;
 	private Date fdate;
-	private long source;
+	private Long source;
 	private String parse;// 点赞数
 	private String relay;// 转发数
 
@@ -23,13 +23,13 @@ public class Blog implements Serializable {
 	public Blog() {
 	}
 
-	public Blog(long id, String text, String pic, Date fdate, long source,
+	public Blog(Long id, String text, String pic, Date fdate, Long source,
 			String parse, String relay, User user) {
 			}
 
 
-	public Blog(long id, String uid, String text, String pic, String video,
-			Date fdate, long source,String parse,String relay) {
+	public Blog(Long id, String uid, String text, String pic, String video,
+			Date fdate, Long source,String parse,String relay) {
 
 		this.id = id;
 		this.text = text;
@@ -41,11 +41,11 @@ public class Blog implements Serializable {
 		this.relay = relay;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 
 	}
@@ -73,11 +73,11 @@ public class Blog implements Serializable {
 		this.fdate = fdate;
 	}
 
-	public long getSource() {
+	public Long getSource() {
 		return source;
 	}
 
-	public void setSource(long source) {
+	public void setSource(Long source) {
 		this.source = source;
 	}
 

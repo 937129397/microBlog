@@ -23,7 +23,7 @@ public class Test extends TestCase {
 		BlogBiz ub=(BlogBiz) ac.getBean("blogBizImpl");
 		Blog blog=new Blog();
 		blog.setText("你好");
-		blog.setSource(1);
+		blog.setSource(1L);
 		blog.setPic("图片");
 		ub.saveBlog(blog);
 	}
