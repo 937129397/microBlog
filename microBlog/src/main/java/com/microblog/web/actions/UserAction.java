@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 
 import com.microblog.bean.User;
 import com.microblog.biz.UserBiz;
+import com.microblog.util.YcConstants;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -63,7 +64,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 			User user = userBiz.loginByEmail(this.user);
 			if (null != user) {
 				Map<String, Object> session = ActionContext.getContext().getSession();
-				session.put("loginuser", user);
+				session.put(YcConstants.LOGINUSER, user);
 				jsonModel.setCode(1);
 				user.setPassword(null);
 				jsonModel.setObj( user);
@@ -82,7 +83,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 			User user = userBiz.loginByTelephone(this.user);
 			if (null != user) {
 				Map<String, Object> session = ActionContext.getContext().getSession();
-				session.put("loginuser", user);
+				session.put(YcConstants.LOGINUSER, user);
 				jsonModel.setCode(1);
 				user.setPassword(null);
 				jsonModel.setObj( user);
@@ -98,8 +99,8 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 	@Action(value = "/user_getUserName")
 	public void getnickname() throws IOException {
 		Map<String, Object> session = ActionContext.getContext().getSession();
-		if( session.get("loginuser") !=null  ){
-			User user = (User) session.get("loginuser");
+		if( session.get(YcConstants.LOGINUSER) !=null  ){
+			User user = (User) session.get(YcConstants.LOGINUSER);
 			jsonModel.setCode(1);
 			jsonModel.setObj(user);
 		}

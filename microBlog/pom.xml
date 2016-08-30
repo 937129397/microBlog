@@ -110,12 +110,8 @@
 		</dependency>
 
 
-		<!-- redis缓存 -->
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-			<version>2.4.2</version>
-		</dependency>
+		
+		
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -128,7 +124,19 @@
 			<artifactId>spring-data-redis</artifactId>
 			<version>1.4.2.RELEASE</version>
 		</dependency>
+	<!-- redis缓存 -->
+			<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.4.2</version>
+		</dependency>
+		
+		
+		
+	
 	</dependencies>
+	
+	
 	<build>
 		<finalName>microBlog</finalName>
 	</build>

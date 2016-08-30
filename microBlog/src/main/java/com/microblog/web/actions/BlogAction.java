@@ -18,6 +18,8 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.microblog.bean.Blog;
+import com.microblog.bean.User;
 import com.microblog.biz.BlogBiz;
 import com.microblog.util.YcConstants;
 import com.microblog.web.model.BlogModel;
@@ -27,8 +29,10 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/")
 @Scope("prototype")
 @ParentPackage("struts-default")
+//@InterceptorRefs(value = { @InterceptorRef("modelDriven"),@InterceptorRef("fileUploadStack")}) 
 @InterceptorRefs({ 
-	@InterceptorRef(value = "fileUpload", params = {"allowedTypes","image/bmp,image/png,image/gif,image/jpeg,image/pjpeg,image/x-png"}),
+	@InterceptorRef("modelDriven"),
+	@InterceptorRef(value = "fileUpload", params = {"allowedExtensions","jpg,bmp,gif,png,tiff,mp4,avi,rmvb,wmv"}),
 	@InterceptorRef(value = "basicStack")  
 })
 public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
@@ -36,11 +40,27 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 	private String picAllowed = "jpg,bmp,gif,png,tiff";
 	private BlogModel blogModel;
 	private BlogBiz blogBiz;
-
 	@Action(value = "/blog_saveBlog")
 	public void saveBlog() throws IOException {
+		
 		String pic = "";
 		String video = "";
+		String[] pv=	uploadPicAndVideo(pic, video);
+		System.out.println("pic-0--->:"+pv[0]+"\nvideo---->:"+pv[1]);
+		Blog blog = blogModel.getBlog();
+		blog.setPic(pv[0]);
+		blog.setVideo(pv[1]);
+		//TODO 登录用户
+		blog.setUser((User) ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER));
+		blogBiz.saveBlog(blog);
+		System.out.println(blog);
+		if(blog.getId()>0)
+		jsonModel.setCode(1);
+		jsonModel.setObj(blogModel.getBlog());
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+	}
+
+	private String[] uploadPicAndVideo(String pic, String video) {
 		List<File> files = blogModel.getFile();
 		if (files != null && files.size() > 0) {
 			for (int i = 0; i < files.size(); i++) {
@@ -50,7 +70,9 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 					if (!f.exists()) {
 						if (!f.mkdirs()) {
 							System.out.println("创建文件失败");
-							return;
+							jsonModel.setCode(0);
+							jsonModel.setMsg("system is wrong");
+							return null;
 						}
 					}
 					String filename = blogModel.getFileFileName().get(i);
@@ -73,18 +95,19 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 					}
 					fis.close();
 					fos.close();
-					jsonModel.setCode(1);
-					jsonModel.setObj(new Object[] { pic, video });
+					
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
+					jsonModel.setCode(0);
+					jsonModel.setMsg(e.getMessage());
 				} catch (IOException e) {
+					jsonModel.setCode(0);
+					jsonModel.setMsg(e.getMessage());
 					e.printStackTrace();
 				}
-
 			}
 		}
-		super.printJson(jsonModel, ServletActionContext.getResponse());
-
+		return new String[]{pic,video};
 	}
 
 	private String rename(String filename) {

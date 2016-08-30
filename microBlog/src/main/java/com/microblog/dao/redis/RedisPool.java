@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+
 /**
  * 以单例模式创建一个jedis的联接池
  */

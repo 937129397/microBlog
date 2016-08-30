@@ -6,7 +6,7 @@
 	<selectKey keyProperty="id" >select max(id)+1 from blog </selectKey>
 		insert into
 		blog(uid,text,fdate,source,pic,video)
-		values(#{uid},#{text},now(),#{source}
+		values(#{user.uid},#{text},now(),#{source}
 		<if test="pic!=null and pic!='' ">,#{pic}</if>
 		<if test="video!=null and video !=''">,#{video}</if>
 		)
