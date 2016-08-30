@@ -21,9 +21,10 @@ public class ConcernBizImpl extends BaseBiz implements ConcernBiz {
 		return true;
 	}
 
+	//TODO
 	@Transactional(readOnly = false)
-	public boolean delConcern(Concern concern) {
-		baseDao.del(Concern.class, "delConcern");
+	public boolean delConcern(Integer id) {
+		baseDao.del(Concern.class, id,"delConcern");
 		return true;
 	}
 

@@ -63,12 +63,7 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
 	}
 	
 	
-	@Transactional(readOnly = true)
-	public List<Groups> findUserGroups(User user) {
-		Map<String ,Object> params=new HashMap<String,Object>();
-		params.put("uid",user.getUid());
-		return baseDao.findList(Groups.class, params, "getUserGroupsByUserID", 0, 5) ;
-	}
+
 
 	@Transactional(readOnly = false, isolation = Isolation.DEFAULT, rollbackForClassName = { "java.lang.RuntimeException" }, propagation = Propagation.REQUIRED)
 	public boolean addUserGroups(User group) {

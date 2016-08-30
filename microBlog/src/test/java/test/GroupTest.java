@@ -21,14 +21,15 @@ public class GroupTest extends TestCase {
 	
 
 	
-	//查询用户
+	//查询用户分组
 	public void testApp09() {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
 				"beans_mybatis.xml");
-		UserBiz userBiz =  (UserBiz) ac.getBean("userBizImpl");
+		GroupsBiz gb = (GroupsBiz) ac.getBean("groupsBizImpl");
+		
 		User user = new User();
 		user.setUid(1);
-		List<Groups> g =userBiz.findUserGroups(user);
+		List<Groups> g =gb.findUserGroups(user);
 		
 		for (Groups groups : g) {
 			System.out.println(groups.getName());

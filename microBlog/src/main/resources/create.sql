@@ -59,7 +59,7 @@ create table blog(
 )
 --评论
 create table comment(
-	id bigint primary key ,
+	id int primary key ,
 	blog_id bigint,--微博id
 	c_uid int,--评论人id
 	text varchar(300)--评论内容

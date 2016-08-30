@@ -10,7 +10,7 @@ public interface ConcernBiz {
 	public boolean addConcern(Concern concern);
 	
 	//取消关注
-	public boolean delConcern(Concern concern);
+	public boolean delConcern(Integer id);
 	
 	//查询粉丝
 	public List<User> getFans(User user);
