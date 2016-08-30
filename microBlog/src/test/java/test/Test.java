@@ -9,7 +9,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.microblog.bean.Blog;
-import com.microblog.bean.BlogModel;
 import com.microblog.bean.Groups;
 import com.microblog.bean.User;
 import com.microblog.biz.BlogBiz;
