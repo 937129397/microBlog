@@ -2,13 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.microblog.dao.mapper.BlogMapper">
-	<insert id="saveBlog" parameterType="Blog">
-	<selectKey keyProperty="id" >select max(id)+1 from blog </selectKey>
+	<insert id="saveBlog" parameterType="com.microblog.bean.Blog">
+		<selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">select max(id)+1 from blog </selectKey>
 		insert into
-		blog(uid,text,fdate,source,pic,video)
-		values(#{user.uid},#{text},now(),#{source}
-		<if test="pic!=null and pic!='' ">,#{pic}</if>
-		<if test="video!=null and video !=''">,#{video}</if>
+		blog(id,uid,text,fdate,source,pic,video)
+		values(#{id},#{user.uid},#{text},now(),#{source},#{pic},#{video}
 		)
 
 	</insert>

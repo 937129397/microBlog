@@ -63,10 +63,10 @@ function judeState() {
 function initImgFace() {
 	var n = 1;
 	var divObj = document.getElementById("biaoqing");
-	var trObj  = divObj.getElementsByTagName("tr");
-	//var trObj = divObj.childNodes[0].childNodes;// 取得tr对象数组
+	var trObj = divObj.getElementsByTagName("tr");
+	// var trObj = divObj.childNodes[0].childNodes;// 取得tr对象数组
 	for (var i = 0; i < trObj.length; i++) {
-		//var tdObj = trObj[i].childNodes;// 取得相对tr的td对象数组
+		// var tdObj = trObj[i].childNodes;// 取得相对tr的td对象数组
 		var tdObj = trObj[i].getElementsByTagName("td");
 		for (var j = 0; j < tdObj.length; j++) {// 将td里面填充出相应的图片
 			tdObj[j].innerHTML = "<img src='images/biaoqing/" + n
@@ -83,39 +83,47 @@ function submitState() {
 	if (txtObj.value.length > 0) {
 		var text = changetxt(txtObj.value);// 替换文本框中的表情
 		var time = inittime();// 取出当前时间
-		
-		$.ajaxFileUpload({
-			url:"blog_saveBlog.action",
-			secureuri:false,
-			fileElementId:["picInput","videoInput"],
-			
-			data:{"blog.text":text},//表单的非文件域
-			dataType:'json',
-			complete:function(){
-				
-			},
-			success:function(data,status){
-				if(data.code==1){
-					var innerht = "<div class='stateShow' onmouseover='stateMouseOver(this)' onmouseout='stateMouseOut(this)'><div class='stateShowWord'><table width='450' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='images/MainRightFirstLineTitle.gif' alt='' width='48' height='48' /></a></td><td width='380'><a href='#'>DarkDemon</a><img src='images/1.gif' align='absmiddle' style='border:none;' />&nbsp;"
-						+ text
-						+ "</td></tr></table></div><div class='stateImgShow'></div><div class='stateShowtime'>"
-						+ time
-						+ "</div><div class='stateOp'><a onclick='reXianShi(this)' class='opState'>回复</a><a class='opState'>转发</a><a onclick='delState(this)' class='opState'>删除</a></div><div class='huifu'></div></div>";
-				}
-			},
-			error:function(data,status,e){
-				alert("cuowu");
-			}	
-		});
-		
-		
-		
-		
-		
-		
-		
-		var divObj = document.getElementById("mainBannerContent");
-		divObj.innerHTML = innerht + divObj.innerHTML;
+
+		$
+				.ajaxFileUpload({
+					url : "blog_saveBlog.action",
+					secureuri : false,
+					fileElementId : [ "picInput", "videoInput" ],
+
+					data : {
+						"blog.text" : text
+					},// 表单的非文件域
+					dataType : 'json',
+					complete : function() {
+
+					},
+					success : function(data, status) {
+						if (data.code == 1) {
+							var picstr = data.obj.pic;
+							var pics = picstr.split(",split*");
+							var innerht = "<div class='stateShow' onmouseover='stateMouseOver(this)' onmouseout='stateMouseOut(this)'><div class='stateShowWord'><table width='450' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='"
+									+ data.obj.user.pic
+									+ "' alt='' width='48' height='48' /></a></td><td width='380'><a href='#'>"
+									+ data.obj.user.nickname
+									+ "</a><img src='images/1.gif' align='absmiddle' style='border:none;' />&nbsp;"
+									+ data.obj.text
+									+ "</td></tr></table></div><div class='stateImgShow'>";
+							for(var i =0;i<pics.length;++i){
+								innerht+="<img width='40' height='40' src='"+pic[i]+"'>";
+							}
+							innerht += "</div><div class='stateShowtime'>"
+									+ time
+									+ "</div><div class='stateOp'><a href='' onclick='reXianShi(this);return false;' class='opState'>回复</a><a  href='' class='opState'>转发</a><a  href='' onclick='delState(this);return false;' class='opState'>删除</a></div><div class='huifu'></div></div>";
+							var divObj = document
+									.getElementById("mainBannerContent");
+							divObj.innerHTML = innerht + divObj.innerHTML;
+						}
+					},
+					error : function(data, status, e) {
+						
+					}
+				});
+
 	}
 	txtObj.value = "";// 清空文本框
 	changeDivHeight();// 重设页面高度
@@ -279,7 +287,7 @@ function stateMouseOut(divObj) {
 
 /* 函数绑定 */
 window.onload = function() {
-	
+
 	changeDivHeight();// 开始的时候设置左栏和右栏的高度
 	initImgFace();// 初始化table里面的图像
 	document.onclick = judeState;// 设置单机取消显示
@@ -287,9 +295,9 @@ window.onload = function() {
 			.getElementsByTagName("img");// 为biaoqingDIV下的所有img设置单机事件
 	for (var i = 0; i < imgObj.length; i++) {
 		/* 单击图像之后,为输入框添加图像相应的值并且设置焦点为文本框 */
-		imgObj[i].onclick = function (event) {
+		imgObj[i].onclick = function(event) {
 			var txtObj = document.getElementById("textfield2");
-			var imgObj = event.target||event.srcElement;
+			var imgObj = event.target || event.srcElement;
 			txtObj.value = txtObj.value + imgObj.title;// 将图像的值写入文本框
 			txtObj.focus();// 设置文本框焦点
 		};// 绑定单机事件
@@ -319,22 +327,18 @@ window.onload = function() {
 function showAddFileDiv(id) {
 	var div = document.getElementById("addFile");
 	for (var i = 0; i < div.getElementsByTagName("input").length; ++i) {
-			div.getElementsByTagName("input")[i].setAttribute("style",
-					"visibility: hidden;");
-		}
+		div.getElementsByTagName("input")[i].setAttribute("style",
+				"visibility: hidden;");
+	}
 	if (div.getAttribute("style") == "visibility: hidden;") {
 		div.setAttribute("style", "visibility: visible;");
- 		document.getElementById(id).setAttribute("style",
+		document.getElementById(id).setAttribute("style",
 				"visibility: visible;");
 	} else {
 		div.setAttribute("style", "visibility: hidden;");
 	}
 
 }
-
-
-
-
 
 /* ****************************************************************** */
 

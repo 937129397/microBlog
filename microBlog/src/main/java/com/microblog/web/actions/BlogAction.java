@@ -56,10 +56,16 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 		System.out.println(blog);
 		if(blog.getId()>0)
 		jsonModel.setCode(1);
-		jsonModel.setObj(blogModel.getBlog());
+		jsonModel.setObj(blog);
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 	}
 
+	/**
+	 * 上传文件
+	 * @param pic
+	 * @param video
+	 * @return
+	 */
 	private String[] uploadPicAndVideo(String pic, String video) {
 		List<File> files = blogModel.getFile();
 		if (files != null && files.size() > 0) {
@@ -110,6 +116,12 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 		return new String[]{pic,video};
 	}
 
+	
+	/**
+	 * 上传文件重命名
+	 * @param filename
+	 * @return
+	 */
 	private String rename(String filename) {
 		String type = filename.substring(filename.lastIndexOf("."));
 		String newName = System.currentTimeMillis() + type;
@@ -117,6 +129,12 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 
 	}
 
+	
+	/**
+	 * 获取存储路径
+	 * @param path
+	 * @return
+	 */
 	private String getSavePath(String path) {
 		return ServletActionContext.getServletContext().getRealPath(path);
 	}
