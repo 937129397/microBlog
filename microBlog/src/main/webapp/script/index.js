@@ -149,7 +149,7 @@ window.onload = function(){
 $(function(){
 	var value="";
 	$.ajax({
-		url:"user_getUserName",
+		url:"user_getUserName.action",
 		type:"POST",
 		dataType:"JSON",
 		success:function(data){

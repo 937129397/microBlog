@@ -14,7 +14,7 @@ create table users(
 	regDate date,
 	realname varchar(40),
 	sex int,
-	birthday varchar(10)
+	birthday varchar(20)
 );
 
 insert into users(uid) values(0);

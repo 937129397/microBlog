@@ -37,7 +37,7 @@ public class Test extends TestCase {
 		User user = new User();
 		
 		user.setEmail("571880590@qq.com");
-		user.setPassword("a");
+		user.setPassword("123123");
 		ub.loginByEmail(user);
 		System.out.println("登陆成功");
 	}
@@ -51,7 +51,7 @@ public class Test extends TestCase {
 		User user = new User();
 		
 		user.setEmail("571880590@qq.com");
-		user.setPassword("a");
+		user.setPassword("123123");
 		user.setTelephone("123141241212");
 		user.setNickname("xiaoer");
 		ub.register(user);
