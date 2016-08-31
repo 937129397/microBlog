@@ -52,7 +52,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		}
 	}
 	
-	@Action(value = "/user_register.action")
+	@Action(value = "/user_register")
 	public void register() throws IOException {
 		if(    jsonModel.getCode()==null){
 			userBiz.register(user);
@@ -62,7 +62,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		
 	}
 	
-	@Action(value = "/user_loginByEmail.action")
+	@Action(value = "/user_loginByEmail")
 	public void login() throws Exception {
 		if(   jsonModel.getCode()==null ){
 			User user = userBiz.loginByEmail(this.user);
@@ -80,7 +80,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		
 	}
 	
-	@Action(value = "/user_loginByTelephone.action")
+	@Action(value = "/user_loginByTelephone")
 	public void login2() throws Exception {
 		if(   jsonModel.getCode()==null ){
 			User user = userBiz.loginByTelephone(this.user);
@@ -98,7 +98,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		
 	}
 	
-	@Action(value = "/user_getUserName.action")
+	@Action(value = "/user_getUserName")
 	public void getnickname() throws IOException {
 		if( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER) !=null  ){
 			User user = (User)  ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
