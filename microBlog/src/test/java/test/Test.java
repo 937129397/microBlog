@@ -9,7 +9,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.microblog.bean.Blog;
-import com.microblog.bean.BlogModel;
 import com.microblog.bean.Groups;
 import com.microblog.bean.User;
 import com.microblog.biz.BlogBiz;
@@ -24,7 +23,7 @@ public class Test extends TestCase {
 		BlogBiz ub=(BlogBiz) ac.getBean("blogBizImpl");
 		Blog blog=new Blog();
 		blog.setText("你好");
-		blog.setSource(1);
+		blog.setSource(1L);
 		blog.setPic("图片");
 		ub.saveBlog(blog);
 	}
