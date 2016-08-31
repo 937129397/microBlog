@@ -75,9 +75,6 @@ public class BlogWebSocket {
 
 	@OnClose
 	public void end() {
-		User us=new User();
-		us.setUid(1);
-		httpSession.setAttribute("loginuser", us);
 		if (httpSession.getAttribute("loginuser") != null
 				|| !"".equals(httpSession.getAttribute("loginuser"))) {
 			User u = (User) httpSession.getAttribute("loginuser");
@@ -109,9 +106,6 @@ public class BlogWebSocket {
 	}
 
 	private static void broadcast(String msg) {
-		User us=new User();
-		us.setUid(1);
-		httpSession.setAttribute("loginuser", us);
 		if (httpSession.getAttribute("loginuser") != null
 				|| !"".equals(httpSession.getAttribute("loginuser"))) {
 			User u = (User)httpSession.getAttribute("loginuser");

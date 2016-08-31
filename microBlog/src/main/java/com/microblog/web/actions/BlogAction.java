@@ -40,7 +40,18 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 	private String picAllowed = "jpg,bmp,gif,png,tiff";
 	private BlogModel blogModel;
 	private BlogBiz blogBiz;
-	@Action(value = "/blog_saveBlog.action")
+	
+	//首页查询所有关注好友的微博
+	@Action(value = "/blog_findAll")
+	public void findAll() throws IOException{
+		blogModel=this.blogBiz.findAllBlog(blogModel);
+		blogModel.setBlog(null);
+		jsonModel.setCode(1);
+		jsonModel.setObj(blogModel);
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+	}
+	
+	@Action(value = "/blog_saveBlog")
 	public void saveBlog() throws IOException {
 		
 		String pic = "";

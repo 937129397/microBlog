@@ -1,3 +1,26 @@
+$(function(){
+	$.ajax({
+			type:'post',
+			url:"blog_findAll.action",
+			dataType:'json',
+			success:function(data){
+				$("#mainBannerContent").html("");
+				var html="";
+				if(data.code==1){
+					for(var i=0;i<data.obj.blogs.length;i++){
+						var blogs=data.obj.blogs[i];
+						html+="<div>"
+					}
+					
+				}else{
+					
+				}
+				$("#mainBannerContent").html(html);
+			}
+	});
+});
+
+
 // JavaScript Document
 var bqvalue = new Array("(smile)", "(亲亲)", "(偷笑)", "(傲慢)", "(再见)", "(冷汗)",
 		"(发呆)", "(发怒)", "(可怜)", "(可爱)", "(右哼哼)", "(吐)", "(吓)", "(呲牙)", "(咒骂)",

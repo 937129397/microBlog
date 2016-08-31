@@ -15,6 +15,7 @@ import com.microblog.biz.BlogBiz;
 import com.microblog.biz.ConcernBiz;
 import com.microblog.biz.GroupsBiz;
 import com.microblog.biz.UserBiz;
+import com.microblog.web.model.BlogModel;
 
 public class Test extends TestCase {
 
@@ -114,5 +115,14 @@ public class Test extends TestCase {
 		Concern c=new Concern();
 		c.setF_uid(2);
 		System.out.println(ub.getBidByFid(c));
+	}
+	//查询所有关注的人的微博
+	public void testApp13() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"beans_mybatis.xml");
+		BlogBiz ub = (BlogBiz) ac.getBean("blogBizImpl");
+		BlogModel b=new BlogModel();
+		System.out.println(ub.findAllBlog(b));
+		
 	}
 }
