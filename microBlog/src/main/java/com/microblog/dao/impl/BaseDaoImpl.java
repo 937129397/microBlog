@@ -20,7 +20,7 @@ public class BaseDaoImpl<T> extends SqlSessionDaoSupport implements BaseDao<T> {
 	
 	private final String MAPPERPATH="com.microblog.dao.mapper.";
 	private RedisCache client = new RedisCache();
-	
+	 	
 	public void save(T t, String sqlId) {
 		//                           com.yc.dao.mapper.AccountMapper.update
 		super.getSqlSession().insert(  MAPPERPATH+  t.getClass().getSimpleName() + "Mapper." + sqlId, t);
