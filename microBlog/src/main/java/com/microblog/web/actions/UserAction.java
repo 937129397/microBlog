@@ -48,7 +48,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		}
 	}
 	
-	@Action(value = "/user_register")
+	@Action(value = "/user_register.action")
 	public void register() throws IOException {
 		if(    jsonModel.getCode()==null){
 			userBiz.register(user);
@@ -58,7 +58,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		
 	}
 	
-	@Action(value = "/user_loginByEmail")
+	@Action(value = "/user_loginByEmail.action")
 	public void login() throws Exception {
 		if(   jsonModel.getCode()==null ){
 			User user = userBiz.loginByEmail(this.user);
@@ -77,7 +77,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		
 	}
 	
-	@Action(value = "/user_loginByTelephone")
+	@Action(value = "/user_loginByTelephone.action")
 	public void login2() throws Exception {
 		if(   jsonModel.getCode()==null ){
 			User user = userBiz.loginByTelephone(this.user);
@@ -96,7 +96,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		
 	}
 	
-	@Action(value = "/user_getUserName")
+	@Action(value = "/user_getUserName.action")
 	public void getnickname() throws IOException {
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		if( session.get(YcConstants.LOGINUSER) !=null  ){
