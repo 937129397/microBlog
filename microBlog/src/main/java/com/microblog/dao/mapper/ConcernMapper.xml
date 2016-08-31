@@ -20,4 +20,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="addUserConcern">
 		
 	</insert>
+	
+	<!-- 根据粉丝ID查博主ID -->
+	<select id="getBidByFid" resultType="int">
+		select b_uid from concern where f_uid=#{f_uid}
+	</select>
 </mapper>

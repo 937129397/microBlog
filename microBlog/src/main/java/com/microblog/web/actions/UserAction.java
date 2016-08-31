@@ -1,9 +1,12 @@
 package com.microblog.web.actions;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletContext;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -25,6 +28,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 	private static final long serialVersionUID = -7958780916496829538L;
 	private User user;
 	private UserBiz userBiz;
+	private ServletContext application;
 
 	@Override
 	public User getModel() {
@@ -64,6 +68,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 			if (null != user) {
 				Map<String, Object> session = ActionContext.getContext().getSession();
 				session.put("loginuser", user);
+				
 				jsonModel.setCode(1);
 				user.setPassword(null);
 				jsonModel.setObj( user);

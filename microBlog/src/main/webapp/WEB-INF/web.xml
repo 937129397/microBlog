@@ -10,6 +10,10 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<listener>
+		<listener-class>com.microblog.web.listeners.InitListener</listener-class>
+	</listener>
 
 	<filter>
 		<filter-name>struts2</filter-name>

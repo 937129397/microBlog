@@ -31,5 +31,8 @@ public interface UserBiz {
 	//插入用户的自定义分组
 	public boolean addUserGroups(User group);
 	
+	//查出所有的用户ID 建立websocket连接时使用
+	public List<Integer> getUidList();
+	
 
 }
