@@ -25,8 +25,7 @@ public interface UserBiz {
 	
 	public boolean update(User user);
 	
-	//查找用户的所有分组
-	public  List<Groups> findUserGroups(User user);
+
 	
 	//插入用户的自定义分组
 	public boolean addUserGroups(User group);

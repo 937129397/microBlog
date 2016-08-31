@@ -38,7 +38,7 @@ $(function(){
 					};
 					$.ajax({
 						  type: 'POST',
-						  url: "user_loginByEmail",
+						  url: "user_loginByEmail.action",
 						  data:params,
 						  dataType: 'JSON',
 						  success: function( data ){
@@ -51,7 +51,7 @@ $(function(){
 						  }
 					});
 				}else{
-					return false;
+					alert("请输入正确格式的登录名和密码");
 				}
 			}else{//进入手机号处理流程
 				/* 如果密码长度符合要求 并且也是11位的纯手机号,则返回正确 */
@@ -62,7 +62,7 @@ $(function(){
 					};
 					$.ajax({
 						  type: 'POST',
-						  url: "user_loginByTelephone",
+						  url: "user_loginByTelephone.action",
 						  dataType: 'JSON',
 						  success: function( data ){
 							 if( data.code==1){
@@ -78,7 +78,7 @@ $(function(){
 						userId.value = "请输入正确邮箱|手机号码"
 						userId.style.backgroundColor = "#B9E3AB"
 					}
-					return false;
+					alert("请输入正确格式的登录名和密码");
 				}
 			}
 		   

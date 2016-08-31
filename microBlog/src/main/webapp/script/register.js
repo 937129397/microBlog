@@ -186,7 +186,7 @@ $(function(){
 	$.ajax({
 		  type: 'POST',
 		  data: $("#myform").serialize(),
-		  url: "user_register",
+		  url: "user_register.action",
 		  dataType: 'JSON',
 		  success: function( data ){
 			 if( data.code==1){

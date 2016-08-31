@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<selectKey keyProperty="id" order="BEFORE" resultType="Integer">
 			select max(id)+1 from groups
 		</selectKey>
-		insert into groups values(#{id},#{name})
+		insert into groups(id,name) values(#{id},#{name})
 	</insert>
 	
 	<select id="getUserGroupsByUserID" parameterType="map" resultType="Groups">

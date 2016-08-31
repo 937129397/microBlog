@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.microblog.dao.mapper.ConcernMapper">
 	<!-- 查询用户的粉丝 -->
-	<select id="getUsersFans">
+	<select id="getUsersFans" resultType="User">
 	select uid,nickname from users where uid in
 	(select f_uid from concern c 
 	inner join users u on c.b_uid=u.uid 
@@ -12,13 +12,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 查询用户的粉丝总数 -->
-	<select id="getUserFansCount">
-	select count(1) from concern where b_uid=#{uid}
+	<select id="getUserFansCount" resultType="Integer">
+	select count(1) from concern where b_uid=#{b_uid}
 	</select>
 	
 	<!-- 添加关注 -->
 	<insert id="addUserConcern">
-		
+	<selectKey keyProperty="id" order="BEFORE" resultType="Integer">
+			select max(id)+1 from concern
+	</selectKey>
+	insert into concern(id,b_uid,f_uid,group_id)
+	values(#{id},#{uid},#{f_uid},#{group_id})
 	</insert>
 	
 	<!-- 根据粉丝ID查博主ID -->
