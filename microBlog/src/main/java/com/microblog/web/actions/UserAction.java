@@ -67,8 +67,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		if(   jsonModel.getCode()==null ){
 			User user = userBiz.loginByEmail(this.user);
 			if (null != user) {
-				Map<String, Object> session = ActionContext.getContext().getSession();
-				session.put(YcConstants.LOGINUSER, user);
+				ServletActionContext.getRequest().getSession().setAttribute(YcConstants.LOGINUSER, user);
 				jsonModel.setCode(1);
 				user.setPassword(null);
 				jsonModel.setObj( user);
@@ -86,8 +85,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		if(   jsonModel.getCode()==null ){
 			User user = userBiz.loginByTelephone(this.user);
 			if (null != user) {
-				Map<String, Object> session = ActionContext.getContext().getSession();
-				session.put(YcConstants.LOGINUSER, user);
+				ServletActionContext.getRequest().getSession().setAttribute(YcConstants.LOGINUSER, user);
 				jsonModel.setCode(1);
 				user.setPassword(null);
 				jsonModel.setObj( user);
@@ -102,9 +100,8 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 	
 	@Action(value = "/user_getUserName")
 	public void getnickname() throws IOException {
-		Map<String, Object> session = ActionContext.getContext().getSession();
-		if( session.get(YcConstants.LOGINUSER) !=null  ){
-			User user = (User) session.get(YcConstants.LOGINUSER);
+		if( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER) !=null  ){
+			User user = (User)  ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
 			jsonModel.setCode(1);
 			jsonModel.setObj(user);
 		}
