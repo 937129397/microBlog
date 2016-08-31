@@ -71,5 +71,10 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
 		return true;
 	}
 
+	@Override
+	public List<Integer> getUidList() {
+		return baseDao.findAll(User.class,"getAllUserId");
+	}
+
 
 }

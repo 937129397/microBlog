@@ -32,13 +32,9 @@ public class RedisCache implements Cache {
 		logger.debug("create an cache instance with id:" + id);
 		this.id = id;
 	}
-	
-	
 
 	public RedisCache() {
 	}
-
-
 
 	public String getId() {
 		return this.id;

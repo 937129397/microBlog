@@ -52,5 +52,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from user_group where uid=#{uid} and id=#{id}
 	</delete>
 	
+	<!-- 查询所有的用户Id  websocket使用-->
+	<select	id="getAllUserId" resultType="int">
+		select uid from users
+	</select>
+	
 	
 </mapper>

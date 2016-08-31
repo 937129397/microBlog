@@ -41,7 +41,6 @@ public class Concern implements Serializable{
 	}
 	public Concern(Integer id, Integer b_uid, Integer f_uid, String note,
 			Groups groups) {
-		super();
 		this.id = id;
 		this.b_uid = b_uid;
 		this.f_uid = f_uid;
@@ -49,7 +48,6 @@ public class Concern implements Serializable{
 		this.groups = groups;
 	}
 	public Concern() {
-		super();
 	}
 	
 	
