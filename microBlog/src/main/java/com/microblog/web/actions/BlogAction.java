@@ -53,7 +53,6 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 		//TODO 登录用户
 		blog.setUser((User) ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER));
 		blogBiz.saveBlog(blog);
-		System.out.println(blog);
 		if(blog.getId()>0)
 		jsonModel.setCode(1);
 		jsonModel.setObj(blog);
@@ -82,17 +81,22 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 						}
 					}
 					String filename = blogModel.getFileFileName().get(i);
+					String newName=rename(filename);
 					String pp = getSavePath(YcConstants.SAVEPATH + "\\"
 							+ blogModel.getFileContentType().get(i))
-							+ "\\" + rename(filename);
+							+ "\\" + newName;
 					FileOutputStream fos = new FileOutputStream(pp);
 					FileInputStream fis = new FileInputStream(files.get(i));
 					String type = filename
 							.substring(filename.lastIndexOf(".") + 1);
 					if (picAllowed.contains(type)) {
-						pic += pp + YcConstants.URLSPLIT;
+						pic += YcConstants.SAVEPATH + "\\"
+								+ blogModel.getFileContentType().get(i)
+								+ "\\" + newName + YcConstants.URLSPLIT;
 					} else {
-						video += pp + YcConstants.URLSPLIT;
+						video += YcConstants.SAVEPATH + "\\"
+								+ blogModel.getFileContentType().get(i)
+								+ "\\" + newName + YcConstants.URLSPLIT;
 					}
 					byte[] buffer = new byte[1024];
 					int len = 0;

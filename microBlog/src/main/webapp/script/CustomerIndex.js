@@ -94,9 +94,6 @@ function submitState() {
 						"blog.text" : text
 					},// 表单的非文件域
 					dataType : 'json',
-					complete : function() {
-
-					},
 					success : function(data, status) {
 						if (data.code == 1) {
 							var picstr = data.obj.pic;
@@ -108,12 +105,14 @@ function submitState() {
 									+ "</a><img src='images/1.gif' align='absmiddle' style='border:none;' />&nbsp;"
 									+ data.obj.text
 									+ "</td></tr></table></div><div class='stateImgShow'>";
-							for(var i =0;i<pics.length;++i){
-								innerht+="<img width='40' height='40' src='"+pic[i]+"'>";
+							for(var i = 0;i<pics.length;++i){
+								if(pics[i] !=null &&pics[i]!=""){
+									innerht+="<img width='120' height='120' src='"+pics[i]+"'>";
+								}
 							}
 							innerht += "</div><div class='stateShowtime'>"
 									+ time
-									+ "</div><div class='stateOp'><a href='' onclick='reXianShi(this);return false;' class='opState'>回复</a><a  href='' class='opState'>转发</a><a  href='' onclick='delState(this);return false;' class='opState'>删除</a></div><div class='huifu'></div></div>";
+									+ "</div><div class='stateOp'><a href='' onclick='reXianShi(this)' class='opState'>回复</a><a  href='' class='opState'>转发</a></div><div class='huifu'></div></div>";
 							var divObj = document
 									.getElementById("mainBannerContent");
 							divObj.innerHTML = innerht + divObj.innerHTML;
@@ -126,6 +125,8 @@ function submitState() {
 
 	}
 	txtObj.value = "";// 清空文本框
+	$("#picInput").val("");
+	$("#videoInput").val("");
 	changeDivHeight();// 重设页面高度
 }
 
