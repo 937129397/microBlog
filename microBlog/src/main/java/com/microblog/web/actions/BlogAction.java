@@ -40,6 +40,7 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 	private String picAllowed = "jpg,bmp,gif,png,tiff";
 	private BlogModel blogModel;
 	private BlogBiz blogBiz;
+	
 	@Action(value = "/blog_saveBlog")
 	public void saveBlog() throws IOException {
 		
@@ -149,5 +150,5 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 	public void setBlogBiz(BlogBiz blogBiz) {
 		this.blogBiz = blogBiz;
 	}
-
+	
 }

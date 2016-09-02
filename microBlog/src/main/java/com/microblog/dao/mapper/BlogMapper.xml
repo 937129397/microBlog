@@ -22,8 +22,5 @@
 		<association property="user" column="uid"
 			select="com.microblog.dao.mapper.UserMapper.getUser" />
 	</resultMap>
-	<!-- 查询总微博数 -->
-	<select id="getBlogCount" resultType="int">
-		select count(1) from blog
-	</select>
+	
 </mapper>

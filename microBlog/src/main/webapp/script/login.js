@@ -44,7 +44,7 @@ $(function(){
 						  success: function( data ){
 							 if( data.code==1){
 								 alert( '登录成功...');
-								 location.href='index.html';
+								 location.href='MyWB.html';
 							 }else{
 								 alert('登录失败,原因:'+ data.msg);
 							 }
@@ -64,10 +64,11 @@ $(function(){
 						  type: 'POST',
 						  url: "user_loginByTelephone.action",
 						  dataType: 'JSON',
+						  data:params,
 						  success: function( data ){
 							 if( data.code==1){
 								 alert( '登录成功...');
-								 location.href='index.html';
+								 location.href='MyWB.html';
 							 }else{
 								 alert('登录失败,原因:'+ data.msg);
 							 }

@@ -98,7 +98,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		
 	}
 	
-	@Action(value = "/user_getUserName")
+	@Action(value = "/user_getUserInfo")
 	public void getnickname() throws IOException {
 		if( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER) !=null  ){
 			User user = (User)  ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
@@ -107,5 +107,17 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		}
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 	}
-
+	
+	@Action(value = "/user_getOwnBlogCount")
+	public void getBlogCount() throws IOException{
+		User user = (User) ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
+		Integer i = userBiz.findUserBlogCount(user);
+		if(i==null){
+			i=0;
+		}
+		jsonModel.setCode(1);
+		jsonModel.setObj(i);
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+	}
+	
 }

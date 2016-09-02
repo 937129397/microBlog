@@ -25,7 +25,8 @@ public interface UserBiz {
 	
 	public boolean update(User user);
 	
-
+	//查询用户微博数
+	public Integer findUserBlogCount(User user);
 	
 	//插入用户的自定义分组
 	public boolean addUserGroups(User group);

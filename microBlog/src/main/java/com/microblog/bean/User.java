@@ -16,6 +16,7 @@ public class User implements Serializable{
 	private Date regDate;
 	private Integer sex;
 	private String birthday;
+	private String sign;
 	
 	private Groups group;
 	
@@ -56,6 +57,9 @@ public class User implements Serializable{
 		return pic;
 	}
 	public void setPic(String pic) {
+		if(pic==null){
+			pic="images/mainBannerContent2People1Img.gif";
+		}
 		this.pic = pic;
 	}
 	public String getTelephone() {
@@ -99,8 +103,15 @@ public class User implements Serializable{
 		return "User [uid=" + uid + ", email=" + email + ", password="
 				+ password + ", nickname=" + nickname + ", pic=" + pic
 				+ ", telephone=" + telephone + ", level=" + level + ", exp="
-				+ exp + ", regDate=" + regDate + ", sex=" + sex + ", birthday="
+				+ exp + ", regDate=" + regDate + ", sex=" + sex +", sign="
+						+sign+ ", birthday="
 				+ birthday + "]";
+	}
+	public String getSign() {
+		return sign;
+	}
+	public void setSign(String sign) {
+		this.sign = sign;
 	}
 	
 }

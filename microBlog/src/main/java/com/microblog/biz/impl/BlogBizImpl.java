@@ -13,6 +13,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 import com.microblog.bean.Blog;
+import com.microblog.bean.User;
 import com.microblog.biz.BlogBiz;
 import com.microblog.dao.BaseDao;
 import com.microblog.web.model.BlogModel;
@@ -105,5 +106,6 @@ public class BlogBizImpl implements BlogBiz {
 			return null;
 		}
 	}
+
 
 }
