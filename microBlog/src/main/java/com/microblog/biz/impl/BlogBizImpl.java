@@ -1,9 +1,12 @@
 package com.microblog.biz.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -13,8 +16,11 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 import com.microblog.bean.Blog;
+import com.microblog.bean.Concern;
+import com.microblog.bean.User;
 import com.microblog.biz.BlogBiz;
 import com.microblog.dao.BaseDao;
+import com.microblog.util.YcConstants;
 import com.microblog.web.model.BlogModel;
 
 @Service
@@ -38,15 +44,22 @@ public class BlogBizImpl implements BlogBiz {
 
 	// 得到总的微博
 	public BlogModel findAllBlog(BlogModel hs) {
+		Map<String ,Object> params=new HashMap<String,Object>();
+		User u=new User();
+		u.setUid(2);
+		//ServletActionContext.getRequest().getSession().setAttribute(YcConstants.LOGINUSER,u);
+		//u=(User) ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
+		params.put("f_uid",u.getUid());
 		// 查询总记录数
-		int count = baseDao.getCount(Blog.class, "getBlogCount");
+		int count = baseDao.getCount(Blog.class,params, "getBlogCount");
 		// 计算总页数
 		int total = count % hs.getSizePage() == 0 ? count / hs.getSizePage()
 				: count / hs.getSizePage() + 1;
 		hs.setTotal(total);
 		// 计算偏移量
 		int off = (hs.getCurrPage() - 1) * hs.getSizePage();
-		List<Blog> hh = this.baseDao.findList(Blog.class, null, "getBlog", off,
+		
+		List<Blog> hh = this.baseDao.findList(Concern.class, params, "getID", off,
 				hs.getSizePage());
 		// 操作redis数据库 整合关系数据库
 		for (Blog blog : hh) {

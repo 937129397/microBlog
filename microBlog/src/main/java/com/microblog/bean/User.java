@@ -20,6 +20,24 @@ public class User implements Serializable{
 	private Groups group;
 	
 	
+	public User() {
+	}
+	public User(Integer uid, String email, String password, String nickname,
+			String pic, String telephone, Integer level, Integer exp,
+			Date regDate, Integer sex, String birthday, Groups group) {
+		this.uid = uid;
+		this.email = email;
+		this.password = password;
+		this.nickname = nickname;
+		this.pic = pic;
+		this.telephone = telephone;
+		this.level = level;
+		this.exp = exp;
+		this.regDate = regDate;
+		this.sex = sex;
+		this.birthday = birthday;
+		this.group = group;
+	}
 	public Groups getGroup() {
 		return group;
 	}

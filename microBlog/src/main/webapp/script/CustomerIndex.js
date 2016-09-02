@@ -105,21 +105,22 @@ function submitState() {
 									+ "</a><img src='images/1.gif' align='absmiddle' style='border:none;' />&nbsp;"
 									+ data.obj.text
 									+ "</td></tr></table></div><div class='stateImgShow'>";
-							for(var i = 0;i<pics.length;++i){
-								if(pics[i] !=null &&pics[i]!=""){
-									innerht+="<img width='120' height='120' src='"+pics[i]+"'>";
+							for (var i = 0; i < pics.length; ++i) {
+								if (pics[i] != null && pics[i] != "") {
+									innerht += "<img width='120' height='120' src='"
+											+ pics[i] + "'>";
 								}
 							}
 							innerht += "</div><div class='stateShowtime'>"
 									+ time
-									+ "</div><div class='stateOp'><a href='' onclick='reXianShi(this)' class='opState'>回复</a><a  href='' class='opState'>转发</a></div><div class='huifu'></div></div>";
+									+ "</div><div class='stateOp'><a href='' onclick='reXianShi(this);return false;' class='opState'>回复</a><a  href='' class='opState'>转发</a></div><div class='huifu'></div></div>";
 							var divObj = document
 									.getElementById("mainBannerContent");
 							divObj.innerHTML = innerht + divObj.innerHTML;
 						}
 					},
 					error : function(data, status, e) {
-						
+
 					}
 				});
 
@@ -235,6 +236,17 @@ function submitRstate() {
 
 /* 点回复时显示原来的回复窗口 */
 function reXianShi(srcObj) {
+//	var tmp = $("#mainBannerContent");
+//	var src = srcObj;
+//	if(src.parentNode.parentNode.parentNode == tmp){
+//		hfObj = src.parentNode.nextSibling;
+//	}
+//	
+//	 $("#recieve").attr("style","visibility:visible");
+//	
+	
+	
+	
 	var tmp = document.getElementById("mainBannerContent");
 	var heights;
 	/* 判断是回复里面点的回复还是在与那里的状态里面点的回复 */
@@ -248,10 +260,11 @@ function reXianShi(srcObj) {
 	var divObj = document.getElementById("recieve");
 	divObj.style.visibility = "visible";
 	/* 如果是最后一个状态就点设置回复窗口在上面显示 */
-	if (tmp.offsetHeight - event.y >= 30) {
-		divObj.style.top = event.y + "px";
+	
+	if (tmp.offsetHeight - srcObj.offsetTop  >= 30) {
+		divObj.style.top = srcObj.offsetTop  + "px";
 	} else {
-		divObj.style.top = (event.y - hfObj.parentNode.offsetHeight) + "px";
+		divObj.style.top = (srcObj.offsetTop  - hfObj.parentNode.offsetHeight) + "px";
 	}
 	var txt = document.getElementById("ta1");
 	txt.value = "";
@@ -259,6 +272,9 @@ function reXianShi(srcObj) {
 	srcUser = srcUser.childNodes[0].childNodes[0].childNodes[0].childNodes[1].childNodes[0];
 	srcUser = "&nbsp;@" + srcUser.innerHTML + "&nbsp;&nbsp;"
 }
+
+
+
 /* 点红叉时，关闭回复面板 */
 function windowClose() {
 	var divObj = document.getElementById("recieve");
@@ -340,6 +356,55 @@ function showAddFileDiv(id) {
 	}
 
 }
+
+$(function() {
+	
+	$.ajax({
+		type : 'post',
+		url : "blog_findAll.action",
+		dataType : 'json',
+		success : function(data) {
+			var recieveDiv = $("#recieve");
+			$("#mainBannerContent").html("");
+			if (data.code == 1) {
+				var innerht = "";
+				var blogs = data.obj.blogs;
+				for(var j=0;j<blogs.length;++j){
+					
+					var picstr = blogs[j].pic;
+					var pics = picstr.split(",split*");
+					 innerht += "<div class='stateShow' onmouseover='stateMouseOver(this)' onmouseout='stateMouseOut(this)'><div class='stateShowWord'><table width='450' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='"
+						+ blogs[j].user.pic
+						+ "' alt='' width='48' height='48' /></a></td><td width='380'><a href='#'>"
+						+ blogs[j].user.nickname
+						+ "</a><img src='images/1.gif' align='absmiddle' style='border:none;' />&nbsp;"
+						+ blogs[j].text
+						+ "</td></tr></table></div><div class='stateImgShow'>";
+					for (var i = 0; i < pics.length; ++i) {
+						if (pics[i] != null && pics[i] != "") {
+							innerht += "<img width='120' height='120' src='"
+								+ pics[i] + "'>";
+						}
+					}
+					var diancanCount=0;
+					if(!blogs[j].parse==null&&!blogs[j].parse==undefined ){
+						diancanCount =blogs[j].parse;
+					}
+					
+					innerht += "</div><div class='stateShowtime'>"
+						+ blogs[j].fdate
+						+ "</div><div class='stateOp'>" +
+						"<img width='20px' height='17px' src='images/dianzan.png' onclick='dianzan("+blogs[j].id+")' /><span id='dianzan"+blogs[j].id+"'> ("+diancanCount+")</span>  <a href='' onclick='reXianShi(this);return false;' class='opState'>回复</a><a  href='' class='opState'>转发</a></div><div class='huifu'></div></div>";
+				}
+				
+				$("#mainBannerContent").html(innerht);
+				$("#mainBannerContent").append(recieveDiv);
+			}
+
+
+		}
+	});
+})
 
 /* ****************************************************************** */
 

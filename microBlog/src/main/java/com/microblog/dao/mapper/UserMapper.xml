@@ -25,6 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from users where uid = #{uid}
 	</select>
 	
+	<select id="getUserForBlog" resultType="User">
+		select uid,nickname,pic from users where uid = #{uid}
+	</select>
+	
 	<insert id="saveUser" parameterType="User">
 		<selectKey keyProperty="uid" order="BEFORE" resultType="Integer">
 			select max(uid)+1 from users
