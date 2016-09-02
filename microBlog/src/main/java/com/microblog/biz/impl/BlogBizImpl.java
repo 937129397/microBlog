@@ -22,13 +22,7 @@ import com.microblog.web.model.BlogModel;
 
 @Service
 @Transactional(readOnly = true)
-public class BlogBizImpl implements BlogBiz {
-	private BaseDao baseDao;
-
-	@Resource(name = "baseDaoImpl")
-	public void setBaseDao(BaseDao baseDao) {
-		this.baseDao = baseDao;
-	}
+public class BlogBizImpl extends BaseBiz implements BlogBiz {
 
 	/**
 	 * 发布微博存入数据库
