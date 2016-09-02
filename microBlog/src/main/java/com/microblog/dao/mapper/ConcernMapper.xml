@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 根据当前登录ID查所关注ID 首页微博用-->
 	<select id="getID" resultMap="BlogMap">
-	select * from blog where uid in(select b_uid from concern where f_uid=#{f_uid})
+	select * from blog where uid in(select b_uid from concern where f_uid=#{f_uid}) order by fdate desc
 	</select>
 	<resultMap type="Blog" id="BlogMap">
 		<association property="user" column="uid"

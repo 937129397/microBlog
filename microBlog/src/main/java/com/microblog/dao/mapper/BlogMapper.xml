@@ -11,7 +11,7 @@
 		blog(id,uid,text,fdate,source,pic,video)
 		values(#{id},#{user.uid},#{text},now(),#{source},#{pic},#{video}
 		)
-
+	
 	</insert>
 
 	

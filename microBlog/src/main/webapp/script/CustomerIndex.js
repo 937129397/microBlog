@@ -125,7 +125,7 @@ function submitState() {
 				});
 
 	}
-	txtObj.value = "";// 清空文本框
+	//txtObj.value = "";// 清空文本框
 	$("#picInput").val("");
 	$("#videoInput").val("");
 	changeDivHeight();// 重设页面高度
@@ -386,15 +386,11 @@ $(function() {
 								+ pics[i] + "'>";
 						}
 					}
-					var diancanCount=0;
-					if(!blogs[j].parse==null&&!blogs[j].parse==undefined ){
-						diancanCount =blogs[j].parse;
-					}
 					
 					innerht += "</div><div class='stateShowtime'>"
-						+ blogs[j].fdate
+						+ blogs[j].fdateStr
 						+ "</div><div class='stateOp'>" +
-						"<img width='20px' height='17px' src='images/dianzan.png' onclick='dianzan("+blogs[j].id+")' /><span id='dianzan"+blogs[j].id+"'> ("+diancanCount+")</span>  <a href='' onclick='reXianShi(this);return false;' class='opState'>回复</a><a  href='' class='opState'>转发</a></div><div class='huifu'></div></div>";
+						"<img width='20px' height='17px' src='images/dianzan.png' onclick='dianzan("+blogs[j].id+")' /><span id='dianzan"+blogs[j].id+"'> ("+blogs[j].parse+")</span>  <a href='' onclick='reXianShi(this);return false;' class='opState'>回复</a><a  href='' class='opState'>转发</a></div><div class='huifu'></div></div>";
 				}
 				
 				$("#mainBannerContent").html(innerht);
@@ -405,6 +401,21 @@ $(function() {
 		}
 	});
 })
+
+function dianzan(id){
+	$.ajax({
+		url:'blog_parse.action',
+		type:'post',
+		dataType:'json',
+		data:{'blog.id':id},
+		success:function(data){
+			if(data.code==1){
+				$("#dianzan"+id).html("("+data.obj+")");
+			}
+		}
+	});
+	
+}
 
 /* ****************************************************************** */
 

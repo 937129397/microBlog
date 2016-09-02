@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -23,6 +25,7 @@ import com.microblog.bean.User;
 import com.microblog.biz.BlogBiz;
 import com.microblog.util.YcConstants;
 import com.microblog.web.model.BlogModel;
+import com.microblog.web.websocket.BlogWebSocket;
 import com.opensymphony.xwork2.ModelDriven;
 
 @Controller
@@ -46,10 +49,9 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 	@Action(value = "/blog_findAll")
 	public void findAll() throws IOException {
 		blogModel = this.blogBiz.findAllBlog(blogModel);
-		blogModel.setBlog(null);
+		//blogModel.setBlog(null);
 		jsonModel.setCode(1);
 		jsonModel.setObj(blogModel);
-		System.out.println(blogModel.getBlogs());
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 	}
 
@@ -66,7 +68,7 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 			int uid = u.getUid();
 			String num = this.blogBiz.parse(id, uid);
 			if (num == null) {
-				num = Integer.toString(0);
+				num = "0";
 			}
 			jsonModel.setCode(1);
 			jsonModel.setObj(num);
@@ -88,10 +90,14 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 		blog.setPic(pv[0]);
 		blog.setVideo(pv[1]);
 		// TODO 登录用户
-		blog.setUser((User) ServletActionContext.getRequest().getSession()
-				.getAttribute(YcConstants.LOGINUSER));
+		User u = (User) ServletActionContext.getRequest().getSession()
+				.getAttribute(YcConstants.LOGINUSER);
+		blog.setUser(u);
 		blogBiz.saveBlog(blog);
 		if (blog.getId() > 0) {
+			//@SuppressWarnings("unchecked")
+			//Map<String,Set<BlogWebSocket>> con = (Map<String, Set<BlogWebSocket>>) ServletActionContext.getServletContext().getAttribute("allcon");
+			//con.get(u.getUid());
 			jsonModel.setCode(1);
 			jsonModel.setObj(blog);
 		}
