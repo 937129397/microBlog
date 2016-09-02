@@ -357,7 +357,39 @@ function showAddFileDiv(id) {
 
 }
 
+
+
 $(function() {
+	$.ajax({
+		type:"POST",
+		dataType:"json",
+		url:"user_getUserInfo.action",
+		success:function(data){
+			var htmlstr='';
+			if(data.code==1){
+				htmlstr+='<div style="height: 58px;">';
+				htmlstr+='<div id="mainRightPostionFirstLineIcon">';
+				htmlstr+='<a href="MyWB.html"><img src="'+data.obj.pic+'" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>';
+				htmlstr+='</div>';
+				htmlstr+='<div id="mainRightPostionFirstLineWord1">&nbsp;<font color="#005DC3"><b><a href="MyWB.html" class="a1">'data.obj.nickname'</a></b></font>';
+				htmlstr+='</div>';
+				htmlstr+='</div>';
+				htmlstr+='<div id="mainRightPostionFirstLineWord2">';
+				htmlstr+='<ul id="ul1">';
+				htmlstr+='<li><a href="MyWB.html" class="a1" id="webCount"><font class="style1" ></font></a><br /><font class="style2">微博</font></li>';
+				htmlstr+='<li><a href="friend.html" class="a1" id="concernCount"><font class="style1" ></font></a><br /><font class="style2">关注</font></li>';
+				htmlstr+=' <li><a href="focusonyou.html" class="a1" id="fansCount"><font class="style1" ></font></a><br /><font class="style2">粉丝</font></li>';
+				htmlstr+='</ul>';
+				htmlstr+='</div>';
+			}else{
+				alert(data.msg);
+			}
+			$("#mainRightPostionFirstLine").html(htmlstr);
+		}
+		
+	});
+	
+	
 	
 	$.ajax({
 		type : 'post',

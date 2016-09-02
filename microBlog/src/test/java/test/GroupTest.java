@@ -55,10 +55,10 @@ public class GroupTest extends TestCase {
 		ConcernBiz cb = (ConcernBiz) ac.getBean("concernBizImpl");
 		User user =new User();
 		user.setUid(1);
-		List<User> l = cb.getFans(user);
-		
+		List<User> l = cb.getConcern(user);
+		System.out.println("关注数:"+l.size());
 		for (User u : l) {
-			System.out.println(u.getNickname());
+			System.out.println(u.getSign());
 		}
 		
 		

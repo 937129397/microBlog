@@ -134,6 +134,22 @@ public class Test extends TestCase {
 		c.setF_uid(2);
 		System.out.println(ub.getBidByFid(c));
 	}
+
+	
+	public void getwebCounttest() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"beans_mybatis.xml");
+		UserBiz bb = (UserBiz) ac.getBean("userBizImpl");
+		User user = new User();
+		user.setUid(1);
+			
+		System.out.println(bb.findUserBlogCount(user));
+
+	}
+	
+	
+	
+
 	//查询所有关注的人的微博
 	public void testApp13() {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
@@ -143,4 +159,5 @@ public class Test extends TestCase {
 		System.out.println(ub.findAllBlog(b));
 		
 	}
+
 }

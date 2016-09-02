@@ -12,9 +12,6 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-
 import com.microblog.bean.Blog;
 import com.microblog.bean.Concern;
 import com.microblog.bean.User;
@@ -127,5 +124,6 @@ public class BlogBizImpl implements BlogBiz {
 			return null;
 		}
 	}
+
 
 }

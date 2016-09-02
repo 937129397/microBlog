@@ -3,8 +3,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>凤凰网微博-点滴生活，精彩世界</title>
+<script type="text/javascript" src="script/jquery-1.9.1.js"></script>
 <link href="styles/MyWB.css" type="text/css" rel="stylesheet" />
 <link href="styles/global.css" type="text/css" rel="stylesheet" />
+<script src="script/MyWB.js" language="javascript"></script>
 <script language="javascript">
 <!--
 
@@ -59,8 +61,8 @@ window.onload = function(){
                 </div>
             	<!-- 左侧mainBannerTopImgDIV 结束 -->
                 <!-- 左侧mainBannerToWordDIV 开始 -->
-                <div id="mainBannerTopWord"><font color="#330000"><b>DarkDemon</b></font><br />
-                <a href="#">http://t.ifeng.com/DarkDemon</a> 
+                <div id="mainBannerTopWord"><font color="#330000"><b id="userLogin1"></b></font><br />
+        		个性签名：<span id="sign"></span>
                 </div>
             	<!-- 左侧mainBannerTopWordDIV 结束 -->
             </div>
@@ -168,16 +170,15 @@ window.onload = function(){
                     <!-- 右侧mainRightPostionFirstLineIcon DIV 结束 -->
                     <!-- 右侧mainRightPostionFirstLineWord1 DIV 开始 -->
                     <div id="mainRightPostionFirstLineWord1">                 
-                    &nbsp;<font color="#005DC3" ><b><a href="MyWB.html" class="a1">DarkDemon</a></b></font><br />
-                    &nbsp;天津&nbsp;&nbsp;河西区
+                    &nbsp;<font color="#005DC3" ><b id="userLogin"><a href="MyWB.html" class="a1"></a></b></font><br />
                     </div>
                     <!-- 右侧mainRightPostionFirstLineWord1 DIV 结束 -->
                     <!-- 右侧mainRightPostionFirstLineWord2 DIV 开始 -->
                     <div id="mainRightPostionFirstLineWord2">
                     <ul id="ul1">
-                    <li><a href="MyWB.html" class="a1"><font class="style1">2</font><br /><font class="style2">微博</font></a></li>
-                    <li><a href="friend.html" class="a1"><font class="style1">12</font><br /><font class="style2">关注</font></a></li>
-                    <li><a href="focusonyou.html" class="a1"><font class="style1">23</font><br /><font class="style2">粉丝</font></a></li>
+                    <li><a href="MyWB.html" class="a1" id="webCount"><font class="style1" ></font></a><br /><font class="style2">微博</font></li>
+                    <li><a href="friend.html" class="a1" id="concernCount"><font class="style1" ></font></a><br /><font class="style2">关注</font></li>
+                    <li><a href="focusonyou.html" class="a1" id="fansCount"><font class="style1" ></font></a><br /><font class="style2">粉丝</font></li>
                     </ul>
                     </div>
                 <!-- 右侧mainRightPostionFirstLineWord2 DIV 结束 -->                    

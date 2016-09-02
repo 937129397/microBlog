@@ -79,6 +79,7 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 	}
 
+
 	@Action(value = "/blog_saveBlog")
 	public void saveBlog() throws IOException {
 
@@ -199,5 +200,5 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 	public void setBlogBiz(BlogBiz blogBiz) {
 		this.blogBiz = blogBiz;
 	}
-
+	
 }
