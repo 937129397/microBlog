@@ -1,50 +1,27 @@
 $(function(){
-	var value="";
 	var val="";
+	var val1="";
+	var val2="";
+	var val3="";
+	var value="";
 	
 	$.ajax({
-		url:"user_getOwnBlogCount.action",
+		url:"user_getAllCount.action",
 		type:"POST",
 		dataType:"JSON",
 		success:function(data){
 			if(data.code==1){
-				value=data.obj;
+				val1=data.obj.blogCount;
+				val2=data.obj.fanCount;
+				val3=data.obj.concernCount;
 			}else{
 				alert(data.msg);
 			}
-			$("#webCount").html(value);
+			$("#webCount").html(val1);
+			$("#fansCount").html(val2);
+			$("#concernCount").html(val3);
 		}
 	});
-	
-	
-	$.ajax({
-		url:"concern_getFansCount.action",
-		type:"POST",
-		dataType:"JSON",
-		success:function(data){
-			if(data.code==1){
-				value=data.obj;
-			}else{
-				alert(data.msg);
-			}
-			$("#fansCount").html(value);
-		}
-	});
-	
-	$.ajax({
-		url:"concern_getConcernCount.action",
-		type:"POST",
-		dataType:"JSON",
-		success:function(data){
-			if(data.code==1){
-				value=data.obj;
-			}else{
-				alert(data.msg);
-			}
-			$("#concernCount").html(value);
-		}
-	});
-	
 	
 	$.ajax({
 		url:"user_getUserInfo.action",
