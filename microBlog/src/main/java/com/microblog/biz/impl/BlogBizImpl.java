@@ -46,33 +46,39 @@ public class BlogBizImpl implements BlogBiz {
 	public BlogModel findAllBlog(BlogModel hs) {
 		Map<String ,Object> params=new HashMap<String,Object>();
 		User u=new User();
-		u.setUid(2);
+		//u.setUid(2);
 		//ServletActionContext.getRequest().getSession().setAttribute(YcConstants.LOGINUSER,u);
-		//u=(User) ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
-		params.put("f_uid",u.getUid());
-		// 查询总记录数
-		int count = baseDao.getCount(Blog.class,params, "getBlogCount");
-		// 计算总页数
-		int total = count % hs.getSizePage() == 0 ? count / hs.getSizePage()
-				: count / hs.getSizePage() + 1;
-		hs.setTotal(total);
-		// 计算偏移量
-		int off = (hs.getCurrPage() - 1) * hs.getSizePage();
-		
-		List<Blog> hh = this.baseDao.findList(Concern.class, params, "getID", off,
-				hs.getSizePage());
-		// 操作redis数据库 整合关系数据库
-		for (Blog blog : hh) {
-			Long id = blog.getId();
-			// 获取点赞数
-			String parse = (String) this.baseDao.getKey("user:parse" + id);
-			blog.setParse(parse);
-			// 获取转发数
-			String relay = (String) this.baseDao.getKey("user:relay" + id);
-			blog.setRelay(relay);
+		//登录之后才能查询所关注的好友的微博
+		if( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER)!=null&&!"".equals( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER))){
+			u=(User) ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
+			params.put("f_uid",u.getUid());
+			// 查询总记录数
+			int count = baseDao.getCount(Blog.class,params, "getBlogCount");
+			// 计算总页数
+			int total = count % hs.getSizePage() == 0 ? count / hs.getSizePage()
+					: count / hs.getSizePage() + 1;
+			hs.setTotal(total);
+			// 计算偏移量
+			int off = (hs.getCurrPage() - 1) * hs.getSizePage();
+			
+			List<Blog> hh = this.baseDao.findList(Concern.class, params, "getID", off,
+					hs.getSizePage());
+			// 操作redis数据库 整合关系数据库
+			for (Blog blog : hh) {
+				Long id = blog.getId();
+				// 获取点赞数
+				String parse = (String) this.baseDao.getKey("user:parse" + id);
+				blog.setParse(parse);
+				// 获取转发数
+				String relay = (String) this.baseDao.getKey("user:relay" + id);
+				blog.setRelay(relay);
+			}
+			hs.setBlogs(hh);
+			return hs;
+		}else{
+			return null;
 		}
-		hs.setBlogs(hh);
-		return hs;
+		
 	}
 
 	// 点赞（redis）
