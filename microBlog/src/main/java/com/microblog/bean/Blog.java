@@ -4,8 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Blog implements Serializable {
-	private static final Long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String text;
 	private String pic;
@@ -23,9 +26,22 @@ public class Blog implements Serializable {
 	public Blog() {
 	}
 
+	
+
+
 	public Blog(Long id, String text, String pic, Date fdate, Long source,
 			String parse, String relay, User user) {
-			}
+		this.id = id;
+		this.text = text;
+		this.pic = pic;
+		this.fdate = fdate;
+		this.source = source;
+		this.parse = parse;
+		this.relay = relay;
+		this.user = user;
+	}
+
+
 
 
 	public Blog(Long id, String uid, String text, String pic, String video,
@@ -119,7 +135,7 @@ public class Blog implements Serializable {
 		return "Blog [id=" + id + ", text=" + text + ", pic=" + pic
 				+ ", video=" + video + ", fdate=" + fdate + ", source="
 				+ source + ", parse=" + parse + ", relay=" + relay + ", user="
-				+ user + "]";
+				+ user + "]\n";
 	}
 
 	

@@ -9,6 +9,15 @@ public class Concern implements Serializable{
 	private Integer f_uid; //关注人id
 	private String note; //备注
 	private Groups groups;
+	private Blog blog;
+	
+	
+	public Blog getBlog() {
+		return blog;
+	}
+	public void setBlog(Blog blog) {
+		this.blog = blog;
+	}
 	public Integer getId() {
 		return id;
 	}

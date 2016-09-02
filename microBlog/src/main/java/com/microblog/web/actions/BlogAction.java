@@ -29,40 +29,79 @@ import com.opensymphony.xwork2.ModelDriven;
 @Namespace("/")
 @Scope("prototype")
 @ParentPackage("struts-default")
-//@InterceptorRefs(value = { @InterceptorRef("modelDriven"),@InterceptorRef("fileUploadStack")}) 
-@InterceptorRefs({ 
-	@InterceptorRef("modelDriven"),
-	@InterceptorRef(value = "fileUpload", params = {"allowedExtensions","jpg,bmp,gif,png,tiff,mp4,avi,rmvb,wmv"}),
-	@InterceptorRef(value = "basicStack")  
-})
+// @InterceptorRefs(value = {
+// @InterceptorRef("modelDriven"),@InterceptorRef("fileUploadStack")})
+@InterceptorRefs({
+		@InterceptorRef("modelDriven"),
+		@InterceptorRef(value = "fileUpload", params = { "allowedExtensions",
+				"jpg,bmp,gif,png,tiff,mp4,avi,rmvb,wmv" }),
+		@InterceptorRef(value = "basicStack") })
 public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 	private static final long serialVersionUID = 1L;
 	private String picAllowed = "jpg,bmp,gif,png,tiff";
 	private BlogModel blogModel;
 	private BlogBiz blogBiz;
-	
+
+	// 首页查询所有关注好友的微博
+	@Action(value = "/blog_findAll")
+	public void findAll() throws IOException {
+		blogModel = this.blogBiz.findAllBlog(blogModel);
+		blogModel.setBlog(null);
+		jsonModel.setCode(1);
+		jsonModel.setObj(blogModel);
+		System.out.println(blogModel.getBlogs());
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+	}
+
+	// 点赞
+	@Action(value = "/blog_parse")
+	public void parse() throws IOException {
+		if (ServletActionContext.getRequest().getSession()
+				.getAttribute(YcConstants.LOGINUSER) != null
+				&& !"".equals(ServletActionContext.getRequest().getSession()
+						.getAttribute(YcConstants.LOGINUSER))) {
+			Long id = blogModel.getBlog().getId();
+			User u = (User) ServletActionContext.getRequest().getSession()
+					.getAttribute(YcConstants.LOGINUSER);
+			int uid = u.getUid();
+			String num = this.blogBiz.parse(id, uid);
+			if (num == null) {
+				num = Integer.toString(0);
+			}
+			jsonModel.setCode(1);
+			jsonModel.setObj(num);
+		} else {
+			jsonModel.setCode(0);
+			jsonModel.setMsg("you have not login");
+		}
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+	}
+
+
 	@Action(value = "/blog_saveBlog")
 	public void saveBlog() throws IOException {
-		
+
 		String pic = "";
 		String video = "";
-		String[] pv=	uploadPicAndVideo(pic, video);
-		System.out.println("pic-0--->:"+pv[0]+"\nvideo---->:"+pv[1]);
+		String[] pv = uploadPicAndVideo(pic, video);
+		System.out.println("pic-0--->:" + pv[0] + "\nvideo---->:" + pv[1]);
 		Blog blog = blogModel.getBlog();
 		blog.setPic(pv[0]);
 		blog.setVideo(pv[1]);
-		//TODO 登录用户
-		blog.setUser((User) ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER));
+		// TODO 登录用户
+		blog.setUser((User) ServletActionContext.getRequest().getSession()
+				.getAttribute(YcConstants.LOGINUSER));
 		blogBiz.saveBlog(blog);
-		System.out.println(blog);
-		if(blog.getId()>0)
-		jsonModel.setCode(1);
-		jsonModel.setObj(blog);
+		if (blog.getId() > 0) {
+			jsonModel.setCode(1);
+			jsonModel.setObj(blog);
+		}
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 	}
 
 	/**
 	 * 上传文件
+	 * 
 	 * @param pic
 	 * @param video
 	 * @return
@@ -83,17 +122,22 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 						}
 					}
 					String filename = blogModel.getFileFileName().get(i);
+					String newName = rename(filename);
 					String pp = getSavePath(YcConstants.SAVEPATH + "\\"
 							+ blogModel.getFileContentType().get(i))
-							+ "\\" + rename(filename);
+							+ "\\" + newName;
 					FileOutputStream fos = new FileOutputStream(pp);
 					FileInputStream fis = new FileInputStream(files.get(i));
 					String type = filename
 							.substring(filename.lastIndexOf(".") + 1);
 					if (picAllowed.contains(type)) {
-						pic += pp + YcConstants.URLSPLIT;
+						pic += YcConstants.SAVEPATH + "\\"
+								+ blogModel.getFileContentType().get(i) + "\\"
+								+ newName + YcConstants.URLSPLIT;
 					} else {
-						video += pp + YcConstants.URLSPLIT;
+						video += YcConstants.SAVEPATH + "\\"
+								+ blogModel.getFileContentType().get(i) + "\\"
+								+ newName + YcConstants.URLSPLIT;
 					}
 					byte[] buffer = new byte[1024];
 					int len = 0;
@@ -102,7 +146,7 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 					}
 					fis.close();
 					fos.close();
-					
+
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 					jsonModel.setCode(0);
@@ -114,12 +158,12 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 				}
 			}
 		}
-		return new String[]{pic,video};
+		return new String[] { pic, video };
 	}
 
-	
 	/**
 	 * 上传文件重命名
+	 * 
 	 * @param filename
 	 * @return
 	 */
@@ -130,9 +174,9 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 
 	}
 
-	
 	/**
 	 * 获取存储路径
+	 * 
 	 * @param path
 	 * @return
 	 */

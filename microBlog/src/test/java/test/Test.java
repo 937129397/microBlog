@@ -15,6 +15,7 @@ import com.microblog.biz.BlogBiz;
 import com.microblog.biz.ConcernBiz;
 import com.microblog.biz.GroupsBiz;
 import com.microblog.biz.UserBiz;
+import com.microblog.web.model.BlogModel;
 
 public class Test extends TestCase {
 
@@ -23,9 +24,27 @@ public class Test extends TestCase {
 				"beans_mybatis.xml");
 		BlogBiz ub = (BlogBiz) ac.getBean("blogBizImpl");
 		Blog blog = new Blog();
-		blog.setText("你好");
-		blog.setSource(1L);
-		blog.setPic("图片");
+		blog.setText("1111");
+		blog.getUser().setUid(5);
+		blog.setPic("ziyuan\\image/jpeg\\1472639462156.jpg,split* ");
+		ub.saveBlog(blog);
+		
+		 blog = new Blog();
+		blog.setText("1111");
+		blog.getUser().setUid(2);
+		blog.setPic("ziyuan\\image/jpeg\\1472639462156.jpg,split* ");
+		ub.saveBlog(blog);
+		
+		 blog = new Blog();
+		blog.setText("1111");
+		blog.getUser().setUid(3);
+		blog.setPic("ziyuan\\image/jpeg\\1472639462156.jpg,split* ");
+		ub.saveBlog(blog);
+		
+		 blog = new Blog();
+		blog.setText("1111");
+		blog.getUser().setUid(4);
+		blog.setPic("ziyuan\\image/jpeg\\1472639462156.jpg,split* ");
 		ub.saveBlog(blog);
 	}
 
@@ -115,6 +134,7 @@ public class Test extends TestCase {
 		c.setF_uid(2);
 		System.out.println(ub.getBidByFid(c));
 	}
+
 	
 	public void getwebCounttest() {
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
@@ -129,4 +149,15 @@ public class Test extends TestCase {
 	
 	
 	
+
+	//查询所有关注的人的微博
+	public void testApp13() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"beans_mybatis.xml");
+		BlogBiz ub = (BlogBiz) ac.getBean("blogBizImpl");
+		BlogModel b=new BlogModel();
+		System.out.println(ub.findAllBlog(b));
+		
+	}
+
 }

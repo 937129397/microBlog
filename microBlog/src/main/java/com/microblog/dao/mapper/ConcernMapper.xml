@@ -38,4 +38,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getBidByFid" resultType="int">
 		select b_uid from concern where f_uid=#{f_uid}
 	</select>
+	
+	<!-- 根据当前登录ID查所关注ID 首页微博用-->
+	<select id="getID" resultMap="BlogMap">
+	select * from blog where uid in(select b_uid from concern where f_uid=#{f_uid})
+	</select>
+	<resultMap type="Blog" id="BlogMap">
+		<association property="user" column="uid"
+			select="com.microblog.dao.mapper.UserMapper.getUserForBlog" />
+	</resultMap>
 </mapper>

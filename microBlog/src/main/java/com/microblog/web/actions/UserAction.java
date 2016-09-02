@@ -18,7 +18,6 @@ import org.springframework.stereotype.Controller;
 import com.microblog.bean.User;
 import com.microblog.biz.UserBiz;
 import com.microblog.util.YcConstants;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 @Controller

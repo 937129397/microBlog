@@ -69,7 +69,7 @@ public class BlogModel {
 
 	public Integer getSizePage() {
 		if(sizePage==null || sizePage==0){
-			sizePage=10;
+			sizePage=30;
 		}
 		return sizePage;
 	}
@@ -97,8 +97,7 @@ public class BlogModel {
 	@Override
 	public String toString() {
 		return "BlogModel [total=" + total + ", currPage=" + currPage
-				+ ", sizePage=" + sizePage + ", blogs=" + blogs + ", blog="
-				+ blog + "]";
+				+ ", sizePage=" + sizePage + ", blogs=" + blogs  + "]";
 	}
 	
 	
