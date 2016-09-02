@@ -371,7 +371,7 @@ $(function() {
 				htmlstr+='<div id="mainRightPostionFirstLineIcon">';
 				htmlstr+='<a href="MyWB.html"><img src="'+data.obj.pic+'" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>';
 				htmlstr+='</div>';
-				htmlstr+='<div id="mainRightPostionFirstLineWord1">&nbsp;<font color="#005DC3"><b><a href="MyWB.html" class="a1">'data.obj.nickname'</a></b></font>';
+				htmlstr+='<div id="mainRightPostionFirstLineWord1">&nbsp;<font color="#005DC3"><b><a href="MyWB.html" class="a1">'+data.obj.nickname+'</a></b></font>';
 				htmlstr+='</div>';
 				htmlstr+='</div>';
 				htmlstr+='<div id="mainRightPostionFirstLineWord2">';
