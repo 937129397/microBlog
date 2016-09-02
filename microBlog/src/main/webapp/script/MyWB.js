@@ -1,5 +1,6 @@
 $(function(){
 	var value="";
+	var val="";
 	
 	$.ajax({
 		url:"user_getOwnBlogCount.action",
@@ -15,19 +16,6 @@ $(function(){
 		}
 	});
 	
-	$.ajax({
-		url:"user_getUserInfo.action",
-		type:"POST",
-		dataType:"JSON",
-		success:function(data){
-			if(data.code==1){
-				value=data.obj.sign;
-			}else{
-				alert(data.msg);
-			}
-			$("#sign").html(value);
-		}
-	});
 	
 	$.ajax({
 		url:"concern_getFansCount.action",
@@ -65,10 +53,11 @@ $(function(){
 		success:function(data){
 			if(data.code==1){
 				value=data.obj.nickname;
+				val=data.obj.sign;
 			}else{
 				alert(data.msg);
 			}
-			
+			$("#sign").html(val);
 			$("#userLogin").html(value);
 			$("#userLogin1").html(value);
 		}

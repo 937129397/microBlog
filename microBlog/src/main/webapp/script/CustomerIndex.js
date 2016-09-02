@@ -125,7 +125,7 @@ function submitState() {
 				});
 
 	}
-	txtObj.value = "";// 清空文本框
+	//txtObj.value = "";// 清空文本框
 	$("#picInput").val("");
 	$("#videoInput").val("");
 	changeDivHeight();// 重设页面高度
@@ -371,7 +371,7 @@ $(function() {
 				htmlstr+='<div id="mainRightPostionFirstLineIcon">';
 				htmlstr+='<a href="MyWB.html"><img src="'+data.obj.pic+'" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>';
 				htmlstr+='</div>';
-				htmlstr+='<div id="mainRightPostionFirstLineWord1">&nbsp;<font color="#005DC3"><b><a href="MyWB.html" class="a1">'data.obj.nickname'</a></b></font>';
+				htmlstr+='<div id="mainRightPostionFirstLineWord1">&nbsp;<font color="#005DC3"><b><a href="MyWB.html" class="a1">'+data.obj.nickname+'</a></b></font>';
 				htmlstr+='</div>';
 				htmlstr+='</div>';
 				htmlstr+='<div id="mainRightPostionFirstLineWord2">';
@@ -418,15 +418,11 @@ $(function() {
 								+ pics[i] + "'>";
 						}
 					}
-					var diancanCount=0;
-					if(!blogs[j].parse==null&&!blogs[j].parse==undefined ){
-						diancanCount =blogs[j].parse;
-					}
 					
 					innerht += "</div><div class='stateShowtime'>"
-						+ blogs[j].fdate
+						+ blogs[j].fdateStr
 						+ "</div><div class='stateOp'>" +
-						"<img width='20px' height='17px' src='images/dianzan.png' onclick='dianzan("+blogs[j].id+")' /><span id='dianzan"+blogs[j].id+"'> ("+diancanCount+")</span>  <a href='' onclick='reXianShi(this);return false;' class='opState'>回复</a><a  href='' class='opState'>转发</a></div><div class='huifu'></div></div>";
+						"<img width='20px' height='17px' src='images/dianzan.png' onclick='dianzan("+blogs[j].id+")' /><span id='dianzan"+blogs[j].id+"'> ("+blogs[j].parse+")</span>  <a href='' onclick='reXianShi(this);return false;' class='opState'>回复</a><a  href='' class='opState'>转发</a></div><div class='huifu'></div></div>";
 				}
 				
 				$("#mainBannerContent").html(innerht);
@@ -437,6 +433,21 @@ $(function() {
 		}
 	});
 })
+
+function dianzan(id){
+	$.ajax({
+		url:'blog_parse.action',
+		type:'post',
+		dataType:'json',
+		data:{'blog.id':id},
+		success:function(data){
+			if(data.code==1){
+				$("#dianzan"+id).html("("+data.obj+")");
+			}
+		}
+	});
+	
+}
 
 /* ****************************************************************** */
 

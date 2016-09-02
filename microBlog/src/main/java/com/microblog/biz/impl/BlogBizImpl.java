@@ -59,6 +59,9 @@ public class BlogBizImpl extends BaseBiz implements BlogBiz {
 				Long id = blog.getId();
 				// 获取点赞数
 				String parse = (String) this.baseDao.getKey("user:parse" + id);
+				if(parse==null){
+					parse="0";
+				}
 				blog.setParse(parse);
 				// 获取转发数
 				String relay = (String) this.baseDao.getKey("user:relay" + id);
