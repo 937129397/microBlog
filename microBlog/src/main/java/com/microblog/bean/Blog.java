@@ -1,11 +1,15 @@
 package com.microblog.bean;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Blog implements Serializable {
-	private static final Long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String text;
 	private String pic;
@@ -14,7 +18,7 @@ public class Blog implements Serializable {
 	private Long source;
 	private String parse;// 点赞数
 	private String relay;// 转发数
-
+	private String fdateStr;
 	private User user = new User();
 
 
@@ -84,6 +88,7 @@ public class Blog implements Serializable {
 
 	public void setFdate(Date fdate) {
 		this.fdate = fdate;
+		setFdateStr(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(this.fdate));
 	}
 
 	public Long getSource() {
@@ -133,6 +138,20 @@ public class Blog implements Serializable {
 				+ ", video=" + video + ", fdate=" + fdate + ", source="
 				+ source + ", parse=" + parse + ", relay=" + relay + ", user="
 				+ user + "]\n";
+	}
+
+
+
+
+	public String getFdateStr() {
+		return fdateStr;
+	}
+
+
+
+
+	public void setFdateStr(String fdateStr) {
+		this.fdateStr = fdateStr;
 	}
 
 	

@@ -97,7 +97,7 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		
 	}
 	
-	@Action(value = "/user_getUserName")
+	@Action(value = "/user_getUserInfo")
 	public void getnickname() throws IOException {
 		if( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER) !=null  ){
 			User user = (User)  ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
@@ -106,5 +106,6 @@ public class UserAction extends BaseAction implements ModelDriven<User>{
 		}
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 	}
-
+	
+	
 }

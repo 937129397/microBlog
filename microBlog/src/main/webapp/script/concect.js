@@ -20,7 +20,11 @@ Chat.connect = (function(host) {
 	};
 	//绑定关闭事件   
 	Chat.socket.onclose = function() {
+<<<<<<< HEAD
 		document.getElementById('textfield2').onkeydown = null;
+=======
+		
+>>>>>>> branch 'dev' of git@github.com:937129397/microBlog.git
 	};
 	//监听消息
 	Chat.socket.onmessage = function(message) {

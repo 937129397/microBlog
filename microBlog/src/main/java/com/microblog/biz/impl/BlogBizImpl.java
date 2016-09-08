@@ -12,9 +12,6 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-
 import com.microblog.bean.Blog;
 import com.microblog.bean.Concern;
 import com.microblog.bean.User;
@@ -25,13 +22,7 @@ import com.microblog.web.model.BlogModel;
 
 @Service
 @Transactional(readOnly = true)
-public class BlogBizImpl implements BlogBiz {
-	private BaseDao baseDao;
-
-	@Resource(name = "baseDaoImpl")
-	public void setBaseDao(BaseDao baseDao) {
-		this.baseDao = baseDao;
-	}
+public class BlogBizImpl extends BaseBiz implements BlogBiz {
 
 	/**
 	 * 发布微博存入数据库
@@ -68,6 +59,9 @@ public class BlogBizImpl implements BlogBiz {
 				Long id = blog.getId();
 				// 获取点赞数
 				String parse = (String) this.baseDao.getKey("user:parse" + id);
+				if(parse==null){
+					parse="0";
+				}
 				blog.setParse(parse);
 				// 获取转发数
 				String relay = (String) this.baseDao.getKey("user:relay" + id);
@@ -124,5 +118,6 @@ public class BlogBizImpl implements BlogBiz {
 			return null;
 		}
 	}
+
 
 }

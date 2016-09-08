@@ -11,8 +11,8 @@
 		<selectKey keyProperty="id" order="BEFORE" resultType="Integer">
 			select max(id) from comment
 		</selectKey>
-		insert into comment(id,blog_id,c_uid,text)
-		values(#{id},#{blog.id},#{user.uid},#{text})
+		insert into comment(id,blog_id,c_uid,text,ctime)
+		values(#{id},#{blog.id},#{user.uid},#{text},now())
 	</insert>
 	
 	<!-- 删除评论 -->

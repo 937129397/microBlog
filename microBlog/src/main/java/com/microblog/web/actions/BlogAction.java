@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 
@@ -23,6 +25,7 @@ import com.microblog.bean.User;
 import com.microblog.biz.BlogBiz;
 import com.microblog.util.YcConstants;
 import com.microblog.web.model.BlogModel;
+import com.microblog.web.websocket.BlogWebSocket;
 import com.opensymphony.xwork2.ModelDriven;
 
 @Controller
@@ -47,6 +50,7 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 	public void findAll() throws IOException {
 		blogModel = this.blogBiz.findAllBlog(blogModel);
 		blogModel.setBlog(null);
+		//blogModel.setBlog(null);
 		jsonModel.setCode(1);
 		jsonModel.setObj(blogModel);
 		super.printJson(jsonModel, ServletActionContext.getResponse());
@@ -55,22 +59,27 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 	// 点赞
 	@Action(value = "/blog_parse")
 	public void parse() throws IOException {
-		if(ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER)!=null&&!"".equals(ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER))){
-			Long id=blogModel.getBlog().getId();
-			User u=(User) ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
-			int uid=u.getUid();
-			String num=this.blogBiz.parse(id, uid);
-			if(num==null){
-				num=Integer.toString(0);
+		if (ServletActionContext.getRequest().getSession()
+				.getAttribute(YcConstants.LOGINUSER) != null
+				&& !"".equals(ServletActionContext.getRequest().getSession()
+						.getAttribute(YcConstants.LOGINUSER))) {
+			Long id = blogModel.getBlog().getId();
+			User u = (User) ServletActionContext.getRequest().getSession()
+					.getAttribute(YcConstants.LOGINUSER);
+			int uid = u.getUid();
+			String num = this.blogBiz.parse(id, uid);
+			if (num == null) {
+				num = "0";
 			}
 			jsonModel.setCode(1);
 			jsonModel.setObj(num);
-		}else{
+		} else {
 			jsonModel.setCode(0);
 			jsonModel.setMsg("you have not login");
 		}
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 	}
+
 
 	@Action(value = "/blog_saveBlog")
 	public void saveBlog() throws IOException {
@@ -85,11 +94,20 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 		// TODO 登录用户
 		blog.setUser((User) ServletActionContext.getRequest().getSession()
 				.getAttribute(YcConstants.LOGINUSER));
+		User u = (User) ServletActionContext.getRequest().getSession()
+				.getAttribute(YcConstants.LOGINUSER);
+		blog.setUser(u);
 		blogBiz.saveBlog(blog);
-		System.out.println(blog);
 		if (blog.getId() > 0)
 			jsonModel.setCode(1);
 		jsonModel.setObj(blog);
+		if (blog.getId() > 0) {
+			//@SuppressWarnings("unchecked")
+			//Map<String,Set<BlogWebSocket>> con = (Map<String, Set<BlogWebSocket>>) ServletActionContext.getServletContext().getAttribute("allcon");
+			//con.get(u.getUid());
+			jsonModel.setCode(1);
+			jsonModel.setObj(blog);
+		}
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 	}
 
@@ -116,17 +134,22 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 						}
 					}
 					String filename = blogModel.getFileFileName().get(i);
+					String newName = rename(filename);
 					String pp = getSavePath(YcConstants.SAVEPATH + "\\"
 							+ blogModel.getFileContentType().get(i))
-							+ "\\" + rename(filename);
+							+ "\\" + newName;
 					FileOutputStream fos = new FileOutputStream(pp);
 					FileInputStream fis = new FileInputStream(files.get(i));
 					String type = filename
 							.substring(filename.lastIndexOf(".") + 1);
 					if (picAllowed.contains(type)) {
-						pic += pp + YcConstants.URLSPLIT;
+						pic += YcConstants.SAVEPATH + "\\"
+								+ blogModel.getFileContentType().get(i) + "\\"
+								+ newName + YcConstants.URLSPLIT;
 					} else {
-						video += pp + YcConstants.URLSPLIT;
+						video += YcConstants.SAVEPATH + "\\"
+								+ blogModel.getFileContentType().get(i) + "\\"
+								+ newName + YcConstants.URLSPLIT;
 					}
 					byte[] buffer = new byte[1024];
 					int len = 0;
@@ -183,5 +206,5 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 	public void setBlogBiz(BlogBiz blogBiz) {
 		this.blogBiz = blogBiz;
 	}
-
+	
 }

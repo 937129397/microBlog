@@ -25,6 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from users where uid = #{uid}
 	</select>
 	
+	<select id="getUserForBlog" resultType="User">
+		select uid,nickname,pic from users where uid = #{uid}
+	</select>
+	
 	<insert id="saveUser" parameterType="User">
 		<selectKey keyProperty="uid" order="BEFORE" resultType="Integer">
 			select max(uid)+1 from users
@@ -35,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<update id="updateUser" parameterType="User">
-	update Users set nickname=#{nickname},pic=#{pic},sex=#{sex},birthday=#{birthday}
+	update Users set nickname=#{nickname},pic=#{pic},sex=#{sex},birthday=#{birthday},sign=#{sign}
 	where uid=#{uid}
 	</update>
 	
@@ -55,6 +59,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 查询所有的用户Id  websocket使用-->
 	<select	id="getAllUserId" resultType="int">
 		select uid from users
+	</select>
+	
+	<!-- 查询当前用户总微博数 -->
+	<select id="getBlogCount" resultType="Integer">
+		select count(1) from blog where uid=#{uid}
 	</select>
 	
 	

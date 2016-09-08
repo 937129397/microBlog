@@ -11,14 +11,28 @@
 		blog(id,uid,text,fdate,source,pic,video)
 		values(#{id},#{user.uid},#{text},now(),#{source},#{pic},#{video}
 		)
-
+	
 	</insert>
 
+
 	
+
+
+	<!-- 查询所有微博 -->
+	<select id="getBlog" resultMap="BlogMap">
+		select * from blog
+	</select>
+	<resultMap type="Blog" id="BlogMap">
+		<association property="user" column="uid"
+			select="com.microblog.dao.mapper.UserMapper.getUser" />
+	</resultMap>
+
+
 	<!-- 查询总微博数 -->
 	<select id="getBlogCount" resultType="int">
 		select count(*) from blog where uid in(select b_uid from concern where f_uid=#{f_uid})
 	</select>
 	
+
 	
 </mapper>

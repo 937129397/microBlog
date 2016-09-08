@@ -3,7 +3,7 @@ use microblog;
  
 --用户
 create table users(
-	uid int, 
+	uid int primary key, 
 	email varchar(40),  
 	password varchar(40),
 	nickname varchar(100),
@@ -14,10 +14,16 @@ create table users(
 	regDate date,
 	realname varchar(40),
 	sex int,
-	birthday varchar(20)
+	birthday varchar(20),
+	sign varchar(300)
 );
 
-insert into users(uid) values(0);
+insert into users(uid,email,nickname,password,telephone,sign) 
+values(1,'123@qq.com','王大锤','123123','11111111111','长江后浪推前浪，前浪死在沙滩上！');
+insert into users(uid,email,nickname,password,telephone,sign) 
+values(2,'111@qq.com','王二锤','123123','11111111112','长江后浪推前浪，前浪死在沙滩上！');
+insert into users(uid,email,nickname,password,telephone,sign) 
+values(3,'122@qq.com','王三锤','123123','11111111113','长江后浪推前浪，前浪死在沙滩上！');
 
 drop table users;
 select * from users
@@ -32,9 +38,10 @@ create table concern(
 	group_id int --分组 粉丝对博主的分组
 )
 
+select * from concern
 insert into concern values(1,1,2,'zz',1);
 insert into concern values(2,1,3,'zz',1);
-insert into concern values(3,1,4,'zz',1);
+
 
 delete from concern where id=1;
 
@@ -50,20 +57,29 @@ select * from concern;
 --微博表;
 create table blog(
 	id bigint primary key ,
-	uid int,--发文者 id
-	text varchar(300),--博文内容
-	pic varchar(1000),--附加图片
+	uid int,
+	text varchar(300),
+	pic varchar(1000),
 	video varchar(1000),
-	fdate date,--发文时间
-	source bigint--是否为转发 如果为转发 则存来源微博id
+	fdate date,
+	source bigint
 )
+
+insert into blog(id,uid,text) values(1,1,'xxxxx')
+
+select count(1) from blog where uid=1
 --评论
 create table comment(
 	id int primary key ,
-	blog_id bigint,--微博id
-	c_uid int,--评论人id
-	text varchar(300)--评论内容
+	blog_id bigint,
+	c_uid int,
+	text varchar(300),
+	ctime varchar(20) 
 )
+
+drop table comment
+
+insert into comment(id) values(0)
 --分组名表
 create table groups(
 	id int primary key,

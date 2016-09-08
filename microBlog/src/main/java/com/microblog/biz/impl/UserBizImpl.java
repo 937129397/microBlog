@@ -52,12 +52,12 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
 
 	@Override
 	public User loginByTelephone(User user) {
-		return (User) baseDao.find(user, "getUserByLogin1");
+		return (User) baseDao.find(user, "getUserByLogin2");
 	}
 	
 	@Transactional(readOnly = false, isolation = Isolation.DEFAULT, rollbackForClassName = { "java.lang.RuntimeException" }, propagation = Propagation.REQUIRED)
 	public boolean update(User user){
-		baseDao.update(user, "updateUser");;
+		baseDao.update(user, "updateUser");
 		return true;
 		
 	}
@@ -71,10 +71,16 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
 		return true;
 	}
 
-	@Override
+	@Transactional(readOnly = false)
 	public List<Integer> getUidList() {
 		return baseDao.findAll(User.class,"getAllUserId");
 	}
+	
+	@Transactional(readOnly = true)
+	public Integer findUserBlogCount(User user) {
+		return (Integer) baseDao.find(user, "getBlogCount");
+	}
+
 
 
 }
