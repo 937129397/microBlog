@@ -119,5 +119,44 @@ public class BlogBizImpl extends BaseBiz implements BlogBiz {
 		}
 	}
 
+	@Override
+	public BlogModel findBlogsByUid(BlogModel blogModel) {
+		Map<String ,Object> params=new HashMap<String,Object>();
+		User u=new User();
+		if( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER)!=null&&!"".equals( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER))){
+			u=(User) ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
+			params.put("uid",u.getUid());
+			// 查询总记录数
+			int count = baseDao.getCount(Blog.class,params, "getBlogCountByUserid");
+			// 计算总页数
+			int total = count % blogModel.getSizePage() == 0 ? count / blogModel.getSizePage()
+					: count / blogModel.getSizePage() + 1;
+			blogModel.setTotal(total);
+			// 计算偏移量
+			int off = (blogModel.getCurrPage() - 1) * blogModel.getSizePage();
+			
+			List<Blog> hh = this.baseDao.findList(Blog.class, params, "getBlogByUserId", off,
+					blogModel.getSizePage());
+			// 操作redis数据库 整合关系数据库
+			for (Blog blog : hh) {
+				Long id = blog.getId();
+				// 获取点赞数
+				String parse = (String) this.baseDao.getKey("user:parse" + id);
+				if(parse==null){
+					parse="0";
+				}
+				blog.setParse(parse);
+				// 获取转发数
+				String relay = (String) this.baseDao.getKey("user:relay" + id);
+				blog.setRelay(relay);
+			}
+			blogModel.setBlogs(hh);
+			return blogModel;
+		}else{
+			return null;
+		}
+		
+	}
+
 
 }

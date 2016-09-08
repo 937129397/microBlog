@@ -51,7 +51,7 @@ public class ConcernBizImpl extends BaseBiz implements ConcernBiz {
 
 	@Override
 	public Integer getConcernCount(Concern concern) {
-		return (Integer) baseDao.find(concern, "getUserFansCount");
+		return (Integer) baseDao.find(concern, "getConcernCount");
 	}
 
 	@Override

@@ -29,6 +29,19 @@
 		select count(*) from blog where uid in(select b_uid from concern where f_uid=#{f_uid})
 	</select>
 	
+		<!-- 查询莫用户发表总微博数 -->
+	<select id="getBlogCountByUserid" resultType="int">
+		select count(*) from blog where uid =#{uid}
+	</select>
+	
+	<!-- 查询某用户的微博 -->
+	<select id="getBlogByUserId" resultMap="getPinglun">
+		select * from blog where uid=#{uid}
+	</select>
+	<resultMap type="Blog" id="getPinglun">
+		<collection property="comment" column="id" select="com.microblog.dao.mapper.CommentMapper.getAllComment">
+		</collection>
+	</resultMap>
 
 	
 </mapper>

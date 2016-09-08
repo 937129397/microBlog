@@ -26,11 +26,11 @@ $(function(){
 			for (var i = 0; i < data.obj.length; i++) {
 				htmlstr+=' <tr>';
 				htmlstr+='<td height="105" align="center" valign="middle" class="td2">';
-				htmlstr+='<img src="'+data.obj.pic+'" width="54" height="54" alt="" /></td>';
+				htmlstr+='<img src="'+data.obj[i].pic+'" width="54" height="54" alt="" /></td>';
 				htmlstr+='<td height="105" align="left" valign="bottom" class="td3">';
-				htmlstr+='<font color="#005dc3" size="3" face="微软小黑"><b>'+data.obj.nickname+'</b></font>';
+				htmlstr+='<font color="#005dc3" size="3" face="微软小黑"><b>'+data.obj[i].nickname+'</b></font>';
 				htmlstr+='<img src="images/1.gif" width="17" height="15" alt="" />';
-				htmlstr+='<br /><font color="#000000" size="2">'+data.obj.sign+'</font>';
+				htmlstr+='<br /><font color="#000000" size="2">'+data.obj[i].sign+'</font>';
 				htmlstr+='<div id="focus1"><img src="images/ok.png" alt="" width="16" height="16" align="texttop" /> 已关注';
 				htmlstr+='<img src="images/focus.gif" alt="" width="43" height="30" align="absbottom" /></div></td>';
 				htmlstr+=' </tr>';
@@ -66,8 +66,8 @@ $(function(){
 			htmlstr+='</tr>';
 			htmlstr+=' <tr>';
 			htmlstr+='<td height="126"> &nbsp;&nbsp;&nbsp;<font color="#666666" size="3">我关注的</font><br />';
-			for (var i = 1; i <= data.obj.length; i++) {
-				htmlstr+='<img src="'+data.obj.pid+'" alt="" width="54" height="54" class="img" />';
+			for (var j = 0; j < data.obj.length; j++) {
+				htmlstr+='<img src="'+data.obj[j].pic+'" alt="" width="54" height="54" class="img" />';
 				if(i%3==0){
 					htmlstr+='<br />'
 				}

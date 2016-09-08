@@ -24,4 +24,7 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>*.action</url-pattern>
 	</filter-mapping>
+	<welcome-file-list>
+		<welcome-file>SBGG.html</welcome-file>
+	</welcome-file-list>
 </web-app>
