@@ -3,6 +3,7 @@ package com.microblog.bean;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class Blog implements Serializable {
 
@@ -20,7 +21,7 @@ public class Blog implements Serializable {
 	private String relay;// 转发数
 	private String fdateStr;
 	private User user = new User();
-
+	private List<Comment> comment;  //评论
 
 
 
@@ -152,6 +153,20 @@ public class Blog implements Serializable {
 
 	public void setFdateStr(String fdateStr) {
 		this.fdateStr = fdateStr;
+	}
+
+
+
+
+	public List<Comment> getComment() {
+		return comment;
+	}
+
+
+
+
+	public void setComment(List<Comment> comment) {
+		this.comment = comment;
 	}
 
 	

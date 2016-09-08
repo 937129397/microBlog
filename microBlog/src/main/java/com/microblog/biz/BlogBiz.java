@@ -12,5 +12,7 @@ public interface BlogBiz {
 	public String parse(Long id,int uid);
 	//转发
 	public String relay(Long id,int uid);
+	
+	public BlogModel findBlogsByUid(BlogModel blogModel);
 
 }

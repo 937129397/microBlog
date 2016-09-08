@@ -3,9 +3,16 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.microblog.dao.mapper.CommentMapper">
 	<!-- 查询此条微博所有评论 -->
-	<select id="getAllComment">
+	<select id="getAllComment" resultMap="getUserForCUser">
 		select * from comment where blog_id=#{blog.id}
 	</select>
+	<resultMap type="Comment" id="getUserForCUser">
+		<association property="user" column="c_uid" select="com.microblog.dao.mapper.UserMapper.getUser"></association>
+	</resultMap>
+	
+	
+	
+	
 	<!-- 添加评论 -->
 	<insert id="addComment">
 		<selectKey keyProperty="id" order="BEFORE" resultType="Integer">

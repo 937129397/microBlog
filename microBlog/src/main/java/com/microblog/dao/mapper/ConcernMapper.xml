@@ -25,6 +25,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select count(1) from concern where b_uid=#{b_uid}
 	</select>
 	
+	<!-- 查询用户的关注总数 -->
+	<select id="getConcernCount" resultType="Integer">
+	select count(1) from concern where f_uid=#{b_uid}
+	</select>
+	
 	<!-- 添加关注 -->
 	<insert id="addUserConcern">
 	<selectKey keyProperty="id" order="BEFORE" resultType="Integer">

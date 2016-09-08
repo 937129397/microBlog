@@ -78,17 +78,17 @@ public class ConcernAction extends BaseAction implements ModelDriven<UserModel>{
 		}
 		userModel.setBlogCount(i);
 		
-		cc.setF_uid(user.getUid());
+		cc.setB_uid(user.getUid());
 		Integer j = concernBiz.getFansCount(cc);
 		if(j==null){
-			i=0;
+			j=0;
 		}
-		userModel.setFanCount(i);
+		userModel.setFanCount(j);
 		
 		cc.setB_uid(user.getUid());
 		Integer k = concernBiz.getConcernCount(cc);
 		if(k==null){
-			i=0;
+			k=0;
 		}
 		userModel.setConcernCount(k);
 		

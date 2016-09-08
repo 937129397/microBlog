@@ -159,5 +159,16 @@ public class Test extends TestCase {
 		System.out.println(ub.findAllBlog(b));
 		
 	}
+	
+	//查询某人发表的微博
+	public void testApp14() {
+		ApplicationContext ac = new ClassPathXmlApplicationContext(
+				"beans_mybatis.xml");
+		BlogBiz ub = (BlogBiz) ac.getBean("blogBizImpl");
+		BlogModel b=new BlogModel();
+		b.
+		System.out.println(ub.findAllBlog(b));
+		
+	}
 
 }
