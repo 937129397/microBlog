@@ -14,5 +14,6 @@ public interface BlogBiz {
 	public String relay(Long id,int uid);
 	
 	public BlogModel findBlogsByUid(BlogModel blogModel);
-
+	//根据帖子Id查
+	public Blog findBlogById(Long id);
 }

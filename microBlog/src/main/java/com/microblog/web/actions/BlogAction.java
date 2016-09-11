@@ -79,6 +79,26 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 		}
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 	}
+	//转发
+	@Action(value = "/blog_zhuanfa")
+	public void zhuanfa() throws IOException {
+		Blog b=this.blogBiz.findBlogById(blogModel.getBlog().getId());
+		Blog bb=new Blog();
+		bb.setText(b.getText());
+		bb.setUser((User)ServletActionContext.getRequest().getSession()
+					.getAttribute(YcConstants.LOGINUSER));
+		bb.setSource(b.getId());
+		bb.setPic(b.getPic());
+		bb.setVideo(b.getVideo());
+		this.blogBiz.saveBlog(bb);
+		Blog bbb=this.blogBiz.findBlogById(bb.getId());
+		bbb.setSourcename(b.getUser().getNickname());
+		jsonModel.setCode(1);
+		jsonModel.setObj(bbb);
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+		
+	}
+	
 
 
 	@Action(value = "/blog_saveBlog")
