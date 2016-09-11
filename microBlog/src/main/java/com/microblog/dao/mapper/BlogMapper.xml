@@ -4,15 +4,19 @@
 <mapper namespace="com.microblog.dao.mapper.BlogMapper">
 
 	<!-- 发表新微博 -->
-	
+
 	<insert id="saveBlog" parameterType="com.microblog.bean.Blog">
-		<selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">select max(id)+1 from blog </selectKey>
+		<selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">select
+			max(id)+1 from blog </selectKey>
 		insert into
 		blog(id,uid,text,fdate,source,pic,video)
 		values(#{id},#{user.uid},#{text},now(),#{source},#{pic},#{video}
 		)
-	
+
 	</insert>
+
+
+
 
 
 	<!-- 查询所有微博 -->
@@ -24,24 +28,35 @@
 			select="com.microblog.dao.mapper.UserMapper.getUser" />
 	</resultMap>
 
+
 	<!-- 查询总微博数 -->
 	<select id="getBlogCount" resultType="int">
-		select count(*) from blog where uid in(select b_uid from concern where f_uid=#{f_uid})
+		select count(*) from blog
+		where uid in(select b_uid from concern where f_uid=#{f_uid})
 	</select>
-	
-		<!-- 查询莫用户发表总微博数 -->
+
+	<!-- 查询莫用户发表总微博数 -->
 	<select id="getBlogCountByUserid" resultType="int">
 		select count(*) from blog where uid =#{user.uid}
 	</select>
-	
+
 	<!-- 查询某用户的微博 -->
 	<select id="getBlogByUserId" resultMap="getPinglun">
+
 		select id as blog_id,id,uid,text,pic,video,fdate,source from blog where uid=#{user.uid}
+
 	</select>
 	<resultMap type="Blog" id="getPinglun">
 		<collection property="comment" column="blog_id" select="com.microblog.dao.mapper.CommentMapper.getAllComment"/>
 		
 	</resultMap>
 
-	
+	<!-- 根据帖子的Id查 -->
+	<select id="getBlogById" resultMap="BlogM">
+		select * from blog where id=#{id}
+	</select>
+	<resultMap type="Blog" id="BlogM">
+		<association property="user" column="uid"
+			select="com.microblog.dao.mapper.UserMapper.getUserForBlog" />
+	</resultMap>
 </mapper>

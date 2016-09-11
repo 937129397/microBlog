@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -16,7 +14,6 @@ import com.microblog.bean.Blog;
 import com.microblog.bean.Concern;
 import com.microblog.bean.User;
 import com.microblog.biz.BlogBiz;
-import com.microblog.dao.BaseDao;
 import com.microblog.util.YcConstants;
 import com.microblog.web.model.BlogModel;
 
@@ -65,7 +62,17 @@ public class BlogBizImpl extends BaseBiz implements BlogBiz {
 				blog.setParse(parse);
 				// 获取转发数
 				String relay = (String) this.baseDao.getKey("user:relay" + id);
+				if(relay==null){
+					relay="0";
+				}
 				blog.setRelay(relay);
+				
+				if(!"".equals(blog.getSource())&&blog.getSource()!=null&&blog.getSource()!=0){
+					Blog cc=new Blog();
+					cc.setId(blog.getSource());
+					Blog ccc=(Blog) this.baseDao.find(cc, "getBlogById");
+					blog.setSourcename(ccc.getUser().getNickname());
+				}
 			}
 			hs.setBlogs(hh);
 			return hs;
@@ -153,6 +160,13 @@ public class BlogBizImpl extends BaseBiz implements BlogBiz {
 				}
 				blog.setRelay(relay);
 				blog.setUser(u);
+				
+				if(blog.getSource()!=0&&!"".equals(blog.getSource())){
+					Blog cc=new Blog();
+					cc.setId(blog.getSource());
+					Blog ccc=(Blog) this.baseDao.find(cc, "getBlogById");
+					blog.setSourcename(ccc.getUser().getNickname());
+				}
 			}
 			blogModel.setBlogs(hh);
 			return blogModel;
@@ -160,6 +174,26 @@ public class BlogBizImpl extends BaseBiz implements BlogBiz {
 			return null;
 		}
 		
+	}
+
+	@Override
+	public Blog findBlogById(Long id) {
+		Blog b=new Blog();
+		b.setId(id);
+		b=(Blog) this.baseDao.find(b, "getBlogById");
+		// 获取点赞数
+		String parse = (String) this.baseDao.getKey("user:parse" + id);
+		if(parse==null){
+			parse="0";
+		}
+		b.setParse(parse);
+		// 获取转发数
+		String relay = (String) this.baseDao.getKey("user:relay" + id);
+		if(relay==null){
+			relay="0";
+		}
+		b.setRelay(relay);
+		return b;
 	}
 
 

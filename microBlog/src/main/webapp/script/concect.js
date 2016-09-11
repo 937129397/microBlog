@@ -20,7 +20,7 @@ Chat.connect = (function(host) {
 	};
 	//绑定关闭事件   
 	Chat.socket.onclose = function() {
-		
+		document.getElementById('textfield2').onkeydown = null;
 	};
 	//监听消息
 	Chat.socket.onmessage = function(message) {

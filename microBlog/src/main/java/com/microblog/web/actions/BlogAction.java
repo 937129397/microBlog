@@ -63,6 +63,7 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 	@Action(value = "/blog_findAll")
 	public void findAll() throws IOException {
 		blogModel = this.blogBiz.findAllBlog(blogModel);
+		blogModel.setBlog(null);
 		//blogModel.setBlog(null);
 		jsonModel.setCode(1);
 		jsonModel.setObj(blogModel);
@@ -92,6 +93,26 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 		}
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 	}
+	//转发
+	@Action(value = "/blog_zhuanfa")
+	public void zhuanfa() throws IOException {
+		Blog b=this.blogBiz.findBlogById(blogModel.getBlog().getId());
+		Blog bb=new Blog();
+		bb.setText(b.getText());
+		bb.setUser((User)ServletActionContext.getRequest().getSession()
+					.getAttribute(YcConstants.LOGINUSER));
+		bb.setSource(b.getId());
+		bb.setPic(b.getPic());
+		bb.setVideo(b.getVideo());
+		this.blogBiz.saveBlog(bb);
+		Blog bbb=this.blogBiz.findBlogById(bb.getId());
+		bbb.setSourcename(b.getUser().getNickname());
+		jsonModel.setCode(1);
+		jsonModel.setObj(bbb);
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+		
+	}
+	
 
 
 	@Action(value = "/blog_saveBlog")
@@ -105,10 +126,15 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 		blog.setPic(pv[0]);
 		blog.setVideo(pv[1]);
 		// TODO 登录用户
+		blog.setUser((User) ServletActionContext.getRequest().getSession()
+				.getAttribute(YcConstants.LOGINUSER));
 		User u = (User) ServletActionContext.getRequest().getSession()
 				.getAttribute(YcConstants.LOGINUSER);
 		blog.setUser(u);
 		blogBiz.saveBlog(blog);
+		if (blog.getId() > 0)
+			jsonModel.setCode(1);
+		jsonModel.setObj(blog);
 		if (blog.getId() > 0) {
 			//@SuppressWarnings("unchecked")
 			//Map<String,Set<BlogWebSocket>> con = (Map<String, Set<BlogWebSocket>>) ServletActionContext.getServletContext().getAttribute("allcon");

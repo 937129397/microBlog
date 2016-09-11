@@ -1,7 +1,6 @@
 package com.microblog.biz;
 
 import com.microblog.bean.Blog;
-import com.microblog.bean.User;
 import com.microblog.web.model.BlogModel;
 
 public interface BlogBiz {
@@ -15,5 +14,6 @@ public interface BlogBiz {
 	public String relay(Long id,int uid);
 	
 	public BlogModel findBlogsByUid(BlogModel blogModel);
-
+	//根据帖子Id查
+	public Blog findBlogById(Long id);
 }

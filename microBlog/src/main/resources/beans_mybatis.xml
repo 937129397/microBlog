@@ -49,7 +49,7 @@
 	</bean>
 	
 	<!-- 创建redis工厂 -->
-	<bean id="jedisFactory"
+	<!-- <bean id="jedisFactory"
 		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
 		<property name="hostName" value="localhost" />
 		<property name="port" value="6379" />
@@ -66,7 +66,7 @@
 			<bean
 				class="org.springframework.data.redis.serializer.StringRedisSerializer" />
 		</property>
-	</bean>
+	</bean> -->
 	
 
 

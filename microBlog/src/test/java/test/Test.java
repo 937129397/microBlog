@@ -166,8 +166,18 @@ public class Test extends TestCase {
 				"beans_mybatis.xml");
 		BlogBiz ub = (BlogBiz) ac.getBean("blogBizImpl");
 		BlogModel b=new BlogModel();
+
 		System.out.println(ub.findAllBlog(b));
 		
 	}
-
+	
+	//根据ID查微博
+		public void testApp15() {
+			ApplicationContext ac = new ClassPathXmlApplicationContext(
+					"beans_mybatis.xml");
+			BlogBiz ub = (BlogBiz) ac.getBean("blogBizImpl");
+			
+			System.out.println(ub.findBlogById(1L));
+			
+		}
 }

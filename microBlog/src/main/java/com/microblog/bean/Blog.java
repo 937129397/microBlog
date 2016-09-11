@@ -18,6 +18,7 @@ public class Blog implements Serializable {
 	private String video;
 	private Date fdate;
 	private Long source;
+	private String sourcename;
 	private String parse;// 点赞数
 	private String relay;// 转发数
 	private String fdateStr;
@@ -30,6 +31,27 @@ public class Blog implements Serializable {
 	}
 
 	
+	
+
+	public Blog(Long id, String text, String pic, String video, Date fdate,
+			Long source, String sourcename, String parse, String relay,
+			String fdateStr, User user, List<Comment> comment) {
+		super();
+		this.id = id;
+		this.text = text;
+		this.pic = pic;
+		this.video = video;
+		this.fdate = fdate;
+		this.source = source;
+		this.sourcename = sourcename;
+		this.parse = parse;
+		this.relay = relay;
+		this.fdateStr = fdateStr;
+		this.user = user;
+		this.comment = comment;
+	}
+
+
 
 
 	public Blog(Long id, String text, String pic, Date fdate, Long source,
@@ -133,13 +155,27 @@ public class Blog implements Serializable {
 	public void setRelay(String relay) {
 		this.relay = relay;
 	}
+	
+	public String getSourcename() {
+		return sourcename;
+	}
+
+
+
+	public void setSourcename(String sourcename) {
+		this.sourcename = sourcename;
+	}
+
+
+
 
 	@Override
 	public String toString() {
 		return "Blog [id=" + id + ", text=" + text + ", pic=" + pic
 				+ ", video=" + video + ", fdate=" + fdate + ", source="
-				+ source + ", parse=" + parse + ", relay=" + relay + ", user="
-				+ user + "]\n";
+				+ source + ", sourcename=" + sourcename + ", parse=" + parse
+				+ ", relay=" + relay + ", fdateStr=" + fdateStr + ", user="
+				+ user + ", comment=" + comment + "]";
 	}
 
 
