@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.microblog.bean.Blog;
+
 public interface BaseDao<T>
 {
 	/**
@@ -115,4 +117,6 @@ public interface BaseDao<T>
 	 */
 	//public Set<String> getKeys( String pattern);
 	//redis  end
+
+	public Integer del(Class<Blog> clazz, Long id, String sqlId);
 }

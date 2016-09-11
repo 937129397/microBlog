@@ -35,8 +35,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<selectKey keyProperty="id" order="BEFORE" resultType="Integer">
 			select max(id)+1 from concern
 	</selectKey>
-	insert into concern(id,b_uid,f_uid,group_id)
-	values(#{id},#{uid},#{f_uid},#{group_id})
+	insert into concern(id,b_uid,f_uid)
+	values(#{id},#{b_uid},#{f_uid})
 	</insert>
 	
 	<!-- 根据粉丝ID查博主ID -->

@@ -388,6 +388,8 @@ $(function() {
 
 			});
 
+	
+	//获取所有blog
 	$
 			.ajax({
 				type : 'post',
@@ -517,6 +519,39 @@ function zhuanfa(id) {
 					}
 				}
 			});
+	
 }
+function GuanZhu(uid){
+	if($("#guanzhu"+uid).html()=="关注"){
+		$.ajax({
+			url : 'Concern_addConcern.action',
+			type : 'post',
+			dataType : 'json',
+			data : {
+				'user.uid' : uid
+			},
+			success : function(data) {
+				if (data.code == 1) {
+					$("#guanzhu"+uid).html("已关注");
+				}
+			}
+		});
+	}else{
+		$.ajax({
+			url : 'Concern_delConcern.action',
+			type : 'post',
+			dataType : 'json',
+			data : {
+				'user.uid' : uid
+			},
+			success : function(data) {
+				if (data.code == 1) {
+					$("#guanzhu"+uid).html("关注");
+				}
+			}
+		});
+	}
+}
+
 /* ****************************************************************** */
 

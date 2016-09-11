@@ -65,10 +65,24 @@ $(function(){
 				$("#mainBannerContent2").html(content);
 			}
 		}
-		
+	});
+});
+function del(id){
+	$.ajax({
+		url : 'blog_del.action',
+		type : 'post',
+		dataType : 'json',
+		data : {
+			'blog.id' : id
+		},
+		success : function(data) {
+			if (data.code == 1) {
+				$("#people"+id).remove();
+			}
+		}
 	});
 	
-});
+}
 </script>
 </head>
 

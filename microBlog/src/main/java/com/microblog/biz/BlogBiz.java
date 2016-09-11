@@ -16,4 +16,7 @@ public interface BlogBiz {
 	public BlogModel findBlogsByUid(BlogModel blogModel);
 	//根据帖子Id查
 	public Blog findBlogById(Long id);
+	
+	//删除
+	public boolean del(Blog blog);
 }

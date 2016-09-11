@@ -15,13 +15,15 @@
 
 	</insert>
 
-
-
+	<!-- 删除 -->
+	<delete id="delBlog" parameterType="java.lang.Long">
+		delete from blog where id =#{id}
+	</delete>
 
 
 	<!-- 查询所有微博 -->
 	<select id="getBlog" resultMap="BlogMap">
-		select * from blog
+		select * from blog order by fdate desc
 	</select>
 	<resultMap type="Blog" id="BlogMap">
 		<association property="user" column="uid"
@@ -43,7 +45,7 @@
 	<!-- 查询某用户的微博 -->
 	<select id="getBlogByUserId" resultMap="getPinglun">
 
-		select id as blog_id,id,uid,text,pic,video,fdate,source from blog where uid=#{user.uid}
+		select id as blog_id,id,uid,text,pic,video,fdate,source from blog where uid=#{user.uid} order by fdate desc
 
 	</select>
 	<resultMap type="Blog" id="getPinglun">

@@ -32,54 +32,59 @@ public class BlogBizImpl extends BaseBiz implements BlogBiz {
 
 	// 得到总的微博
 	public BlogModel findAllBlog(BlogModel hs) {
-		Map<String ,Object> params=new HashMap<String,Object>();
-		User u=new User();
-		//u.setUid(2);
-		//ServletActionContext.getRequest().getSession().setAttribute(YcConstants.LOGINUSER,u);
-		//登录之后才能查询所关注的好友的微博
-		if( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER)!=null&&!"".equals( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER))){
-			u=(User) ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
-			params.put("f_uid",u.getUid());
+		Map<String, Object> params = new HashMap<String, Object>();
+		User u = new User();
+		// u.setUid(2);
+		// ServletActionContext.getRequest().getSession().setAttribute(YcConstants.LOGINUSER,u);
+		// 登录之后才能查询所关注的好友的微博
+		if (ServletActionContext.getRequest().getSession()
+				.getAttribute(YcConstants.LOGINUSER) != null
+				&& !"".equals(ServletActionContext.getRequest().getSession()
+						.getAttribute(YcConstants.LOGINUSER))) {
+			u = (User) ServletActionContext.getRequest().getSession()
+					.getAttribute(YcConstants.LOGINUSER);
+			params.put("f_uid", u.getUid());
 			// 查询总记录数
-			int count = baseDao.getCount(Blog.class,params, "getBlogCount");
+			int count = baseDao.getCount(Blog.class, params, "getBlogCount");
 			// 计算总页数
-			int total = count % hs.getSizePage() == 0 ? count / hs.getSizePage()
-					: count / hs.getSizePage() + 1;
+			int total = count % hs.getSizePage() == 0 ? count
+					/ hs.getSizePage() : count / hs.getSizePage() + 1;
 			hs.setTotal(total);
 			// 计算偏移量
 			int off = (hs.getCurrPage() - 1) * hs.getSizePage();
-			
-			List<Blog> hh = this.baseDao.findList(Concern.class, params, "getID", off,
-					hs.getSizePage());
+
+			List<Blog> hh = this.baseDao.findList(Concern.class, params,
+					"getID", off, hs.getSizePage());
 			// 操作redis数据库 整合关系数据库
 			for (Blog blog : hh) {
 				Long id = blog.getId();
 				// 获取点赞数
 				String parse = (String) this.baseDao.getKey("user:parse" + id);
-				if(parse==null){
-					parse="0";
+				if (parse == null) {
+					parse = "0";
 				}
 				blog.setParse(parse);
 				// 获取转发数
 				String relay = (String) this.baseDao.getKey("user:relay" + id);
-				if(relay==null){
-					relay="0";
+				if (relay == null) {
+					relay = "0";
 				}
 				blog.setRelay(relay);
-				
-				if(!"".equals(blog.getSource())&&blog.getSource()!=null&&blog.getSource()!=0){
-					Blog cc=new Blog();
+
+				if (!"".equals(blog.getSource()) && blog.getSource() != null
+						&& blog.getSource() != 0) {
+					Blog cc = new Blog();
 					cc.setId(blog.getSource());
-					Blog ccc=(Blog) this.baseDao.find(cc, "getBlogById");
+					Blog ccc = (Blog) this.baseDao.find(cc, "getBlogById");
 					blog.setSourcename(ccc.getUser().getNickname());
 				}
 			}
 			hs.setBlogs(hh);
 			return hs;
-		}else{
+		} else {
 			return null;
 		}
-		
+
 	}
 
 	// 点赞（redis）
@@ -128,73 +133,95 @@ public class BlogBizImpl extends BaseBiz implements BlogBiz {
 
 	@Override
 	public BlogModel findBlogsByUid(BlogModel blogModel) {
-		Map<String ,Object> params=new HashMap<String,Object>();
-		User u=new User();
-		if( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER)!=null&&!"".equals( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER))){
-			u=(User) ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
-			params.put("user",u);
+		Map<String, Object> params = new HashMap<String, Object>();
+		User u = new User();
+		if (ServletActionContext.getRequest().getSession()
+				.getAttribute(YcConstants.LOGINUSER) != null
+				&& !"".equals(ServletActionContext.getRequest().getSession()
+						.getAttribute(YcConstants.LOGINUSER))) {
+			u = (User) ServletActionContext.getRequest().getSession()
+					.getAttribute(YcConstants.LOGINUSER);
+			params.put("user", u);
 			// 查询总记录数
-			int count = baseDao.getCount(Blog.class,params, "getBlogCountByUserid");
+			int count = baseDao.getCount(Blog.class, params,
+					"getBlogCountByUserid");
 			// 计算总页数
-			int total = count % blogModel.getSizePage() == 0 ? count / blogModel.getSizePage()
-					: count / blogModel.getSizePage() + 1;
+			int total = count % blogModel.getSizePage() == 0 ? count
+					/ blogModel.getSizePage() : count / blogModel.getSizePage()
+					+ 1;
 			blogModel.setTotal(total);
 			// 计算偏移量
 			int off = (blogModel.getCurrPage() - 1) * blogModel.getSizePage();
-			
-			List<Blog> hh = this.baseDao.findList(Blog.class, params, "getBlogByUserId", off,
-					blogModel.getSizePage());
+
+			List<Blog> hh = this.baseDao.findList(Blog.class, params,
+					"getBlogByUserId", off, blogModel.getSizePage());
 			// 操作redis数据库 整合关系数据库
 			for (Blog blog : hh) {
 				Long id = blog.getId();
 				// 获取点赞数
 				String parse = (String) this.baseDao.getKey("user:parse" + id);
-				if(parse==null){
-					parse="0";
+				if (parse == null) {
+					parse = "0";
 				}
 				blog.setParse(parse);
 				// 获取转发数
 				String relay = (String) this.baseDao.getKey("user:relay" + id);
-				if(relay==null){
-					relay="0";
+				if (relay == null) {
+					relay = "0";
 				}
 				blog.setRelay(relay);
 				blog.setUser(u);
-				
-				if(blog.getSource()!=0&&!"".equals(blog.getSource())){
-					Blog cc=new Blog();
+				/*
+				 * if(blog.getSource()!=0&&!"".equals(blog.getSource())&&blog.
+				 * getSource()!=null){ Blog cc=new Blog();
+				 * cc.setId(blog.getSource()); Blog ccc=(Blog)
+				 * this.baseDao.find(cc, "getBlogById");
+				 * blog.setSourcename(ccc.getUser().getNickname()); }
+				 */
+				if (!"".equals(blog.getSource()) && blog.getSource() != null
+						&& blog.getSource() != 0) {
+					Blog cc = new Blog();
 					cc.setId(blog.getSource());
-					Blog ccc=(Blog) this.baseDao.find(cc, "getBlogById");
+					Blog ccc = (Blog) this.baseDao.find(cc, "getBlogById");
 					blog.setSourcename(ccc.getUser().getNickname());
 				}
 			}
 			blogModel.setBlogs(hh);
 			return blogModel;
-		}else{
+		} else {
 			return null;
 		}
-		
+
 	}
 
 	@Override
 	public Blog findBlogById(Long id) {
-		Blog b=new Blog();
+		Blog b = new Blog();
 		b.setId(id);
-		b=(Blog) this.baseDao.find(b, "getBlogById");
+		b = (Blog) this.baseDao.find(b, "getBlogById");
 		// 获取点赞数
 		String parse = (String) this.baseDao.getKey("user:parse" + id);
-		if(parse==null){
-			parse="0";
+		if (parse == null) {
+			parse = "0";
 		}
 		b.setParse(parse);
 		// 获取转发数
 		String relay = (String) this.baseDao.getKey("user:relay" + id);
-		if(relay==null){
-			relay="0";
+		if (relay == null) {
+			relay = "0";
 		}
 		b.setRelay(relay);
 		return b;
 	}
 
+	@Override
+	@Transactional(readOnly = false, isolation = Isolation.DEFAULT, rollbackForClassName = "java.lang.RuntimeException", propagation = Propagation.REQUIRED)
+	public boolean del(Blog blog) {
+		if (baseDao.del(Blog.class, blog.getId(), "delBlog") == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }

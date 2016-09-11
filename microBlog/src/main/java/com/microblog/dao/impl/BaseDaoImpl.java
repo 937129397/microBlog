@@ -11,6 +11,8 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
 
+
+import com.microblog.bean.Blog;
 import com.microblog.dao.BaseDao;
 import com.microblog.dao.mybatis.cache.RedisCache;
 
@@ -106,6 +108,13 @@ public class BaseDaoImpl<T> extends SqlSessionDaoSupport implements BaseDao<T> {
 	public void decr(String key) {
 		this.client.decr(key);
 		
+	}
+
+	@Override
+	public Integer del(Class<Blog> clazz, Long id, String sqlId) {
+		int i = super.getSqlSession().delete( MAPPERPATH+ clazz.getSimpleName() + "Mapper." + sqlId, id);
+		System.out.println(i);
+		return i;
 	}
 
 	/*@Override

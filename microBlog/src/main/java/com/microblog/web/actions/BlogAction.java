@@ -112,6 +112,16 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 		
 	}
+	//删除
+	@Action(value="blog_del")
+	public void del() throws IOException{
+		if(blogBiz.del(blogModel.getBlog())){
+			jsonModel.setCode(1);
+		}else{
+			jsonModel.setCode(0);
+		}
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+	}
 	
 
 

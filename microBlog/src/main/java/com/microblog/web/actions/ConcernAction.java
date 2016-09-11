@@ -56,6 +56,17 @@ public class ConcernAction extends BaseAction implements ModelDriven<UserModel>{
 		super.printJson(jsonModel, ServletActionContext.getResponse());
 	}
 	
+	@Action(value="Concern_addConcern")
+	public void addConcern() throws IOException{
+		User user =(User)ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
+		Concern cc  = new Concern();
+		cc.setB_uid(userModel.getUser().getUid());
+		cc.setF_uid(user.getUid());
+		concernBiz.addConcern(cc);
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+	}
+	
+	
 	@Action(value="concern_getConcernInfo")
 	public void getFansInfo() throws IOException{
 		User user =(User)ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);

@@ -16,7 +16,7 @@ public class ConcernBizImpl extends BaseBiz implements ConcernBiz {
 
 	@Transactional(readOnly = false)
 	public boolean addConcern(Concern concern) {
-		baseDao.save(concern, "addGroups");
+		baseDao.save(concern, "addUserConcern");
 		return true;
 	}
 
