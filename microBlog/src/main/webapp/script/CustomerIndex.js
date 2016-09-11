@@ -125,7 +125,7 @@ function submitState() {
 				});
 
 	}
-	//txtObj.value = "";// 清空文本框
+	// txtObj.value = "";// 清空文本框
 	$("#picInput").val("");
 	$("#videoInput").val("");
 	changeDivHeight();// 重设页面高度
@@ -236,17 +236,15 @@ function submitRstate() {
 
 /* 点回复时显示原来的回复窗口 */
 function reXianShi(srcObj) {
-//	var tmp = $("#mainBannerContent");
-//	var src = srcObj;
-//	if(src.parentNode.parentNode.parentNode == tmp){
-//		hfObj = src.parentNode.nextSibling;
-//	}
-//	
-//	 $("#recieve").attr("style","visibility:visible");
-//	
-	
-	
-	
+	// var tmp = $("#mainBannerContent");
+	// var src = srcObj;
+	// if(src.parentNode.parentNode.parentNode == tmp){
+	// hfObj = src.parentNode.nextSibling;
+	// }
+	//	
+	// $("#recieve").attr("style","visibility:visible");
+	//	
+
 	var tmp = document.getElementById("mainBannerContent");
 	var heights;
 	/* 判断是回复里面点的回复还是在与那里的状态里面点的回复 */
@@ -260,11 +258,12 @@ function reXianShi(srcObj) {
 	var divObj = document.getElementById("recieve");
 	divObj.style.visibility = "visible";
 	/* 如果是最后一个状态就点设置回复窗口在上面显示 */
-	
-	if (tmp.offsetHeight - srcObj.offsetTop  >= 30) {
-		divObj.style.top = srcObj.offsetTop  + "px";
+
+	if (tmp.offsetHeight - srcObj.offsetTop >= 30) {
+		divObj.style.top = srcObj.offsetTop + "px";
 	} else {
-		divObj.style.top = (srcObj.offsetTop  - hfObj.parentNode.offsetHeight) + "px";
+		divObj.style.top = (srcObj.offsetTop - hfObj.parentNode.offsetHeight)
+				+ "px";
 	}
 	var txt = document.getElementById("ta1");
 	txt.value = "";
@@ -272,8 +271,6 @@ function reXianShi(srcObj) {
 	srcUser = srcUser.childNodes[0].childNodes[0].childNodes[0].childNodes[1].childNodes[0];
 	srcUser = "&nbsp;@" + srcUser.innerHTML + "&nbsp;&nbsp;"
 }
-
-
 
 /* 点红叉时，关闭回复面板 */
 function windowClose() {
@@ -357,97 +354,169 @@ function showAddFileDiv(id) {
 
 }
 
-
-
 $(function() {
-	$.ajax({
-		type:"POST",
-		dataType:"json",
-		url:"user_getUserInfo.action",
-		success:function(data){
-			var htmlstr='';
-			if(data.code==1){
-				htmlstr+='<div style="height: 58px;">';
-				htmlstr+='<div id="mainRightPostionFirstLineIcon">';
-				htmlstr+='<a href="MyWB.html"><img src="'+data.obj.pic+'" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>';
-				htmlstr+='</div>';
-				htmlstr+='<div id="mainRightPostionFirstLineWord1">&nbsp;<font color="#005DC3"><b><a href="MyWB.html" class="a1">'+data.obj.nickname+'</a></b></font>';
-				htmlstr+='</div>';
-				htmlstr+='</div>';
-				htmlstr+='<div id="mainRightPostionFirstLineWord2">';
-				htmlstr+='<ul id="ul1">';
-				htmlstr+='<li><a href="MyWB.html" class="a1" id="webCount"><font class="style1" ></font></a><br /><font class="style2">微博</font></li>';
-				htmlstr+='<li><a href="friend.html" class="a1" id="concernCount"><font class="style1" ></font></a><br /><font class="style2">关注</font></li>';
-				htmlstr+=' <li><a href="focusonyou.html" class="a1" id="fansCount"><font class="style1" ></font></a><br /><font class="style2">粉丝</font></li>';
-				htmlstr+='</ul>';
-				htmlstr+='</div>';
-			}else{
-				alert(data.msg);
-			}
-			$("#mainRightPostionFirstLine").html(htmlstr);
-		}
-		
-	});
-	
-	
-	
-	$.ajax({
-		type : 'post',
-		url : "blog_findAll.action",
-		dataType : 'json',
-		success : function(data) {
-			var recieveDiv = $("#recieve");
-			$("#mainBannerContent").html("");
-			if (data.code == 1) {
-				var innerht = "";
-				var blogs = data.obj.blogs;
-				for(var j=0;j<blogs.length;++j){
-					
-					var picstr = blogs[j].pic;
-					var pics = picstr.split(",split*");
-					 innerht += "<div class='stateShow' onmouseover='stateMouseOver(this)' onmouseout='stateMouseOut(this)'><div class='stateShowWord'><table width='450' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='"
-						+ blogs[j].user.pic
-						+ "' alt='' width='48' height='48' /></a></td><td width='380'><a href='#'>"
-						+ blogs[j].user.nickname
-						+ "</a><img src='images/1.gif' align='absmiddle' style='border:none;' />&nbsp;"
-						+ blogs[j].text
-						+ "</td></tr></table></div><div class='stateImgShow'>";
-					for (var i = 0; i < pics.length; ++i) {
-						if (pics[i] != null && pics[i] != "") {
-							innerht += "<img width='120' height='120' src='"
-								+ pics[i] + "'>";
-						}
+	$
+			.ajax({
+				type : "POST",
+				dataType : "json",
+				url : "user_getUserInfo.action",
+				success : function(data) {
+					var htmlstr = '';
+					if (data.code == 1) {
+						htmlstr += '<div style="height: 58px;">';
+						htmlstr += '<div id="mainRightPostionFirstLineIcon">';
+						htmlstr += '<a href="MyWB.html"><img src="'
+								+ data.obj.pic
+								+ '" alt="" width="48" height="48" align="absmiddle" title="" border="0" /></a>';
+						htmlstr += '</div>';
+						htmlstr += '<div id="mainRightPostionFirstLineWord1">&nbsp;<font color="#005DC3"><b><a href="MyWB.html" class="a1">'
+								+ data.obj.nickname + '</a></b></font>';
+						htmlstr += '</div>';
+						htmlstr += '</div>';
+						htmlstr += '<div id="mainRightPostionFirstLineWord2">';
+						htmlstr += '<ul id="ul1">';
+						htmlstr += '<li><a href="MyWB.html" class="a1" id="webCount"><font class="style1" ></font></a><br /><font class="style2">微博</font></li>';
+						htmlstr += '<li><a href="friend.html" class="a1" id="concernCount"><font class="style1" ></font></a><br /><font class="style2">关注</font></li>';
+						htmlstr += ' <li><a href="focusonyou.html" class="a1" id="fansCount"><font class="style1" ></font></a><br /><font class="style2">粉丝</font></li>';
+						htmlstr += '</ul>';
+						htmlstr += '</div>';
+					} else {
+						alert(data.msg);
 					}
-					
-					innerht += "</div><div class='stateShowtime'>"
-						+ blogs[j].fdateStr
-						+ "</div><div class='stateOp'>" +
-						"<img width='20px' height='17px' src='images/dianzan.png' onclick='dianzan("+blogs[j].id+")' /><span id='dianzan"+blogs[j].id+"'> ("+blogs[j].parse+")</span>  <a href='' onclick='reXianShi(this);return false;' class='opState'>回复</a><a  href='' class='opState'>转发</a></div><div class='huifu'></div></div>";
+					$("#mainRightPostionFirstLine").html(htmlstr);
 				}
-				
-				$("#mainBannerContent").html(innerht);
-				$("#mainBannerContent").append(recieveDiv);
-			}
 
+			});
 
-		}
-	});
+	$
+			.ajax({
+				type : 'post',
+				url : "blog_findAll.action",
+				dataType : 'json',
+				success : function(data) {
+					var recieveDiv = $("#recieve");
+					$("#mainBannerContent").html("");
+					if (data.code == 1) {
+						var innerht = "";
+						var blogs = data.obj.blogs;
+						for (var j = 0; j < blogs.length; ++j) {
+
+							var picstr = blogs[j].pic;
+							var pics = picstr.split(",split*");
+							if(blogs[j].sourcename!=null){
+								innerht += "<div class='stateShow' onmouseover='stateMouseOver(this)' onmouseout='stateMouseOut(this)'><div class='stateShowWord'><table width='450' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='"
+									+ blogs[j].user.pic
+									+ "' alt='' width='48' height='48' /></a></td><td width='380'><a href='#'>"
+									+ blogs[j].user.nickname
+									+ "</a><img src='images/1.gif' align='absmiddle' style='border:none;' />&nbsp;"
+									+ "<a>@"+blogs[j].sourcename+"</a><br />"+ blogs[j].text
+									+ "</td></tr></table></div><div class='stateImgShow'>";
+							}else{
+								innerht += "<div class='stateShow' onmouseover='stateMouseOver(this)' onmouseout='stateMouseOut(this)'><div class='stateShowWord'><table width='450' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='"
+									+ blogs[j].user.pic
+									+ "' alt='' width='48' height='48' /></a></td><td width='380'><a href='#'>"
+									+ blogs[j].user.nickname
+									+ "</a><img src='images/1.gif' align='absmiddle' style='border:none;' />&nbsp;"
+									+ blogs[j].text
+									+ "</td></tr></table></div><div class='stateImgShow'>";
+							}
+							
+							for (var i = 0; i < pics.length; ++i) {
+								if (pics[i] != null && pics[i] != "") {
+									innerht += "<img width='120' height='120' src='"
+											+ pics[i] + "'>";
+								}
+							}
+
+							innerht += "</div><div class='stateShowtime'>"
+									+ blogs[j].fdateStr
+									+ "</div><div class='stateOp'>"
+									+ "<img width='20px' height='17px' src='images/dianzan.png' onclick='dianzan("
+									+ blogs[j].id
+									+ ")' /><span id='dianzan"
+									+ blogs[j].id
+									+ "'> ("
+									+ blogs[j].parse
+									+ ")</span>  <a href='' onclick='reXianShi(this);return false;' class='opState'>回复</a><a  href='' onclick='zhuanfa("
+									+ blogs[j].id
+									+ ");return false;' class='opState'>转发</a></div><div class='huifu'></div></div>";
+						}
+
+						$("#mainBannerContent").html(innerht);
+						$("#mainBannerContent").append(recieveDiv);
+					}
+
+				}
+			});
 })
 
-function dianzan(id){
+function dianzan(id) {
 	$.ajax({
-		url:'blog_parse.action',
-		type:'post',
-		dataType:'json',
-		data:{'blog.id':id},
-		success:function(data){
-			if(data.code==1){
-				$("#dianzan"+id).html("("+data.obj+")");
+		url : 'blog_parse.action',
+		type : 'post',
+		dataType : 'json',
+		data : {
+			'blog.id' : id
+		},
+		success : function(data) {
+			if (data.code == 1) {
+				$("#dianzan" + id).html("(" + data.obj + ")");
 			}
 		}
 	});
-	
+
 }
 
+function zhuanfa(id) {
+	$
+			.ajax({
+				url : 'blog_zhuanfa.action',
+				type : 'post',
+				dataType : 'json',
+				data : {
+					'blog.id' : id
+				},
+				success : function(data) {
+					var recieveDiv = $("#recieve");
+					
+					if (data.code == 1) {
+						var innerht = "";
+						var data = data.obj;
+
+						var picstr = data.pic;
+						var pics = picstr.split(",split*");
+						innerht += "<div class='stateShow' onmouseover='stateMouseOver(this)' onmouseout='stateMouseOut(this)'><div class='stateShowWord'><table width='450' border='0' cellpadding='0' cellspacing='0' class='stateTable'><tr><td width='70' align='center' valign='top'><a href='#'><img src='"
+								+ data.user.pic
+								+ "' alt='' width='48' height='48' /></a></td><td width='380'><a href='#'>"
+								+ data.user.nickname
+								+ "</a><img src='images/1.gif' align='absmiddle' style='border:none;' />&nbsp;"
+								+ "<a>@"+data.sourcename+"</a><br />"+data.text
+								+ "</td></tr></table></div><div class='stateImgShow'>";
+						for (var i = 0; i < pics.length; ++i) {
+							if (pics[i] != null && pics[i] != "") {
+								innerht += "<img width='120' height='120' src='"
+										+ pics[i] + "'>";
+							}
+						}
+
+						innerht += "</div><div class='stateShowtime'>"
+								+ data.fdateStr
+								+ "</div><div class='stateOp'>"
+								+ "<img width='20px' height='17px' src='images/dianzan.png' onclick='dianzan("
+								+ data.id
+								+ ")' /><span id='dianzan"
+								+ data.id
+								+ "'> ("
+								+ data.parse
+								+ ")</span>  <a href='' onclick='reXianShi(this);return false;' class='opState'>回复</a><a  href='' onclick='zhuanfa("
+								+ data.id
+								+ ");return false;' class='opState'>转发</a></div><div class='huifu'></div></div>";
+
+						$("#mainBannerContent").append(innerht);
+						$("#mainBannerContent").append(recieveDiv);
+					}
+				}
+			});
+}
 /* ****************************************************************** */
 
