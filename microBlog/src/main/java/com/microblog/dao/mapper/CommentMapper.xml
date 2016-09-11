@@ -4,7 +4,7 @@
 <mapper namespace="com.microblog.dao.mapper.CommentMapper">
 	<!-- 查询此条微博所有评论 -->
 	<select id="getAllComment" resultMap="getUserForCUser">
-		select * from comment where blog_id=#{blog.id}
+		select * from comment where blog_id=#{blog_id}
 	</select>
 	<resultMap type="Comment" id="getUserForCUser">
 		<association property="user" column="c_uid" select="com.microblog.dao.mapper.UserMapper.getUser"></association>

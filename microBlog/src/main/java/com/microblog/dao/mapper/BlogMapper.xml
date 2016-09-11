@@ -31,16 +31,16 @@
 	
 		<!-- 查询莫用户发表总微博数 -->
 	<select id="getBlogCountByUserid" resultType="int">
-		select count(*) from blog where uid =#{uid}
+		select count(*) from blog where uid =#{user.uid}
 	</select>
 	
 	<!-- 查询某用户的微博 -->
 	<select id="getBlogByUserId" resultMap="getPinglun">
-		select * from blog where uid=#{uid}
+		select id as blog_id,id,uid,text,pic,video,fdate,source from blog where uid=#{user.uid}
 	</select>
 	<resultMap type="Blog" id="getPinglun">
-		<collection property="comment" column="id" select="com.microblog.dao.mapper.CommentMapper.getAllComment">
-		</collection>
+		<collection property="comment" column="blog_id" select="com.microblog.dao.mapper.CommentMapper.getAllComment"/>
+		
 	</resultMap>
 
 	

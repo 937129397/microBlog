@@ -2,6 +2,7 @@ package com.microblog.bean;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class Blog implements Serializable {
 	private String relay;// 转发数
 	private String fdateStr;
 	private User user = new User();
-	private List<Comment> comment;  //评论
+	private List<Comment> comment = new ArrayList<Comment>();  //评论
 
 
 

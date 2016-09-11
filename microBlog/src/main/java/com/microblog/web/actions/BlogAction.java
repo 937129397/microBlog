@@ -45,6 +45,20 @@ public class BlogAction extends BaseAction implements ModelDriven<BlogModel> {
 	private BlogModel blogModel;
 	private BlogBiz blogBiz;
 
+	
+	// 查询个人所有的微博
+	@Action(value="/blog_findBlogByUid")
+	public void findBlogByUid() throws IOException{
+		blogModel=blogBiz.findBlogsByUid(blogModel);
+		if(blogModel.getBlogs()!=null){
+			jsonModel.setCode(1);
+			jsonModel.setObj(blogModel);
+		}else{
+			jsonModel.setCode(0);
+		}
+		super.printJson(jsonModel, ServletActionContext.getResponse());
+	}
+	
 	// 首页查询所有关注好友的微博
 	@Action(value = "/blog_findAll")
 	public void findAll() throws IOException {

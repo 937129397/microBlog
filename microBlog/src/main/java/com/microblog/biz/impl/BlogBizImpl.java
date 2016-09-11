@@ -125,7 +125,7 @@ public class BlogBizImpl extends BaseBiz implements BlogBiz {
 		User u=new User();
 		if( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER)!=null&&!"".equals( ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER))){
 			u=(User) ServletActionContext.getRequest().getSession().getAttribute(YcConstants.LOGINUSER);
-			params.put("uid",u.getUid());
+			params.put("user",u);
 			// 查询总记录数
 			int count = baseDao.getCount(Blog.class,params, "getBlogCountByUserid");
 			// 计算总页数
@@ -148,7 +148,11 @@ public class BlogBizImpl extends BaseBiz implements BlogBiz {
 				blog.setParse(parse);
 				// 获取转发数
 				String relay = (String) this.baseDao.getKey("user:relay" + id);
+				if(relay==null){
+					relay="0";
+				}
 				blog.setRelay(relay);
+				blog.setUser(u);
 			}
 			blogModel.setBlogs(hh);
 			return blogModel;

@@ -166,7 +166,6 @@ public class Test extends TestCase {
 				"beans_mybatis.xml");
 		BlogBiz ub = (BlogBiz) ac.getBean("blogBizImpl");
 		BlogModel b=new BlogModel();
-		b.
 		System.out.println(ub.findAllBlog(b));
 		
 	}
