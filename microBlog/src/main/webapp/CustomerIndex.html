@@ -1,0 +1,377 @@
+﻿﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>灵步网微博-点滴生活，精彩世界</title>
+<script type="text/javascript" src="script/jquery-1.9.1.js"></script>
+<link href="styles/CustomerIndex.css" type="text/css" rel="stylesheet" />
+<link href="styles/global.css" type="text/css" rel="stylesheet" />
+<script src="script/jquery-1.9.1.js"></script>
+<script src="script/ajaxFileUpload.js"></script>
+<script src="script/CustomerIndex.js"></script>
+<script src="script/MyWB.js" language="javascript"></script>
+<script  src="script/trim.js"></script>
+
+</head>
+<body>
+<div>
+    <div id="console-container">
+        <div id="console"></div>
+    </div>
+</div>
+
+<body style="filter: alpha(opacity = 100)" id="totop">
+	<!-- 总容器 container开 始-->
+
+	<div id="container">
+		<!-- topDIV 开始 -->
+		<div id="top">
+			<!-- top部分的LogoDIV -->
+			<div id="topLogo">
+				<!-- topLogo部分的icoDIV -->
+				<div id="topLogoIco">
+					<a href="CustomerIndex.html"><img src="images/logo_ipad.png"
+						width="72" height="72" alt="" /></a>
+				</div>
+				<!-- topLogo部分的icoDIV结束 -->
+
+				<!-- topLogo部分的wordDIV -->
+				<div id="topLogoWord">
+					<a href="CustomerIndex.html"><img src="images/LogoMaker.gif"
+						width="128" height="60" alt="" /></a>
+				</div>
+				<!-- topLogo部分的wordDIV -->
+			</div>
+			<!-- top部分的LogoDIV结束 -->
+
+			<!-- top部分的文字导航 -->
+			<div id="topWordMenu">
+				<ul>
+					<li><a href="CustomerIndex.html">首页</a></li>
+					<li><a href="MyWB.html">我的微博</a></li>
+					<li><a href="#">找人</a></li>
+					<li><a href="setting.html">设置</a></li>
+					<li><a href="#">手机</a></li>
+					<li><a href="#">帮助</a></li>
+					<li><a href="index.html">退出</a></li>
+				</ul>
+			</div>
+			<!-- top部分的文字导航结束 -->
+		</div>
+		<!-- topDIv 结束-->
+		<!-- 内容总容器 mainDIV 开 始-->
+		<div id="main">
+			<!-- 左侧mainBannerDIV 开始 -->
+			<div id="mainBanner">
+				<!-- mainBannerTop DIV 开始 -->
+				<div id="mainBannerTop">
+					
+					<!--id=mainBannerTopIssue 发布框-->
+					<div id="mainBannerTopIssue">
+						<!--id=mainBannerTopIssuePoint 提示-->
+						<div id="mainBannerTopIssuePoint">正在发生的事情</div>
+						<div style="float: right;">
+							您还可以输入<font id="counter1">140</font>字！
+						</div>
+						<form action="" method="post" id="fabu"
+							enctype="multipart/form-data">
+							<div id="mainBannerTopIssueForm">
+								<!--id="mainBannerTopIssueFrame-->
+								<div id="mainBannerTopIssueFrame">
+									<textarea name="textfield1" rows="4" class="Size"
+										id="textfield2"
+										style="overflow: hidden; border: 1px #0CF solid;"
+										onkeyup="calNum(this,counter1,0)"></textarea>
+								</div>
+								<!--id="mainBannerTopIssueInsert 插入链接-->
+								<div id="mainBannerTopIssueInsert">
+									<!--4个小div-->
+								</div>
+								<!--确认发布-->
+								<div id="mainBannerTopIssueSure">
+									<div id="mainBannerTopIssueSure2">
+										<a  class="a1" href=""
+											onclick="showAddFileDiv('picInput');return false;">
+											<div id="mainBannerTopIssueInsert1"></div>
+											<div id="mainBannerTopIssueInsert2">插入图片</div>
+										</a> <a  class="a1" href=""
+											onclick="showAddFileDiv('videoInput');return false;">
+											<div id="mainBannerTopIssueInsert3"></div>
+											<div id="mainBannerTopIssueInsert4">插入视频</div>
+										</a> <a href="javascript:biaoQingXianShi()" class="a1">
+											<div id="mainBannerTopIssueInsert5"></div>
+											<div id="mainBannerTopIssueInsert6">插入表情</div>
+										</a> <input type="button" name="button1" id="button1" value="发布"
+											style="background-color: #3295E6; border: none"
+											onclick="submitState()" />
+									</div>
+								</div>
+							</div>
+							<div id="addFile" style="visibility: hidden;">
+								<input type="file" id="picInput" name="file" 
+									style="visibility: hidden;" multiple="multiple"/> 
+								<input
+									type="file" id="videoInput" name="file"
+									style="visibility: hidden;" multiple="multiple" />
+							</div>
+						</form>
+					</div>
+				
+					<!-- 表情DIV -->
+					<div id="biaoqing">
+						<table width="200" border="1" cellspacing="0" cellpadding="0">
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+						</table>
+
+					</div>
+				
+				</div>
+				<br /> <br />
+				<!--id="mainBannerTitle 首页-->
+				<div id="mainBannerTitle">
+					<!--id="mainBannerTitleWord"-->
+					<div id="mainBannerTitleWord">
+						<b>首页</b>
+					</div>
+					<div id="console1" style="display: none;">
+					<a href="" >您有新消息，点击查看</a>
+					</div>
+					<!--首页提示与隐藏-->
+					<div id="mainBannerTitleWord2">
+						<input type="checkbox" name="checkbox" id="checkbox"
+							onclick="tdImgState()" /> 隐藏图片
+					</div>
+				</div>
+				<!--不同人的内容-->
+				<div id="mainBannerContent">
+					
+					
+				</div>
+			
+			</div>
+			<!-- 左侧mainBanner DIV 结束-->
+			<!-- 右侧mainRight DIV开始 -->
+			<div id="mainRight">
+				<table width="200" border="0" cellpadding="0" cellspacing="0"
+					bgcolor="#E9F4FA">
+					<tr>
+						<td bgcolor="#E9F4FA">
+							<!-- 右侧mainRightPostionFirstLine DIV 开始 -->
+							<div id="mainRightPostionFirstLine">
+							
+							</div> <!-- 右侧mainRightPostionFirstLine DIV 结束 -->
+						</td>
+					</tr>
+					<tr>
+						<td bgcolor="#E9F4FA">
+							<!-- 右侧mainRightPostionSecondLine DIV 开始 -->
+							<div id="mainRightPostionSecondLine">
+								<!-- 右侧mainRightPositionSecondLineContent DIV 开始 -->
+								<div id="mainRightPositionSecondLineContent">
+									<a href="#" class="a1"><font
+										style="font-size: 16px; font-weight: 700; color: #000;">首页</font></a><br />
+									<hr color="#79BDD1" zize="2" style="" />
+									<a href="#" class="a1"><font class="style3">@我的</font></a>
+									<hr class="h1">
+										<a href="#" class="a1"><font class="style3">我的私信</font></a>
+										<hr class="h1">
+											<a href="#" class="a1"><font class="style3">转发</font></a>
+											<hr class="h1">
+												<a href="#" class="a1"><font class="style3">我的收藏</font></a>
+								</div>
+								<!-- 右侧mainRightPositionSecondLineContent DIV 开始 -->
+							</div> <!-- 右侧mainRightPostionSecondLine DIV 结束 -->
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<!-- 右侧mainRightPostionThirdLine DIV 开始 -->
+							<div id="mainRightPostionThirdLine">
+								<!-- 右侧mainRightPositionThirdLineContent DIV 开始 -->
+								<div id="mainRightPositionThirdLineContent">
+									<p>
+										<a href="#" onclick="" class="a1"><font class="style4">你可能感兴趣的人</font>
+											<img src="images/ThirdLineUpArrow.gif" alt="" width="12"
+											height="14" align="right" title="" border="0" /></a>
+									</p>
+									<br />
+									<div id="d32" style="float: right">
+										<a href="#" class="a1">查看更多</a>
+									</div>
+								</div>
+								<!-- 右侧mainRightPositionThirdLineContent DIV 结束 -->
+							</div> <!-- 右侧mainRightPostionThirdLine DIV 开始 -->
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<!-- 右侧mainRightPostionFourthLine DIV 开始 -->
+							<div id="mainRightPostionFouthLine">
+								<!-- 右侧mainRightPositionThirdLineContent DIV 结束 -->
+								<div id="mainRightPositionFourthLineContent">
+									<form action="" method="get">
+										<input type="text" name="textfield" id="textfield1" /> <a
+											href="#"><img src="images/search.gif" alt="" width="27"
+											height="25" align="middle" title="" border="0" /></a>
+									</form>
+									<a href="#" onclick="" class="a1"><font class="style4">热门话题</font>
+										<img src="images/ThirdLineUpArrow.gif" alt="" width="12"
+										height="14" align="right" title="" border="0" /></a>
+									<ul id="ul2" style="line-height: 25px;">
+										<a href="#" class="a1"><li><font class="style2">动车(49585)</font></li></a>
+									</ul>
+								</div>
+								<!-- 右侧mainRightPositionThirdLineContent DIV 结束 -->
+							</div> <!-- 右侧mainRightPostionFoutrhLine DIV 结束 -->
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<!-- 右侧mainRightPostionFifthLine DIV 开始 -->
+							<div id="mainRightPostionFifthLine">
+								<div id="mainRightPositionFifthLineContent">
+									<a href="#" onclick="" class="a1"><font class="style4">我关注的话题</font>
+										<img src="images/ThirdLineUpArrow.gif" alt="" width="12"
+										height="14" align="right" title="" border="0" /></a>
+								</div>
+							</div> <!-- 右侧mainRightPostionFifthLine DIV 结束 -->
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<!-- 右侧mainRightPostionSixthLine DIV 开始 -->
+							<div id="mainRightPostionSixthLine">
+								<div id="mainRightPositionSixthLineContent">
+									<a href="#" onclick="" class="a1"><font class="style4">我关注的</font>
+										<img src="images/ThirdLineUpArrow.gif" alt="" width="12"
+										height="14" align="right" title="" border="0" /></a>
+								</div>
+								<ul>
+									<a href="#" class="a1"><li><img src="images/WBXM.gif"
+											border="0" /><br /> <font class="style2">微博小秘</font></li></a>
+									<a href="#" class="a1"><li><img src="images/AXXR.gif"
+											border="0" /><br /> <font class="style2">&nbsp;&nbsp;转&nbsp;&nbsp;发</font></li></a>
+									<a href="#" class="a1"><li><img src="images/LBXR.gif"
+											border="0" /><br /> <font class="style2">微博新人</font></li></a>
+								</ul>
+							</div> <!-- 右侧mainRightPostionSixthLine DIV 结束 -->
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<!-- 右侧mainRightPostionSeventhLine DIV 开始 -->
+							<div id="mainRightPostionSeventhLine">
+								<div id="mainRightPositionSevenLineContent">
+									灵步微博的成长，离不开你们。<br /> <font class="style2"><a href="#"
+										class="a1">有意见要提（点击） </a><br /> <br /> <a href="#"
+										class="a1" onclick="set()">不良信息举报中心</a></font>
+								</div>
+							</div> <!-- 右侧mainRightPostionSeventhLine DIV 结束 -->
+						</td>
+					</tr>
+				</table>
+			</div>
+			<!-- 右侧mainRightDiv 结束 -->
+		</div>
+		<!-- 回复DIV 开始 -->
+		<!-- 内容总容器 mainDIV 结束-->
+
+		<!-- footer部分 -->
+		<div id="footer">
+			<!-- footer网站链接部分 -->
+			<div id="footerLink">
+				<ul>
+					<li><a href="#" class="a2">灵步网介绍</a></li>
+					<li><a href="#" class="a2">广告服务</a></li>
+					<li><a href="#" class="a2">API</a></li>
+					<li><a href="#" class="a2">诚征英才</a></li>
+					<li><a href="#" class="a2">保护隐私权</a></li>
+					<li><a href="#" class="a2">免责条款</a></li>
+					<li><a href="#" class="a2">法律顾问</a></li>
+					<li><a href="#" class="a2">意见反馈</a></li>
+				</ul>
+			</div>
+			<!-- footer网站链接部分结束 -->
+			<!-- footer网站版权信息 -->
+			<div id="footerCopy">Copyright&copy;2011-2012 灵步小组 版权所有</div>
+			<!-- footer网站版权信息结束 -->
+		</div>
+		<!-- footer部分结束 -->
+
+	</div>
+	<!--总容器 container结束-->
+	<p id="backtop">
+		<a id="backtop1" href="#totop"><span></span>回到顶部</a>
+	</p>
+</body>
+<script  src="script/concect.js"></script>
+</html>

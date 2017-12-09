@@ -1,0 +1,400 @@
+
+/* CSS Document */
+/* 总容器DIV */
+#container{
+	width:962px;
+	height:auto;
+	margin:0px auto;
+}
+
+/* 上面topDIV */
+#top{
+	width:960px;
+	height:80px;
+	position:relative;
+	
+}
+	/* top部分的LogoDIV */
+	#topLogo{
+		width:200px;
+		height:80px;	
+	}
+		/* topLogo部分的icoDIV */
+		#topLogoIco{
+			width:72px;
+			height:72px;
+			margin-top:4px;
+			float:left;
+		}
+		/* topLogo部分的wordDIV */
+		#topLogoWord{
+			width:128px;
+			height:60px;
+			float:left;
+			margin-top:12px;
+		}
+			/* topLogo下的img */
+			#topLogo img{
+				border:none;
+			}
+	/* top部分的文字导航 */
+	#topWordMenu{
+		width:300px;
+		height:30px;
+		position:absolute;
+		top:33px;
+		left:655px;
+	}
+		/* top部分的ul */
+		#topWordMenu ul{
+			margin:0px;
+			padding:0px;
+			list-style:none;
+		}
+			/* top部分的li */
+			#topWordMenu ul li{
+				display:inline;
+				/*float:left;*/
+				margin:0px 8px;
+			}
+			/* top部分的文字链接 */
+			#topWordMenu a:link{
+				text-decoration:none;
+			}
+			#topWordMenu a:visited{
+				text-decoration:none;
+			}
+			#topWordMenu a:hover{
+				color:#FFF;
+				text-decoration:none;
+			}
+
+/* banner部分 */
+#banner{
+	width:960px;
+	height:180px;
+	background-image:url(../images/bannerword.png);
+	background-repeat:no-repeat;
+	position:relative;
+	border:1px #cccccc solid;
+	overflow:hidden;
+}
+	/* banner部分的LoginDIV */
+	#bannerLogin{
+		border:1px #84bceb solid;
+		/*float:right;*/
+		width:233px;
+		height:178px;
+		background-image:url(../images/login_bg.gif);
+		background-repeat:repeat-x;
+		position:absolute;
+		top:0px;
+		left:727px;
+	}
+	/* banner部分表单提示 */
+	#bannerLoginFormWord{
+		clear:right;
+		width:233px;
+		text-align:center;
+		font-size:14px;
+		height:23px;
+		line-height:23px;
+		font-weight:bold;
+		border-bottom:#84bceb 1px solid;
+	}
+	/* banner部分ID区*/
+	#bannerLoginFormID{
+		width:200px;
+		font-size:14px;
+		height:40px;
+		margin:0 auto;
+		margin-bottom:5px;
+		margin-top:5px;
+	}
+		/* banner部分ID提示*/
+		#userIdWord{
+			text-align:center;
+			width:200px;
+			height:20px;
+			line-height:20px;
+		}
+		/* banner部分ID输入框*/
+		#userIdInput{
+			text-align:center;
+			width:200px;
+			height:20px;
+		}
+	/* banner部分PASS区*/
+	#bannerLoginFormPass{
+		margin:0px auto;
+		width:200px;
+		height:40px;
+		font-size:14px;
+	}
+		/* banner部分PASS区提示*/
+		#userPassWord{
+			width:200px;
+			height:20px;
+			text-align:center;
+			line-height:20px;
+		}
+		/* banner部分PASS输入框*/
+		#userPassInput{
+			width:200px;
+			height:20px;
+			text-align:center;
+		}
+			/* banner部分输入框大小*/
+			#bannerLogin .textForm{
+				width:170px;
+				height:15px;
+				line-height:20px;
+				border:1px #0CF solid;
+			}
+			/* 提交按钮DIV */
+		#submitDIV{
+			margin:0px auto;
+			display:inline
+		}
+			/* banner 提交按钮*/
+			#submit{
+				background-color:#499ad9;
+				border:#84bceb 2px solid;
+				width:75px;
+				height:21px;
+				margin-left:12px;
+				margin-top:8px;
+			}
+			/* autoLogin自动登录复选框DIV */
+			#autoLogin{
+				font-size:12px;
+				margin-left:20px;
+				display:inline;
+				line-height:20px;
+			}
+		#forgetPass{
+			width:60px;
+			height:14px;
+			font-size:12px;
+			margin-left:145px;
+			margin-top:30px;
+		}
+/* main部分 */
+#main{
+	width:960px;
+	border:1px #cccccc solid;
+	height:400px;
+	background-color:#FFF;
+}
+
+	/* main部分的left栏 */
+	#mainLeft{
+		width:200px;
+		height:400px;
+		/*background-color:#9C0;*/
+		float:left;
+	}
+		/* 左栏用户推荐提示*/
+		#faceShowWord{
+			width:180px;
+			height:20px;
+			line-height:20px;
+			font-weight:bolder;
+			margin:0px 10px;
+			margin-top:10px;
+			font-size:14px;
+			clear:left;
+		}
+		/* 左栏用户推荐图片 */
+		#faceShow{
+			clear:left;
+			width:180px;
+			height:320px;
+			margin:0px auto;
+			margin-top:5px;
+			overflow:hidden;
+			position:relative;
+			border-right:#ccc 1px solid;
+		}
+			/* faceShow图片 */
+			#faceShow img{
+				border:none;
+				margin-top:12px;
+				filter:alpha(opacity=70);
+			}
+			#faceShow a:link{
+				text-decoration:none;
+			}
+		/* 左栏用户推荐图片 */
+		#faceShow1{
+			width:180px;
+			height:80px;
+			position:absolute;
+			top:0px;
+			left:0px;
+		}
+		#faceShow2{
+			width:180px;
+			height:80px;
+			position:absolute;
+			top:80px;
+			left:0px;
+		}
+		#faceShow3{
+			width:180px;
+			height:80px;
+			position:absolute;
+			top:160px;
+			left:0px;
+		}
+		#faceShow4{
+			width:180px;
+			height:80px;
+			position:absolute;
+			left:0px;
+			top: 240px;
+		}
+		#faceShow5{
+			width:180px;
+			height:80px;
+			position:absolute;
+			left:0px;
+			top:320px;
+		}
+			
+		
+	/* main部分的body部分*/
+		#mainBody{
+			height:400px;
+			width:480px;
+			/*background-color:#09F;*/
+			float:left;
+		}
+		/* body中的状态展示 */
+		#stateShow{
+			width:480px;
+			height:320px;
+			/*margin:0px auto;*/
+			margin-top:5px;
+			position:relative;
+			overflow:hidden;
+			/*background-color:#399;*/
+		}
+		#hotword{
+			width:450px;
+			font-weight:bold;
+			font-size:14px;
+			height:20px;
+			margin:0px auto;
+			margin-top:10px;
+		}
+			
+			/* 状态展示框设置 */
+		#stateShow .stateShow{
+			width:450px;
+			height:auto;
+			padding-top:5px;
+			margin:0px auto;
+			border-bottom:1px #ccc dotted;
+		}
+		/* 状态展示中的头像设置 */
+		#stateShow img{
+			margin-top:3px;
+			border:2px solid #ccc;
+		}
+		/* 状态展示中的链接设置*/
+		#stateShow a:link{
+			color:#005dc3;
+			text-decoration:none;
+			font-weight:bold;
+		}
+		#stateShow a:hover{
+			color:#005dc3;
+			text-decoration:underline;
+			font-weight:bold;			
+		}
+		#stateShow a:visited{
+			color:#005dc3;
+			text-decoration:none;
+			font-weight:bold;			
+		}
+		/* 状态展示时间框设置 */
+		#stateShow .stateShowtime{
+			color:#999999;
+			padding-left:60px;
+		}
+			/* 状态展示中文字部分 */
+			#stateShow .stateShowWord{
+				width:450px;
+			}
+	
+	/* main部分的right*/
+	#mainRight{
+		height:400px;
+		width:280px;
+		/*background-color:#969;*/
+		float:left;
+	}
+		#mainRightRegister{
+			font-size:20px;
+			width:220px;
+			margin:0px auto;
+			margin-top:25px;
+		}
+		#mainRight img{
+			border:none;
+		}
+	#registerButton{
+		width:225px;
+		height:51px;
+		margin:0px auto;
+		margin-top:30px;
+	}
+	#mobileTip{
+		color:#3CF;
+		width:200px;
+		font-size:17px;
+		text-align:center;
+		font-weight:bold;
+	}
+	#mobile{
+		width:200px;
+		margin:0px auto;
+	}
+	/* footer部分*/
+	#footer{
+		width:960px;
+		height:50px;
+		border:1px solid #ccc;
+		margin-bottom:30px;
+	}
+	/* footer链接部分*/
+	#footerLink{
+		width:600px;
+		height:30px;
+		margin:0px auto;
+		position:relative;
+		line-height:30px;
+	}
+		/* footer部分的链接 */
+		#footerLink ul{
+			list-style:none;
+			padding:0px;
+			margin:0px;
+		}
+		#footerLink li{
+			/*float:left;*/
+			display:inline;
+			margin:0px 10px;
+		}
+	/* footer部分的版权信息 */
+	#footerCopy{
+		width:250px;
+		height:20px;
+		color:#5c4444;
+		line-height:20px;
+		margin:0px auto;
+		text-align:center;
+	}
+	
+	

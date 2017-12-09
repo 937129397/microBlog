@@ -1,0 +1,127 @@
+@charset "utf-8";
+/* CSS Document */
+
+@charset "utf-8";
+/* CSS Document */
+/* 页面整体 */
+#container{
+	width:767px;
+	height:auto;
+	margin:0px auto;
+	position:relative;
+}
+/* top部分 */
+#top{
+	width:765px;
+	height:80px;
+	position:relative;
+}
+	/* top部分的LogoDIV */
+	#topLogo{
+		width:200px;
+		height:80px;	
+	}
+		/* topLogo部分的icoDIV */
+		#topLogoIco{
+			width:72px;
+			height:72px;
+			margin-top:4px;
+			float:left;
+		}
+		/* topLogo部分的wordDIV */
+		#topLogoWord{
+			width:128px;
+			height:60px;
+			float:left;
+			margin-top:12px;
+		}
+			/* topLogo下的img */
+			#topLogo img{
+				border:none;
+			}
+	/* top部分的文字导航 */
+	#topWordMenu{
+		width:350px;
+		height:30px;
+		position:absolute;
+		top:33px;
+		left:450px;
+	}
+		/* top部分的ul */
+		#topWordMenu ul{
+			margin:0px;
+			padding:0px;
+			list-style:none;
+		}
+			/* top部分的li */
+			#topWordMenu ul li{
+				display:inline;
+				/*float:left;*/
+				margin:0px 8px;
+			}
+			/* top部分的文字链接 */
+			#topWordMenu a:link{
+				text-decoration:none;
+			}
+			#topWordMenu a:visited{
+				text-decoration:none;
+			}
+			#topWordMenu a:hover{
+				color:#FFF;
+				text-decoration:none;
+			}
+	/* 文字导航部分 */
+	#menu{
+		margin-top:10px;
+		}
+	/* 主体 */	
+	#banner{
+		margin-top:10px;
+		border-color:#9CF;
+		line-height:50px;
+		text-align:center;
+	       }
+	/* footer */	   
+	#footer{
+		margin-top:10px;
+		}
+		
+	/* footer链接部分*/
+	#footerLink{
+		width:600px;
+		height:30px;
+		margin:0px auto;
+		position:relative;
+		line-height:30px;
+	}
+		/* footer部分的链接 */
+		#footerLink ul{
+			list-style:none;
+			padding:0px;
+			margin:0px;
+		}
+		#footerLink li{
+			/*float:left;*/
+			display:inline;
+			margin:0px 10px;
+		}
+	/* footer部分的版权信息 */
+	#footerCopy{
+		width:250px;
+		height:20px;
+		color:#5c4444;
+		line-height:20px;
+		margin:0px auto;
+		text-align:center;
+	}
+	/* 超链接设置 */
+	a:link{
+		text-decoration:none;
+		border:none;
+		  }
+	a:visited{
+		text-decoration:none;
+		  }
+	a:hover{
+		text-decoration:none;
+		  }

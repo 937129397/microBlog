@@ -2,6 +2,9 @@ package com.microblog.dao;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import com.microblog.bean.Blog;
 
 public interface BaseDao<T>
 {
@@ -53,4 +56,67 @@ public interface BaseDao<T>
 	 * @return
 	 */
 	public int getCount(Class<T> clazz, Map<String, Object> map, String sqlId);
+
+	//redis   start
+	/**
+	 * 存
+	 * @param key
+	 * @param value
+	 */
+	public void setKey( String key,  String value);
+	/**
+	 * 根据键取值
+	 * @param key
+	 * @return
+	 */
+	public Object getKey( String key);
+	/**
+	 * 自增
+	 * @param key
+	 */
+	public void incr( String key);
+	/**
+	 * 自减
+	 * @param key
+	 */
+	public void decr( String key);
+	/**
+	 * 在上一个元素的左边存
+	 * @param key
+	 * @param value
+	 */
+	//public void lPush( String key, String value);
+	/**
+	 * 查看是否有这个键
+	 * @param key
+	 * @return
+	 */
+	//public boolean checkKey( String key);
+	/**
+	 * 按键取
+	 * @param key
+	 * @return
+	 */
+	//public Object lIndex( String key);
+	/**
+	 * 求长度
+	 * @param key
+	 * @return
+	 */
+	//public Long lLength( String key);
+	/**
+	 * 从上一个元素的左边取值
+	 * @param key
+	 * @return
+	 */
+	//public String lPop( String key);
+	/**
+	 * 按正则表达式匹配的键取值
+	 * @param pattern
+	 * @return
+	 */
+	//public Set<String> getKeys( String pattern);
+	//redis  end
+
+	public Integer del(Class<Blog> clazz, Long id, String sqlId);
 }

@@ -1,0 +1,286 @@
+@charset "utf-8";
+/* CSS Document */
+/* 整个页面 */
+#container{
+	width:765px;
+	height:auto;
+	margin:0px auto;
+	}
+	/* 上面topDIV */
+  #top{
+	width:765px;
+	height:80px;
+	position:relative;
+  }
+	/* top部分的LogoDIV */
+	#topLogo{
+		width:200px;
+		height:80px;	
+	}
+		/* topLogo部分的icoDIV */
+		#topLogoIco{
+			width:72px;
+			height:72px;
+			margin-top:4px;
+			float:left;
+		}
+		/* topLogo部分的wordDIV */
+		#topLogoWord{
+			width:128px;
+			height:60px;
+			float:left;
+			margin-top:12px;
+		}
+			/* topLogo下的img */
+			#topLogo img{
+				border:none;
+			}
+	/* top部分的文字导航 */
+	 #topWordMenu{
+		width:300px;
+		height:30px;
+		position:absolute;
+		top:33px;
+		left:450px;
+	}
+		/* top部分的ul */
+		#topWordMenu ul{
+			margin:0px;
+			padding:0px;
+			list-style:none;
+		}
+			/* top部分的li */
+			#topWordMenu ul li{
+				display:inline;
+				/*float:left;*/
+				margin:0px 8px;
+			}
+			/* top部分的文字链接 */
+			#topWordMenu a:link{
+				text-decoration:none;
+			}
+			#topWordMenu a:visited{
+				text-decoration:none;
+			}
+			#topWordMenu a:hover{
+				color:#FFF;
+				text-decoration:none;
+			}
+  /* 页面主体 */
+  #banner{
+	  width:767px;
+	  height:465px;
+	  margin:0px auto;
+	  color:#cccccc;
+	  background-color:#FFF;
+	  border-color:#cccccc;
+	  border-style:solid;
+	  border-width:1px;
+	  }
+    /* 页面主体top*/
+    #bannerTop{
+	    width:765px;
+	    height:70px;
+	    position:relative;
+	    border-bottom:2px #cccccc solid;
+	  }
+      /* 页面主体top word1*/
+      #bannerWord1{
+		  font-size:18px;
+		  color:#000;
+		  font-weight:bold;
+		  position:absolute;
+		  margin-top:12px;
+		  margin-left:21px;
+		  }
+      /* 页面主体top word2*/
+	  #bannerWord2{
+		  font-size:12px;
+		  position:absolute;
+		  margin-left:21px;
+		  margin-top:47px;
+		  }
+
+      /* 页面主体top word3*/
+	  #bannerWord3{
+		  font-size:12px;
+		  position:absolute;
+		  margin-top:47px;
+		  margin-right:21px;
+		  margin-bottom:12px;
+		  margin-left:561px;
+		}
+	 #bannerTop a:link{
+				text-decoration:none;
+			}
+	   #bannerTop a:visited{
+				text-decoration:none;
+			}
+		 #bannerTop a:hover{
+				text-decoration:none;
+			}
+	#main{
+		width:765px;
+		height:395px;
+		}
+	  #main table{
+		  width:765px;
+		  height:358px;
+		  color:#000;
+		  font-size:14px;
+		  }
+		  /* 控制文本框宽度 */
+		  #main .form{
+			  width:170px;
+			  height:20px;
+			  text-align:center;
+			  line-height:20px;
+			  margin-top:5px;
+			  font-size:16px;
+			  border:1px solid #39F;
+			  }
+			/* 控制用户名那列的宽度 */
+		   #main .wordleft{
+			  width:86px;
+			  height:35px;
+			  text-align:center;
+			  line-height:35px;
+			  }
+			 /* 控制验证码那行的宽度 */
+			#main .verifyword{
+				height:15px;
+				font-size:12px;
+				font-color:#cccccc;
+				line-height:34px;
+				}
+			#main .wordright{
+				font-size:12px;
+				color:#498e75;
+				}
+			/* 设置输入提示DIV */
+			.wordright .registertip{
+				display:inline;
+			}
+			/*隐藏图片框*/
+			#img1{
+				visibility:hidden;
+			}
+			#img2{
+				visibility:hidden;
+			}
+			#img3{
+				visibility:hidden;
+			}
+			#img4{
+				visibility:hidden;
+			}
+			#img5{
+				visibility:hidden;
+			}
+			#img6{
+				visibility:hidden;
+			}
+			#img7{
+				visibility:hidden;
+			}
+			
+			/* 控制验证码的位置 */
+			#yanzhengma{
+				width:95px;
+				height:34px;
+				float:left;
+				background-color:#CCC;
+				font-size:30px;
+			}
+			#yanzhengma1{
+				float:left;
+				margin-top:9px;
+			}
+			/* 省市的下拉框的宽度 */
+			#main .form1{
+				margin-left:12px;
+				width:65px;
+				}
+			/* 年下拉框的宽度 */
+			#main .form2{
+				margin-left:12px;
+				width:50px;
+				}
+			/* 月和日下拉框的宽度 */
+			#main .form3{
+				margin-left:5px;
+				width:50px;
+				}
+			/* 城市和村镇的下拉框的宽度 */
+			#main .form4{
+				margin-left:5px;
+				width:65px;
+				}
+			#main .button{
+				background-color:#88aa22;
+				border-style:dottde #7755dd 1px;
+				width:115px;
+				height:30px;
+				color:#FFF;
+				}
+			td a:link{
+				text-decoration:none;
+			}
+			td a:visited{
+				text-decoration:none;
+			}
+			td a:hover{
+				text-decoration:none;
+			}
+		/* footer部分*/
+  #footer{
+	  padding-top:3px;
+	  width:765px;
+	  height:50px;
+	  border:1px solid #ccc;
+   }
+	/* footer链接部分*/
+	#footerLink{
+		width:600px;
+		height:30px;
+		margin:0px auto;
+		position:relative;
+		line-height:30px;
+	}
+		/* footer部分的链接 */
+		#footerLink ul{
+			list-style:none;
+			padding:0px;
+			margin:0px;
+		}
+		#footerLink li{
+			/*float:left;*/
+			display:inline;
+			margin:0px 10px;
+		}
+	/* footer部分的版权信息 */
+	#footerCopy{
+		width:250px;
+		height:20px;
+		color:#5c4444;
+		line-height:20px;
+		margin:0px auto;
+		text-align:center;
+  }	
+  /* 验证码动态生成 */
+  .code  
+        {  
+            background-image:url(code.jpg);  
+            font-family:Arial;  
+            font-style:italic;  
+            color:Red;  
+            border:0;  
+            padding:2px 3px;  
+            letter-spacing:3px;  
+            font-weight:bolder;  
+        }  
+        .unchanged  
+        {  
+            border:0;  
+        }  
+  
